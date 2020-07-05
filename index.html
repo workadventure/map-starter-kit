@@ -6,7 +6,7 @@
                 if (path.endsWith('index.html')) {
                     path = path.substr(path, path.length - 'index.html'.length);
                 }
-                var url = 'https://workadventu.re/_/global/'+window.location.host+path+'map.json';
+                var url = 'https://play.workadventu.re/_/global/'+window.location.host+path+'map.json';
                 document.getElementById('mapLink').href = url;
                 document.getElementById('mapLink').innerText = url;
             };
