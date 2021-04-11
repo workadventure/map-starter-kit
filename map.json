@@ -143,8 +143,14 @@
  "nextlayerid":14,
  "nextobjectid":1,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"script",
+         "type":"string",
+         "value":"script.js"
+        }],
  "renderorder":"right-down",
- "tiledversion":"1.3.3",
+ "tiledversion":"2021.03.23",
  "tileheight":32,
  "tilesets":[
         {
@@ -897,6 +903,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1.5,
  "width":46
 }
