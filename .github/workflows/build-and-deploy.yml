@@ -1,9 +1,7 @@
 name: Optimize map and deploy
 
 on:
-  push:
-    branches:
-      - master
+  - push
 
 jobs:
 
@@ -19,7 +17,22 @@ jobs:
       - name: Optimize map
         uses: thecodingmachine/map-optimizer-action@master
 
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: "Install dependencies"
+        run: npm install
+
+      - name: "Build scripts"
+        run: npm run build
+
+      - name: "Move scripts"
+        run: mv dist/* .
+
       - name: Bash
+        if: github.ref == 'refs/heads/master'
         run: |
           ls -al
           git config --global user.email "d.negrier@thecodingmachine.com"
@@ -29,6 +42,7 @@ jobs:
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
+        if: github.ref == 'refs/heads/master'
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.

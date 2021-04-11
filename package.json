@@ -1,0 +1,25 @@
+{
+  "name": "workadventure-map-starter-kit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@workadventure/iframe-api-typings": "^1.2.1",
+    "eslint": "^7.24.0",
+    "html-webpack-plugin": "^5.3.1",
+    "ts-loader": "^8.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4",
+    "webpack": "^5.31.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
+  },
+  "scripts": {
+    "start": "webpack serve --open",
+    "build": "webpack --config webpack.prod.js",
+    "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
+    "lint": "node_modules/.bin/eslint src/ . --ext .ts",
+    "fix": "node_modules/.bin/eslint --fix src/ . --ext .ts"
+  }
+}
