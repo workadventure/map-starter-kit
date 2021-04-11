@@ -1,5 +1,27 @@
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+        <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+        <style>
+            .margin-constraint{
+                /*On indique tout simplement une marge*/
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            .useful-width{
+                /*On règle ensuite la largeur utile puis on centre*/
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .margin-constraint, .useful-width{
+                /*Si vous utilisez uniquement des div, cette dernière règle css n'est même pas nécessaire*/
+                display: block;
+                width: auto;
+            }
+        </style>
         <script>
             window.onload = function() {
                 var path = window.location.pathname;
@@ -8,13 +30,41 @@
                 }
                 var url = 'https://play.workadventu.re/_/global/'+window.location.host+path+'map.json';
                 document.getElementById('mapLink').href = url;
+                document.getElementById('mapLink2').href = url;
                 document.getElementById('mapLink').innerText = url;
+
+                var mapUrl = window.location.protocol+'//'+window.location.host+path+'map.json';
+                document.getElementById('mapUrl').innerText = mapUrl;
+
+                var gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl='+mapUrl;
+                document.getElementById('gettingStartedLink').href = gettingStartedLink;
+
             };
         </script>
     </head>
     <body>
-        This website contains a map for <a href="https://workadventu.re">Workadventu.re</a>.
-        <br/>
-        You can access this map at <a id="mapLink" href=""></a>
+        <div class="useful-width">
+            <div style="text-align: center; margin-top: 3rem">
+                <img src="https://workadventu.re/img/logo.png" alt=""/>
+            </div>
+            <div class="nes-container with-title is-centered" style="margin-top: 3rem">
+                <p class="title">WorkAdventure map</p>
+                <p>This website contains a map for <a href="https://workadventu.re">Workadventu.re</a>.</p>
+            </div>
+
+            <div class="nes-container with-title is-centered" style="margin-top: 1rem">
+                <p class="title">Test this map</p>
+                <p>You can test this map at <a id="mapLink" href=""></a>.</p>
+                <p><a id="mapLink2" href="" class="nes-btn is-primary">Test this map</a></p>
+            </div>
+
+            <div class="nes-container with-title is-centered" style="margin-top: 1rem">
+                <p class="title">Happy with the result?</p>
+                <p>Register your room on Workadventu.re.</p>
+                <p><a id="gettingStartedLink" href="" class="nes-btn is-primary">Create a new room</a></p>
+                <p>or copy and paste the map URL in WorkAdventu.re's administration panel:</p>
+                <p><span id="mapUrl" style="color: gray" /></p>
+            </div>
+        </div>
     </body>
 </html>
