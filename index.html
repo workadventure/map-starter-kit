@@ -3,40 +3,28 @@
         <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
         <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
         <style>
-            .margin-constraint{
-                /*On indique tout simplement une marge*/
-                margin-left: 20px;
-                margin-right: 20px;
-            }
-
             .useful-width{
-                /*On règle ensuite la largeur utile puis on centre*/
+                /* center the html elements */
                 max-width: 800px;
                 margin-left: auto;
                 margin-right: auto;
             }
-
-            .margin-constraint, .useful-width{
-                /*Si vous utilisez uniquement des div, cette dernière règle css n'est même pas nécessaire*/
-                display: block;
-                width: auto;
-            }
         </style>
         <script>
             window.onload = function() {
-                var path = window.location.pathname;
+                let path = window.location.pathname;
                 if (path.endsWith('index.html')) {
                     path = path.substr(path, path.length - 'index.html'.length);
                 }
-                var url = 'https://play.workadventu.re/_/global/'+window.location.host+path+'map.json';
+                const url = 'https://play.workadventu.re/_/global/'+window.location.host+path+'map.json?alone=true';
                 document.getElementById('mapLink').href = url;
                 document.getElementById('mapLink2').href = url;
                 document.getElementById('mapLink').innerText = url;
 
-                var mapUrl = window.location.protocol+'//'+window.location.host+path+'map.json';
+                const mapUrl = window.location.protocol+'//'+window.location.host+path+'map.json';
                 document.getElementById('mapUrl').innerText = mapUrl;
 
-                var gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl='+mapUrl;
+                const gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl='+mapUrl;
                 document.getElementById('gettingStartedLink').href = gettingStartedLink;
 
             };
