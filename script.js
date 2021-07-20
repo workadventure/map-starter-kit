@@ -1,2 +1,2 @@
-(()=>{"use strict";console.log("Script started successfully"),WA.openCoWebSite("https://workadventu.re")})();
+(()=>{"use strict";let o;const e=new Date,n=e.getHours()+":"+e.getMinutes()+":"+e.getSeconds();WA.onEnterZone("clock",(()=>{o=WA.openPopup("clockPopup","It's "+n,[])})),WA.onLeaveZone("clock",(function(){void 0!==o&&(o.close(),o=void 0)}))})();
 //# sourceMappingURL=script.js.map
