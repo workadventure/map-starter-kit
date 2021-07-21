@@ -6,14 +6,7 @@ To understand how to use this starter kit, follow the tutorial at [https://worka
 
 ## Installation
 
-With [yarn](https://yarnpkg.com/):
-
-```shell
-yarn install
-yarn start
-```
-
-With npm (comes with [node](https://nodejs.org/en/)):
+With npm installed (comes with [node](https://nodejs.org/en/)), run the following commands into a terminal in the root directory of this project:
 
 ```shell
 npm install
