@@ -14,3 +14,11 @@ npm run start
 ```
 
 The project will run at http://localhost:8080/
+
+## Licences
+
+This project contains multiple licences:
+
+* [Code licence](./LICENCE.code) *(all files except those for other licenses)*
+* [Map licence](./LICENCE.map) *(`map.json` and the map visual as well)*
+* [Assets licence](./LICENCE.assets) *(the files inside the `src/assets/` folder)*
