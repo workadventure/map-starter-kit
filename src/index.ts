@@ -2,13 +2,13 @@
 
 let currentPopup: any = undefined;
 const today = new Date();
-const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+const time = today.getHours() + ":" + today.getMinutes();
 
-WA.onEnterZone('clock', () => {
-    currentPopup =  WA.openPopup("clockPopup","It's " + time,[]);
+WA.room.onEnterZone('clock', () => {
+    currentPopup =  WA.ui.openPopup("clockPopup","It's " + time,[]);
 })
 
-WA.onLeaveZone('clock', closePopUp)
+WA.room.onLeaveZone('clock', closePopUp)
 
 function closePopUp(){
     if (currentPopup !== undefined) {
