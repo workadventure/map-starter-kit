@@ -218,11 +218,11 @@
          "margin":0,
          "name":"tileset5_export",
          "properties":[
-          {
-           "name":"tilesetCopyright",
-           "type":"string",
-           "value":"© 2021 WorkAdventure <https:\/\/workadventu.re\/> \nLincense: WORKADVENTURE SPECIFIC RESOURCES LICENSE (see LICENSE.assets file)"
-          }],
+                {
+                 "name":"tilesetCopyright",
+                 "type":"string",
+                 "value":"\u00a9 2021 WorkAdventure <https:\/\/workadventu.re\/> \nLincense: WORKADVENTURE SPECIFIC RESOURCES LICENSE (see LICENSE.assets file)"
+                }],
          "spacing":0,
          "tilecount":100,
          "tileheight":32,
@@ -237,11 +237,11 @@
          "margin":0,
          "name":"tileset6_export",
          "properties":[
-          {
-           "name":"tilesetCopyright",
-           "type":"string",
-           "value":"© 2021 WorkAdventure <https:\/\/workadventu.re\/> \nLincense: WORKADVENTURE SPECIFIC RESOURCES LICENSE (see LICENSE.assets file)"
-          }],
+                {
+                 "name":"tilesetCopyright",
+                 "type":"string",
+                 "value":"\u00a9 2021 WorkAdventure <https:\/\/workadventu.re\/> \nLincense: WORKADVENTURE SPECIFIC RESOURCES LICENSE (see LICENSE.assets file)"
+                }],
          "spacing":0,
          "tilecount":100,
          "tileheight":32,
@@ -256,11 +256,11 @@
          "margin":0,
          "name":"tileset1",
          "properties":[
-          {
-           "name":"tilesetCopyright",
-           "type":"string",
-           "value":"© 2021 WorkAdventure <https:\/\/workadventu.re\/> \nLincense: WORKADVENTURE SPECIFIC RESOURCES LICENSE (see LICENSE.assets file)"
-          }],
+                {
+                 "name":"tilesetCopyright",
+                 "type":"string",
+                 "value":"\u00a9 2021 WorkAdventure <https:\/\/workadventu.re\/> \nLincense: WORKADVENTURE SPECIFIC RESOURCES LICENSE (see LICENSE.assets file)"
+                }],
          "spacing":0,
          "tilecount":121,
          "tileheight":32,
@@ -275,11 +275,11 @@
          "margin":0,
          "name":"tileset1-repositioning",
          "properties":[
-          {
-           "name":"tilesetCopyright",
-           "type":"string",
-           "value":"© 2021 WorkAdventure <https:\/\/workadventu.re\/> \nLincense: WORKADVENTURE SPECIFIC RESOURCES LICENSE (see LICENSE.assets file)"
-          }],
+                {
+                 "name":"tilesetCopyright",
+                 "type":"string",
+                 "value":"\u00a9 2021 WorkAdventure <https:\/\/workadventu.re\/> \nLincense: WORKADVENTURE SPECIFIC RESOURCES LICENSE (see LICENSE.assets file)"
+                }],
          "spacing":0,
          "tilecount":121,
          "tileheight":32,
@@ -294,11 +294,11 @@
          "margin":0,
          "name":"Special_Zones",
          "properties":[
-          {
-           "name":"tilesetCopyright",
-           "type":"string",
-           "value":"© 2021 WorkAdventure <https:\/\/workadventu.re\/> \nLincense: WORKADVENTURE SPECIFIC RESOURCES LICENSE (see LICENSE.assets file)"
-          }],
+                {
+                 "name":"tilesetCopyright",
+                 "type":"string",
+                 "value":"\u00a9 2021 WorkAdventure <https:\/\/workadventu.re\/> \nLincense: WORKADVENTURE SPECIFIC RESOURCES LICENSE (see LICENSE.assets file)"
+                }],
          "spacing":0,
          "tilecount":12,
          "tileheight":32,
