@@ -199,7 +199,27 @@
          "name":"mapCopyright",
          "type":"string",
          "value":"Credits: Valdo Romao https:\/\/www.linkedin.com\/in\/valdo-romao\/ \nLicense: CC-BY-SA 3.0 (http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/)"
-        }, 
+        },
+   {
+     "name":"mapDescription",
+     "type":"string",
+     "value":"A perfect virtual office to get started with WorkAdventure!"
+   },
+   {
+     "name":"mapImage",
+     "type":"string",
+     "value":"map.png"
+   },
+   {
+     "name":"mapLink",
+     "type":"string",
+     "value":"https:\/\/thecodingmachine.github.io\/workadventure-map-starter-kit\/map.json"
+   },
+   {
+     "name":"mapName",
+     "type":"string",
+     "value":"Starter kit"
+   },
         {
          "name":"script",
          "type":"string",
