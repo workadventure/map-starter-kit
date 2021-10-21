@@ -8,10 +8,11 @@ To understand how to use this starter kit, follow the tutorial at [https://worka
 
 ## Installation
 
-With npm installed (comes with [node](https://nodejs.org/en/)), run the following commands into a terminal in the root directory of this project:
+With npm (comes with [node](https://nodejs.org/en/)) and node (v10) installed, run the following commands into a terminal in the root directory of this project:
 
 ```shell
 npm install
+npm run build
 npm run start
 ```
 
