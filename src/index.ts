@@ -9,11 +9,12 @@ let currentPopup: any = undefined;
 const today = new Date();
 const time = today.getHours() + ":" + today.getMinutes();
 
-WA.room.onEnterZone('clock', () => {
+WA.room.onEnterLayer('clockZone').subscribe(() => {
+    console.log('toto')
     currentPopup =  WA.ui.openPopup("clockPopup","It's " + time,[]);
 })
 
-WA.room.onLeaveZone('clock', closePopUp)
+WA.room.onLeaveLayer('clockZone').subscribe(closePopUp)
 
 function closePopUp(){
     if (currentPopup !== undefined) {
