@@ -1,60 +1,91 @@
-<html>
-    <head>
-        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-        <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
-        <style>
-            .useful-width{
-                /* center the html elements */
-                max-width: 800px;
-                margin-left: auto;
-                margin-right: auto;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta name="title" content="WorkAdventure Starter Kit">
+   
+    <link href="src/style.css" rel="stylesheet">
+    <link rel="icon" href="https://workadventu.re/favicon-96x96.png">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <title>WorkAdventure Starter Kit</title>
+
+    <script>
+        window.onload = function() {
+            const host = window.location.host;
+            let path = window.location.pathname;
+            if (path.endsWith('index.html')) {
+                path = path.substr(path, path.length - 'index.html'.length);
             }
-        </style>
-        <script>
-            window.onload = function() {
-                const host = window.location.host;
-                let path = window.location.pathname;
-                if (path.endsWith('index.html')) {
-                    path = path.substr(path, path.length - 'index.html'.length);
-                }
-                const instanceId = Math.random().toString(36).substring(2, 15);
-                const url = `https://play.workadventu.re/_/${instanceId}/${host}${path}map.json`;
-                document.getElementById('mapLink').href = url;
-                document.getElementById('mapLink2').href = url;
-                document.getElementById('mapLink').innerText = url;
+            const instanceId = Math.random().toString(36).substring(2, 15);
+            const url = `https://play.workadventu.re/_/${instanceId}/${host}${path}map.json`;
+            document.getElementById('mapLink').href = url;
+            document.getElementById('mapLink2').href = url;
+            document.getElementById('mapLink').innerText = url;
 
-                const mapUrl = window.location.protocol+'//'+window.location.host+path+'map.json';
-                document.getElementById('mapUrl').innerText = mapUrl;
+            const mapUrl = window.location.protocol+'//'+window.location.host+path+'map.json';
+            document.getElementById('mapUrl').innerText = mapUrl;
 
-                const gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl='+mapUrl;
-                document.getElementById('gettingStartedLink').href = gettingStartedLink;
+            const gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl='+mapUrl;
+            document.getElementById('gettingStartedLink').href = gettingStartedLink;
 
-            };
-        </script>
-    </head>
-    <body>
-        <div class="useful-width">
-            <div style="text-align: center; margin-top: 3rem">
-                <img src="https://workadventu.re/img/logo.png" alt=""/>
-            </div>
-            <div class="nes-container with-title is-centered" style="margin-top: 3rem">
-                <p class="title">WorkAdventure map</p>
-                <p>This website contains a map for <a href="https://workadventu.re">Workadventu.re</a>.</p>
-            </div>
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="https://workadventu.re/" target="_blank" title="workadventure"><img src="https://workadventu.re/images/general/logo.svg" alt="WorkAdventure logo"/></a>
+        </div>
+    </header>
+    <main>
+        <div class="nes-container with-title is-centered" style="margin-top: 3rem">
+            <p class="title">Useful links</p>
+            <div class="content">
+                <div class="socials">
+                    <a href="https://discord.gg/G6Xh9ZM9aR" target="_blank" title="discord">
+                        <img src="https://workadventu.re/images/social/discord.png" alt="discord">
+                    </a>
+                    <a href="https://github.com/thecodingmachine/workadventure" target="_blank" title="github">
+                        <img src="https://workadventu.re/images/social/github.png" alt="github">
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCXJ9igV-kb9gw1ftR33y5tA" target="_blank" title="youtube">
+                        <img src="https://workadventu.re/images/social/youtube.png" alt="youtube">
+                    </a>
+                    <a href="https://twitter.com/Workadventure_" target="_blank" title="twitter">
+                        <img src="https://workadventu.re/images/social/twitter.png" alt="twitter">
+                    </a>
+                    <a href="https://www.instagram.com/workadventure_" target="_blank" title="instagram">
+                        <img src="https://workadventu.re/images/social/instagram.png" alt="instagram">
+                    </a>
+                    <a href="https://www.linkedin.com/company/workadventu-re" target="_blank" title="linkedin">
+                        <img src="https://workadventu.re/images/social/linkedin.png" alt="linkedin">
+                    </a>
+                </div>
 
-            <div class="nes-container with-title is-centered" style="margin-top: 1rem">
-                <p class="title">Test this map</p>
-                <p>You can test this map at <a id="mapLink" href=""></a>.</p>
-                <p><a id="mapLink2" href="" class="nes-btn is-primary">Test this map</a></p>
-            </div>
-
-            <div class="nes-container with-title is-centered" style="margin-top: 1rem">
-                <p class="title">Happy with the result?</p>
-                <p>Register your room on Workadventu.re.</p>
-                <p><a id="gettingStartedLink" href="" class="nes-btn is-primary">Create a new room</a></p>
-                <p>or copy and paste the map URL in WorkAdventu.re's administration panel:</p>
-                <p><span id="mapUrl" style="color: gray" /></p>
+                <div class="help">
+                    <a href="https://www.youtube.com/watch?v=lu1IZgBJJD4&list=PL7jmrMKZfjCnz36FvezxJ-Tshuh3Zz-nc&ab_channel=WorkAdventure" class="nes-btn is-primary" target="_blank">Watch tutorials</a>
+                    <a href="https://discord.gg/G6Xh9ZM9aR" class="nes-btn is-primary" target="_blank">Talk to the community</a>
+                </div>
             </div>
         </div>
-    </body>
+
+        <div class="nes-container with-title is-centered" style="margin-top: 1rem">
+            <p class="title">Test this map</p>
+            <p>You can test this map at <a id="mapLink" href=""></a></p>
+            <p><a id="mapLink2" href="" class="nes-btn is-primary">Test this map</a></p>
+        </div>
+
+        <div class="nes-container with-title is-centered" style="margin-top: 1rem">
+            <p class="title">Happy with the result?</p>
+            <p>Register your room on Workadventu.re</p>
+            <p><a id="gettingStartedLink" href="" class="nes-btn is-primary">Create a new room</a></p>
+            <p>or copy and paste the map URL in WorkAdventu.re's administration panel:</p>
+            <p><span id="mapUrl" style="color: gray"></span></p>
+        </div>
+    </main>
+    <footer><a href="https://workadventu.re/" target="_blank" title="workadventu.re">&copy; WorkAdventure</a></footer>
+</body>
 </html>

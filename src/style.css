@@ -1,0 +1,131 @@
+body {
+    font-size:16px;
+	font-family: 'Open Sans', sans-serif;
+	max-width: 800px;
+	margin: auto !important;
+	text-align:center;
+}
+h1, h2 {
+    font-weight:bold;
+}
+
+header {
+	margin:30px;
+}
+header .logo {
+	display:block;
+	position:relative;
+}
+header .logo img{
+	display:block;
+	width:500px;
+	margin: auto;
+	text-align:center;
+}
+
+main {
+	margin-bottom: 30px;
+}
+
+.socials img {
+	width: 30px;
+	height: 30px;
+}
+.socials>a  {
+	display:inline-block;	
+	margin:20px 5px;
+}
+
+.content {
+	width:100%;
+	position:relative;
+	z-index:99999;
+}
+
+.content > h2 {
+	padding:1rem 5vw;
+	max-width:1200px;
+}
+
+a.button {
+	display:inline-block;
+	padding:13px 20px 12px;
+	background:rgba(20, 48, 76, 0.9);
+	color:white;
+	font-weight:bold;
+	text-transform:uppercase;
+	text-decoration:none;
+	text-align:center;
+	width:auto;
+	position:relative;
+	font-size:1.8em;
+	margin-top:2rem;
+}
+
+a.button:hover {
+	top:-3px;
+	background:rgba(20, 48, 76);
+	cursor:pointer;
+	color:white;
+}
+
+
+.maps {
+	display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    }
+
+.map {
+    width: 30%;
+    margin-bottom: 3%;
+    min-width: 200px;
+}
+
+.map a,
+.map img{
+    width: 100%;
+	display:block;
+}
+.map a.button {
+	display:inline-block;
+	width: auto;
+	margin:1rem auto;
+}
+
+a#mapLink {
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 14px;
+}
+ 
+footer {
+	display:block;
+	font-size:1.2em;
+	padding:2rem 5vw;
+}
+
+
+/*/ MEDIA QUERIES START HERE /*/
+@media (max-width: 768px) { /* Hand Held Device */
+
+	body {
+	font-size:13px;
+	}
+	.logo img{
+		width:60vw; 
+	}
+
+	.content {
+		padding:1rem;
+	}
+	.maps {
+		gap: 1rem;
+	}
+	.map {
+		width: 47%;
+		margin-bottom: 3%;
+		min-width: 200px;
+	}
+
+}
