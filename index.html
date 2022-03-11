@@ -21,14 +21,14 @@
             }
             const instanceId = Math.random().toString(36).substring(2, 15);
             const url = `https://play.workadventu.re/_/${instanceId}/${host}${path}map.json`;
-            document.getElementById('mapLink').href = url;
-            document.getElementById('mapLink2').href = url;
-            document.getElementById('mapLink').innerText = url;
+            document.getElementById('testMapURL').href = url;
+            document.getElementById('testMapBtnURL').href = url;
+            document.getElementById('testMapURL').innerText = url;
 
-            const mapUrl = window.location.protocol+'//'+window.location.host+path+'map.json';
-            document.getElementById('mapUrl').innerText = mapUrl;
+            const jsonURL = window.location.protocol+'//'+window.location.host+path+'map.json';
+            document.getElementById('jsonURL').innerText = jsonURL;
 
-            const gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl='+mapUrl;
+            const gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl='+jsonURL;
             document.getElementById('gettingStartedLink').href = gettingStartedLink;
 
         };
@@ -74,16 +74,16 @@
 
         <div class="nes-container with-title is-centered" style="margin-top: 1rem">
             <p class="title">Test this map</p>
-            <p>You can test this map at <a id="mapLink" href=""></a></p>
-            <p><a id="mapLink2" href="" class="nes-btn is-primary">Test this map</a></p>
+            <p>You can test this map at <a id="testMapURL" href="" class="url"></a></p>
+            <p><a id="testMapBtnURL" href="" class="nes-btn is-primary">Test this map</a></p>
         </div>
 
         <div class="nes-container with-title is-centered" style="margin-top: 1rem">
             <p class="title">Happy with the result?</p>
             <p>Register your room on Workadventu.re</p>
-            <p><a id="gettingStartedLink" href="" class="nes-btn is-primary">Create a new room</a></p>
+            <p><a id="gettingStartedLink" href="" class="nes-btn is-primary">Publish this map</a></p>
             <p>or copy and paste the map URL in WorkAdventu.re's administration panel:</p>
-            <p><span id="mapUrl" style="color: gray"></span></p>
+            <p><span id="jsonURL" class="url"></span></p>
         </div>
     </main>
     <footer><a href="https://workadventu.re/" target="_blank" title="workadventu.re">&copy; WorkAdventure</a></footer>

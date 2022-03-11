@@ -94,7 +94,7 @@ a.button:hover {
 	margin:1rem auto;
 }
 
-a#mapLink {
+.url {
 	font-family: 'Courier New', Courier, monospace;
 	font-size: 14px;
 }
