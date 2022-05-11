@@ -1,18 +1,17 @@
 name: Optimize map and deploy
 
-on:
-  - push
+on: [ push ]
+
+permissions:
+  actions: write
 
 jobs:
-
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.0.0
 
       - name: Optimize map
         uses: thecodingmachine/map-optimizer-action@master
