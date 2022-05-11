@@ -3,6 +3,8 @@ name: Optimize map and deploy
 on: [ push ]
 
 permissions:
+  contents: write
+  pages: write
   actions: write
 
 jobs:
@@ -34,6 +36,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: |
           ls -al
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config --global user.email "d.negrier@thecodingmachine.com"
           git config --global user.name "David Négrier"
           git checkout master
