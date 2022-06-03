@@ -26,6 +26,7 @@ npm run dev
 ## Test optimized map
 You can test the optimized map as you do in production:
 ```sh
+npm run build
 npm run preview
 ```
 
