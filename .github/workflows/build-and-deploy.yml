@@ -15,9 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Optimize map
-        uses: thecodingmachine/map-optimizer-action@master
-
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
@@ -29,27 +26,13 @@ jobs:
       - name: "Build scripts"
         run: npm run build
 
-      - name: "Move scripts"
-        run: mv dist/* .
-
-      - name: Bash
-        if: github.ref == 'refs/heads/master'
-        run: |
-          ls -al
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git config --global user.email "d.negrier@thecodingmachine.com"
-          git config --global user.name "David Négrier"
-          git checkout master
-          git add .
-          git commit -am "Adding files"
-
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         if: github.ref == 'refs/heads/master'
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: . # The folder the action should deploy.
+          FOLDER: dist/ # The folder the action should deploy.
           BASE_BRANCH: master
 
       - name: Bash2
