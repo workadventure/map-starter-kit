@@ -7,7 +7,8 @@ This is a starter kit to help you build your own map for [WorkAdventure](https:/
 To understand how to use this starter kit, follow the tutorial at [https://workadventu.re/map-building](https://workadventu.re/map-building).
 
 ## Structure
-* **assets** : All tilesets
+* **tilesets** : All tilesets
+* **public** : Static files
 * **src** : All TypeScript/Javascript scripts
 * **map.json** : Map file
 * **map.png** : Image displayed on README.md and on the map infos in-game
