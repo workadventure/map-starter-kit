@@ -15,6 +15,8 @@ To understand how to use this starter kit, follow the tutorial at [https://worka
 
 If you want to use more than one map file, just add the new map file in the root folder, your tilesets in the assets folder and a new script if you need it in the src folder (it will be automaticaly optimized in production).
 
+If you are going to create custom websites to embed in the map, please reference the HTML files in the `input` option in *vite.config.js*.
+
 ## Requirements
 
 Node.js version >=16
@@ -27,8 +29,6 @@ With npm installed (comes with [node](https://nodejs.org/en/)), run the followin
 npm install
 npm run dev
 ```
-
-If you are going to create custom websites to embed in the map, please reference the HTML files in the `input` option in *vite.config.js*.
 
 ## Test optimized map
 You can test the optimized map as you do in production:
