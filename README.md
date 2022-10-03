@@ -28,6 +28,8 @@ npm install
 npm run dev
 ```
 
+If you are going to create custom websites to embed in the map, please reference the HTML files in the `input` option in *vite.config.js*.
+
 ## Test optimized map
 You can test the optimized map as you do in production:
 ```sh
