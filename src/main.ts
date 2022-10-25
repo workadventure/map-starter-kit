@@ -17,7 +17,7 @@ WA.onInit().then(() => {
         currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
     })
 
-    WA.room.onLeaveLayer('clockZone').subscribe(closePopUp)
+    WA.room.onLeaveLayer('clockZone').subscribe(closePopup)
 
     // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
     bootstrapExtra().then(() => {
@@ -26,7 +26,7 @@ WA.onInit().then(() => {
 
 }).catch(e => console.error(e));
 
-function closePopUp(){
+function closePopup(){
     if (currentPopup !== undefined) {
         currentPopup.close();
         currentPopup = undefined;
