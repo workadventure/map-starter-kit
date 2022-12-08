@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>WA Metamask Plugin</title>
+    <script src="https://play.workadventu.re/iframe_api.js"></script>
+    <script src="scripts/external/metamask-onboarding.bundle.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+            type="application/javascript"></script>
+</head>
+<body class="bg-gray-300">
+<div class="container mx-auto">
+    <div class="flex flex-col justify-center">
+        <div class="bg-yellow-200 p-4 text-center my-4">
+            <span id="infoText">Metamask Plugin for Work Adventure</span>
+            <h4 id="activeAccount" class="text-xl my-5 text-center"></h4>
+            <h4 id="errorText" class="text-red-500 italics"></h4>
+            <div class="text-center">
+                <button id="connectButton" type="button"
+                        class="text-gray-100 text-2xl bg-blue-600 hover:bg-blue-500 rounded py-2 px-3">Loading...
+                </button>
+            </div>
+        </div>
+
+        <div id="sendTransactionPanel" style="display: none" class="p-6 text-center mt-3">
+            <div><strong>Sender:</strong> <span id="senderId"></span></div>
+            <div class="my-2"><strong>Receiver: </strong>
+                <input id="receiverId"
+                       class="border-blue-200 p-2 enabled:hover:border-gray-400 disabled:opacity-7"
+                       type="text"/>
+            </div>
+            <div class="my-2"><strong>Amount in ETH:</strong>
+                <input id="ethValueInput"
+                       class="border-blue-200 p-2 enabled:hover:border-gray-400 disabled:opacity-7"
+                       type="text"/>
+            </div>
+            <h4 id="transactionErrorText" class="text-red-500 italics py-3"></h4>
+            <button onclick="sendTransaction()" id="sendTransaction"
+                    class="my-3 text-gray-100 text-2xl bg-green-600 hover:bg-green-500 rounded py-2 px-3"> Send
+                Transaction
+            </button>
+        </div>
+    </div>
+</div>
+<script src="scripts/index.js"></script>
+
+</body>
+</html>
