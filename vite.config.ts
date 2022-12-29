@@ -7,11 +7,11 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 index: "./index.html",
-                ...getMapsScripts(),
+                ...getMapsScripts("./maps"),
             },
         },
     },
-    plugins: [...getMapsOptimizers()],
+    plugins: [...getMapsOptimizers(undefined, "./maps")],
     server: {
         host: "localhost",
         headers: {
