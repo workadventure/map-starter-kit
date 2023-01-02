@@ -7,14 +7,14 @@ This is a starter kit to help you build your own map for [WorkAdventure](https:/
 To understand how to use this starter kit, follow the tutorial at [https://workadventu.re/map-building](https://workadventu.re/map-building).
 
 ## Structure
-* **maps** : Map files
-    * **map.(json/tmj)** : Map file
-    * **map.png** : Image displayed on README.md and on the map infos in-game
-* **public** : Static files
-* **src** : All TypeScript/Javascript scripts
-* **tilesets** : All tilesets
+* *maps*: Map files
+    * *map.(json/tmj)*: Map file
+    * *map.png*: The map thumbnail displayed on the in-game map information
+* *public* : Static files like PDFs
+* *src* : Source files like scripts or PSDs. 
+* *tilesets* : All tilesets
 
-If you want to use more than one map file, just add the new map file in the root folder, your tilesets in the assets folder and a new script if you need it in the src folder (it will be automaticaly optimized in production).
+If you want to use more than one map file, just add the new map file in the /maps folder.
 
 If you are going to create custom websites to embed in the map, please reference the HTML files in the `input` option in *vite.config.js*.
 
@@ -31,8 +31,9 @@ npm install
 npm run dev
 ```
 
-## Test optimized map
-You can test the optimized map as you do in production:
+## Test production map
+
+You can test the optimized map as it will be in production:
 ```sh
 npm run build
 npm run preview
