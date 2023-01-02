@@ -10,9 +10,9 @@ To understand how to use this starter kit, follow the tutorial at [https://worka
 * *maps*: Map files
     * *map.(json/tmj)*: Map file
     * *map.png*: The map thumbnail displayed on the in-game map information
-* *public* : Static files like PDFs
-* *src* : Source files like scripts or PSDs. 
-* *tilesets* : All tilesets
+* *public*: Static files like PDFs
+* *src*: Source files like scripts or PSDs. 
+* *tilesets*: All tilesets
 
 If you want to use more than one map file, just add the new map file in the /maps folder.
 
