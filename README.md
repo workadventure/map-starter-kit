@@ -39,16 +39,33 @@ npm run build
 npm run preview
 ```
 
+## Test your scripts
+You can create unit tests for your scripts, you have just to create a [Mocha](https://mochajs.org) test file inside `tests/unit` folder, name your file like this `mytest.test.[ts|js]` and run the following command :
+```sh
+npm run test
+```
+
+## Test your map with scenarios
+You can create e2e tests with customs scenarios, create a [Playwright](https://playwright.dev) test file inside `tests/e2e` folder, name your file like this `mytest.spec.[ts|js]` and run the following command :
+```sh
+npm run e2e
+```
+
+Or this command if you want to see tests inside browsers:
+```sh
+npm run e2e-headed
+```
+
 ## Licenses
 
 This project contains multiple licenses as follows:
 
 * [Code license](./LICENSE.code) *(all files except those for other licenses)*
-* [Map license](./LICENSE.map) *(`map.json` and the map visual as well)*
+* [Map license](./LICENSE.map) *(`map.[json|tmj]` and the map visual as well)*
 * [Assets license](./LICENSE.assets) *(the files inside the `src/assets/` folder)*
 
 ### About third party assets
 
 If you add third party assets in your map, do not forget to:
-1. Credit the author and license with the "tilesetCopyright" property present in the properties of each tilesets in the `map.json` file
+1. Credit the author and license with the "tilesetCopyright" property present in the properties of each tilesets in the `map.[json|tmj]` file
 2. Add the license text in LICENSE.assets

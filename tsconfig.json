@@ -3,7 +3,7 @@
     "outDir": "./dist/",
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "module": "ESNext",
+    "module": "CommonJS",
     "lib": [
       "ESNext",
       "DOM"
@@ -27,9 +27,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "typeRoots": ["./node_modules/@types", "@workadventure/iframe-api-typings"]
   },
   "include": [
-    "src"
+    "src",
   ]
 }
