@@ -1,6 +1,6 @@
 {
   "name": "workadventure-map-starter-kit",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -12,7 +12,7 @@
     "@types/node": "^18.11.18",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
-    "wa-map-optimizer-vite": "^1.1.11"
+    "wa-map-optimizer-vite": "^1.1.12"
   },
   "dependencies": {
     "@workadventure/iframe-api-typings": "^1.14.8",
