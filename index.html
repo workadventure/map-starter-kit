@@ -19,15 +19,15 @@
                 path = path.substr(path, path.length - 'index.html'.length);
             }
             const instanceId = Math.random().toString(36).substring(2, 15);
-            const url = `https://play.workadventu.re/_/${instanceId}/${host}${path}maps/map.json`;
+            const url = `https://play.workadventu.re/_/${instanceId}/${host}${path}maps/map.tmj`;
             document.getElementById('testMapURL').href = url;
             document.getElementById('testMapBtnURL').href = url;
             document.getElementById('testMapURL').innerText = url;
 
-            const jsonURL = window.location.protocol + '//' + window.location.host + path + 'maps/map.json';
-            document.getElementById('jsonURL').innerText = jsonURL;
+            const tmjURL = window.location.protocol + '//' + window.location.host + path + 'maps/map.tmj';
+            document.getElementById('tmjURL').innerText = tmjURL;
 
-            const gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl=' + jsonURL;
+            const gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl=' + tmjURL;
             document.getElementById('gettingStartedLink').href = gettingStartedLink;
 
         };
@@ -229,7 +229,7 @@
             <p>Register your room on Workadventu.re</p>
             <p><a id="gettingStartedLink" href="" class="nes-btn is-primary">Publish this map</a></p>
             <p>or copy and paste the map URL in WorkAdventu.re's administration panel:</p>
-            <p><span id="jsonURL" class="url"></span></p>
+            <p><span id="tmjURL" class="url"></span></p>
         </div>
     </main>
     <footer><a href="https://workadventu.re/" target="_blank" title="workadventu.re">&copy; WorkAdventure</a></footer>
