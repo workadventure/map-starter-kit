@@ -36,7 +36,7 @@ npm run dev
 You can test the optimized map as it will be in production:
 ```sh
 npm run build
-npm run preview
+npm run prod
 ```
 
 ## Licenses
@@ -50,5 +50,5 @@ This project contains multiple licenses as follows:
 ### About third party assets
 
 If you add third party assets in your map, do not forget to:
-1. Credit the author and license with the "tilesetCopyright" property present in the properties of each tilesets in the `map.jtmj` file
+1. Credit the author and license with the "tilesetCopyright" property present in the properties of each tilesets in the `map.tmj` file
 2. Add the license text in LICENSE.assets
