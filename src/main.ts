@@ -7,6 +7,10 @@ console.log('Script started successfully');
 let currentPopup: any = undefined;
 
 // Waiting for the API to be ready
+
+// Message qui s'affiche sur le chat à droite avec le lien du tuto (solution 2)
+WA.chat.sendChatMessage('Bonjour ! Bienvenue à NIORT voici le tutoriel : https://landing.neosoft.fr/discord-0');
+
 WA.onInit().then(() => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
