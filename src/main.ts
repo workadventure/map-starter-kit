@@ -9,7 +9,20 @@ let currentPopup: any = undefined;
 // Waiting for the API to be ready
 
 // Message qui s'affiche sur le chat à droite avec le lien du tuto (solution 2)
-WA.chat.sendChatMessage('Bonjour ! Bienvenue à NIORT voici le tutoriel : https://landing.neosoft.fr/discord-0');
+//WA.chat.sendChatMessage('Bonjour ! Bienvenue à NIORT voici le tutoriel : https://landing.neosoft.fr/discord-0');
+
+
+WA.room.area.onEnter('supportrh').subscribe(() => {
+    // const today = new Date();
+    // const time = today.getHours() + ":" + today.getMinutes();
+    currentPopup = WA.ui.openPopup("supportrhPopup", "Bonjour ! Si vous rencontrer un problème n'hésitez pas à envoyer un mail au support niort.pacman@neosoft.fr", [{
+        label: "OK !",
+        className: "primary",
+        callback: (popup) => {
+            popup.close();
+        }
+    }]);
+})
 
 WA.onInit().then(() => {
     console.log('Scripting API ready');
