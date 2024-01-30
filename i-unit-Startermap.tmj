@@ -159,7 +159,7 @@
          "name":"collisions",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":40,
          "x":0,
          "y":0
@@ -324,7 +324,7 @@
                  "name":"floor2",
                  "opacity":1,
                  "type":"tilelayer",
-                 "visible":false,
+                 "visible":true,
                  "width":40,
                  "x":0,
                  "y":0
@@ -587,7 +587,7 @@
                  "name":"furniture1",
                  "opacity":1,
                  "type":"tilelayer",
-                 "visible":false,
+                 "visible":true,
                  "width":40,
                  "x":0,
                  "y":0
@@ -668,7 +668,7 @@
                  "name":"furniture2",
                  "opacity":1,
                  "type":"tilelayer",
-                 "visible":false,
+                 "visible":true,
                  "width":40,
                  "x":0,
                  "y":0
@@ -749,7 +749,7 @@
                  "name":"furniture3",
                  "opacity":1,
                  "type":"tilelayer",
-                 "visible":false,
+                 "visible":true,
                  "width":40,
                  "x":0,
                  "y":0
@@ -757,7 +757,7 @@
          "name":"furniture",
          "opacity":1,
          "type":"group",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -939,7 +939,7 @@
          "offsety":2,
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1022,7 +1022,7 @@
                  "name":"above1",
                  "opacity":1,
                  "type":"tilelayer",
-                 "visible":false,
+                 "visible":true,
                  "width":40,
                  "x":0,
                  "y":0
@@ -1111,7 +1111,7 @@
          "name":"above",
          "opacity":1,
          "type":"group",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
@@ -1289,8 +1289,17 @@
          "tilewidth":32
         }, 
         {
+         "columns":16,
          "firstgid":2956,
-         "source":"tilesets\/office 1.tsx"
+         "image":"..\/..\/Workadventure\/tilesets_deviant_milkian_1.png",
+         "imageheight":512,
+         "imagewidth":512,
+         "margin":0,
+         "name":"office 1",
+         "spacing":0,
+         "tilecount":256,
+         "tileheight":32,
+         "tilewidth":32
         }],
  "tilewidth":32,
  "type":"map",
