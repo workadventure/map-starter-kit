@@ -59,7 +59,8 @@ WA.onInit().then(() => {
       // Vérifier l'heure toutes les secondes
       setInterval(verifierHeure, 1000);
 
-
+      // Initialisation autorisation des salles
+      WA.player.state.saveVariable("authorizedRooms", [1])
 
   /*  WA.room.area.onEnter('clock').subscribe(() => {
         const today = new Date();
@@ -83,7 +84,6 @@ WA.onInit().then(() => {
 // Message qui s'affiche sur le chat à droite avec le lien du tuto (solution 2)
 //WA.chat.sendChatMessage('Bonjour ! Bienvenue à NIORT voici le tutoriel : https://landing.neosoft.fr/discord-0');
 
-
 WA.room.area.onEnter('supportrh').subscribe(() => {
     // const today = new Date();
     // const time = today.getHours() + ":" + today.getMinutes();
@@ -96,8 +96,32 @@ WA.room.area.onEnter('supportrh').subscribe(() => {
     }]);
 })
 
+WA.room.area.onEnter('supportrhPopup').subscribe(() => {
+    if ((WA.player.state.authorizedRooms as number[]).includes(1) 
+    && !(WA.player.state.authorizedRooms as number[]).includes(2)) {
+        WA.player.state.saveVariable("authorizedRooms", [1, 2])
+    }
+    console.log('Player: ', WA.player.state.authorizedRooms)
+})
 
+WA.room.area.onEnter('careerArea').subscribe(() => {
+    if ((WA.player.state.authorizedRooms as number[]).includes(1)
+    && (WA.player.state.authorizedRooms as number[]).includes(2)
+    && !(WA.player.state.authorizedRooms as number[]).includes(3)) {
+        (WA.player.state.authorizedRooms as number[]).push(3)
+    }
+    console.log('Player: ', WA.player.state.authorizedRooms)
+})
 
+WA.room.area.onEnter('agencyArea').subscribe(() => {
+    if ((WA.player.state.authorizedRooms as number[]).includes(1)
+    && (WA.player.state.authorizedRooms as number[]).includes(2)
+    && (WA.player.state.authorizedRooms as number[]).includes(3)
+    && !(WA.player.state.authorizedRooms as number[]).includes(4)) {
+        (WA.player.state.authorizedRooms as number[]).push(4)
+    }
+    console.log('Player: ', WA.player.state.authorizedRooms)
+})
 
 
 /*function closePopup(){

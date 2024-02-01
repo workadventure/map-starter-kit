@@ -1471,15 +1471,37 @@
                  "y":759.333333333333
                 }, 
                 {
-                 "height":93.3333333333333,
+                 "height":161.333333333333,
                  "id":253,
                  "name":"supportrhPopup",
                  "rotation":0,
-                 "type":"",
+                 "type":"area",
                  "visible":true,
-                 "width":159.333333333333,
-                 "x":247.333333333333,
-                 "y":656.666666666667
+                 "width":219.333333333333,
+                 "x":224.666666666666,
+                 "y":575.333333333334
+                }, 
+                {
+                 "height":289.333333333333,
+                 "id":254,
+                 "name":"careerArea",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":288,
+                 "x":446.666666666667,
+                 "y":1056
+                }, 
+                {
+                 "height":220,
+                 "id":255,
+                 "name":"agencyArea",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":350.666666666667,
+                 "x":702.666666666667,
+                 "y":97.3333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1488,7 +1510,7 @@
          "y":0
         }],
  "nextlayerid":198,
- "nextobjectid":254,
+ "nextobjectid":256,
  "orientation":"orthogonal",
  "properties":[
         {
