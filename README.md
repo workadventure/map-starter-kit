@@ -21,7 +21,7 @@ If you are going to create custom websites to embed in the map, please reference
 
 ## Requirements
 
-Node.js version >=17
+Node.js version >= 20.10.* (PAS 20.11.*)
 
 ## Installation
 
