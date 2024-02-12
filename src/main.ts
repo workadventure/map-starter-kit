@@ -1,6 +1,7 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
+import { startQuest } from "./quests/quest";
 
 console.log('Script started successfully');
 
@@ -61,6 +62,7 @@ WA.onInit().then(() => {
 
       // Initialisation autorisation des salles
       WA.player.state.saveVariable("authorizedRooms", [1])
+      WA.player.state.saveVariable("quests", [])
 
   /*  WA.room.area.onEnter('clock').subscribe(() => {
         const today = new Date();
@@ -87,7 +89,8 @@ WA.onInit().then(() => {
 WA.room.area.onEnter('supportrh').subscribe(() => {
     // const today = new Date();
     // const time = today.getHours() + ":" + today.getMinutes();
-    currentPopup = WA.ui.openPopup("supportrhPopup", "Bonjour ! Si vous rencontrer un problème n'hésitez pas à envoyer un mail au support niort.pacman@neosoft.fr", [{
+
+    currentPopup = WA.ui.openPopup("supportrhPopup", "support", [{
         label: "OK !",
         className: "primary",
         callback: (popup) => {
@@ -96,10 +99,16 @@ WA.room.area.onEnter('supportrh').subscribe(() => {
     }]);
 })
 
+// 1) Par défaut tout est fermé
+// 2) Tout est fermé sauf porte 2
+// 3) Tout est fermé sauf porte 2 et 3...
+// 4) Tout est ouvert (calque collisions)
+
 WA.room.area.onEnter('supportrhPopup').subscribe(() => {
     if ((WA.player.state.authorizedRooms as number[]).includes(1) 
     && !(WA.player.state.authorizedRooms as number[]).includes(2)) {
         WA.player.state.saveVariable("authorizedRooms", [1, 2])
+        WA.room.hideLayer('collisionsDoor2')
     }
     console.log('Player: ', WA.player.state.authorizedRooms)
 })
@@ -121,6 +130,12 @@ WA.room.area.onEnter('agencyArea').subscribe(() => {
         (WA.player.state.authorizedRooms as number[]).push(4)
     }
     console.log('Player: ', WA.player.state.authorizedRooms)
+})
+
+WA.room.area.onEnter('billards').subscribe(() => {
+    // Voir quoi faire pour eviter de balancer un ID comme ça car pas très lisible
+    const firstQuestId = 1
+    startQuest(firstQuestId);
 })
 
 
