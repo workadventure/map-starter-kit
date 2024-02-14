@@ -3,8 +3,8 @@ import { Quest } from "./model";
 const quest1 = {
     isStarted: false,
     step: [
-        {area: "tv", value: false, order: 1},
-        {area: "tableGame", value: false, order: 2}
+        {area: "tv", value: false},
+        {area: "tableGame", value: false}
     ],
     isDone: false
 }
