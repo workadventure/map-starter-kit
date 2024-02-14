@@ -1,7 +1,8 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
-import { startQuest } from "./quests/quest";
+import "./gates/gate"
+import { AREA } from "./constantes";
 
 console.log('Script started successfully');
 
@@ -12,7 +13,7 @@ let currentPopup: any = undefined;
 
 WA.onInit().then(() => {
     console.log('Scripting API ready');
-    console.log('Player tags: ',WA.player.tags)
+    console.log('Player tags: ', WA.player.tags)
 
     function verifierHeure() {
         // Obtenir l'heure actuelle
@@ -77,9 +78,6 @@ WA.onInit().then(() => {
         console.log('Scripting API Extra ready');
     }).catch(e => console.error(e));
 
-
-
-
 }).catch(e => console.error(e));
 
 
@@ -90,7 +88,7 @@ WA.room.area.onEnter('supportrh').subscribe(() => {
     // const today = new Date();
     // const time = today.getHours() + ":" + today.getMinutes();
 
-    currentPopup = WA.ui.openPopup("supportrhPopup", "support", [{
+    currentPopup = WA.ui.openPopup(AREA.FLOOR_LAYER.SUPPORT_RH_POPUP, "support", [{
         label: "OK !",
         className: "primary",
         callback: (popup) => {
@@ -98,46 +96,6 @@ WA.room.area.onEnter('supportrh').subscribe(() => {
         }
     }]);
 })
-
-// 1) Par défaut tout est fermé
-// 2) Tout est fermé sauf porte 2
-// 3) Tout est fermé sauf porte 2 et 3...
-// 4) Tout est ouvert (calque collisions)
-
-WA.room.area.onEnter('supportrhPopup').subscribe(() => {
-    if ((WA.player.state.authorizedRooms as number[]).includes(1) 
-    && !(WA.player.state.authorizedRooms as number[]).includes(2)) {
-        WA.player.state.saveVariable("authorizedRooms", [1, 2])
-        WA.room.hideLayer('collisionsDoor2')
-    }
-    console.log('Player: ', WA.player.state.authorizedRooms)
-})
-
-WA.room.area.onEnter('careerArea').subscribe(() => {
-    if ((WA.player.state.authorizedRooms as number[]).includes(1)
-    && (WA.player.state.authorizedRooms as number[]).includes(2)
-    && !(WA.player.state.authorizedRooms as number[]).includes(3)) {
-        (WA.player.state.authorizedRooms as number[]).push(3)
-    }
-    console.log('Player: ', WA.player.state.authorizedRooms)
-})
-
-WA.room.area.onEnter('agencyArea').subscribe(() => {
-    if ((WA.player.state.authorizedRooms as number[]).includes(1)
-    && (WA.player.state.authorizedRooms as number[]).includes(2)
-    && (WA.player.state.authorizedRooms as number[]).includes(3)
-    && !(WA.player.state.authorizedRooms as number[]).includes(4)) {
-        (WA.player.state.authorizedRooms as number[]).push(4)
-    }
-    console.log('Player: ', WA.player.state.authorizedRooms)
-})
-
-WA.room.area.onEnter('billards').subscribe(() => {
-    // Voir quoi faire pour eviter de balancer un ID comme ça car pas très lisible
-    const firstQuestId = 1
-    startQuest(firstQuestId);
-})
-
 
 /*function closePopup(){
     if (currentPopup !== undefined) {
