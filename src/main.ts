@@ -64,6 +64,11 @@ WA.onInit().then(() => {
       // Initialisation autorisation des salles
       WA.player.state.saveVariable("authorizedRooms", [1])
       WA.player.state.saveVariable("quests", [])
+      WA.ui.modal.openModal({
+        title: 'tuto',// mandatory, title of the iframe modal.
+        src: "https://landing.neosoft.fr/discord-0", // mandatory, url of the iframe modal.
+        position: "center"
+      })
 
   /*  WA.room.area.onEnter('clock').subscribe(() => {
         const today = new Date();
