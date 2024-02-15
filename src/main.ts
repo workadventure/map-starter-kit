@@ -3,6 +3,7 @@
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 import "./gates/gate"
 import { AREA } from "./constantes";
+import { log } from "console";
 
 console.log('Script started successfully');
 
@@ -32,30 +33,40 @@ WA.onInit().then(() => {
 
         // Vérifier si l'heure actuelle correspond à l'heure d'action
         if (maintenant.getTime() === heureAction1.getTime()) {
-            // Déclencher ton action ici
-            //console.log("Action déclenchée à l'heure précise !");
-            //WA.chat.sendChatMessage("Action déclenchée à l'heure précise !", " Mr Robot");
-            WA.ui.banner.openBanner({
-                id: "banner-test",
-                text: "On va bientôt commencer, rendez-vous dans l'amphi ! :)",
-                bgColor: "#0055FF",
-                textColor: "#FFFFFF",
-                closable: false
-            });
+          // Déclencher ton action ici
+          //console.log("Action déclenchée à l'heure précise !");
+          //WA.chat.sendChatMessage("Action déclenchée à l'heure précise !", " Mr Robot");
+          WA.ui.banner.openBanner({
+            id: "banner-test",
+            text: "On va bientôt commencer, rendez-vous dans l'amphi ! :)",
+            bgColor: "#0055FF",
+            textColor: "#FFFFFF",
+            closable: false,
+            timeToClose: 120000,
+            link:  {
+                url: "",
+                label: ""
+              }
+        });
         } else if (maintenant.getTime() === heureAction2.getTime()) {
             // Déclencher ton action ici
             //console.log("Action déclenchée à l'heure précise !");
             //WA.chat.sendChatMessage("Action déclenchée à l'heure précise !", " Mr Robot");
             WA.ui.banner.openBanner({
-                id: "banner-test",
-                text: "C'est bientôt la fin... Rendez-vous dans l'amphi pour la conclusion !",
-                bgColor: "#0055FF",
-                textColor: "#FFFFFF",
-                closable: false
-            });
-        } //else {
-        // Aucune des heures n'est encore passée
-        //console.log("Aucune des heures n'est encore passée.");
+              id: "banner-test",
+              text: "C'est bientôt la fin... Rendez-vous dans l'amphi pour la conclusion !",
+              bgColor: "#0055FF",
+              textColor: "#FFFFFF",
+              closable: false,
+              timeToClose: 120000,
+              link:  {
+                url: "",
+                label: ""
+              }
+          });
+          } //else {
+            // Aucune des heures n'est encore passée
+            //console.log("Aucune des heures n'est encore passée.");
         //}
     }
     // Vérifier l'heure toutes les secondes
@@ -67,8 +78,10 @@ WA.onInit().then(() => {
     WA.ui.modal.openModal({
         title: 'tuto',// mandatory, title of the iframe modal.
         src: "https://landing.neosoft.fr/discord-0", // mandatory, url of the iframe modal.
-        position: "center"
-    })
+        position: "center",
+        allow: null,
+        allowApi: false
+      })
 
     /*  WA.room.area.onEnter('clock').subscribe(() => {
           const today = new Date();
@@ -100,7 +113,6 @@ WA.room.area.onEnter('supportrh').subscribe(async () => {
         callback: (popup) => {
             popup.close();
             WA.player.moveTo(321, 683, 10).then((result) => {
-                // console.log("res", !result.cancelled)
                 if (result) {
                     WA.player.moveTo(695, 1255, 10);
                 }
@@ -109,7 +121,20 @@ WA.room.area.onEnter('supportrh').subscribe(async () => {
     }]);
 })
 
+// const currentPlayerPosition = await WA.player.getPosition();
+console.log("my position :", await WA.player.getPosition());
+
 // setInterval(async () => { console.log("position :", await WA.player.getPosition()) }, 1000)
+WA.room.area.onEnter('tutoArea').subscribe(() => {
+
+    WA.ui.modal.openModal({
+        title: 'tuto',// mandatory, title of the iframe modal.
+        src: "https://landing.neosoft.fr/discord-0", // mandatory, url of the iframe modal.
+        position: "center",
+        allow: null,
+        allowApi: false
+      })
+})
 
 /*function closePopup(){
     if (currentPopup !== undefined) {
