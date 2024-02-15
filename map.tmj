@@ -1648,7 +1648,7 @@
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":219.333333333333,
+                 "width":189.333333333333,
                  "x":224.666666666666,
                  "y":575.333333333334
                 }, 
@@ -1684,6 +1684,28 @@
                  "width":186,
                  "x":6,
                  "y":4
+                }, 
+                {
+                 "height":96,
+                 "id":264,
+                 "name":"rickRoll",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":60,
+                 "x":1220,
+                 "y":158
+                }, 
+                {
+                 "height":161,
+                 "id":265,
+                 "name":"videoAgency",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":95,
+                 "x":418,
+                 "y":575.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1692,7 +1714,7 @@
          "y":0
         }],
  "nextlayerid":203,
- "nextobjectid":264,
+ "nextobjectid":266,
  "orientation":"orthogonal",
  "properties":[
         {
