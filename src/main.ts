@@ -40,7 +40,12 @@ WA.onInit().then(() => {
             text: "On va bientôt commencer, rendez-vous dans l'amphi ! :)",
             bgColor: "#0055FF",
             textColor: "#FFFFFF",
-            closable: false
+            closable: false,
+            timeToClose: 120000,
+            link:  {
+                url: "",
+                label: ""
+              }
         });
         } else if (maintenant.getTime() === heureAction2.getTime()) {
             // Déclencher ton action ici
@@ -51,7 +56,12 @@ WA.onInit().then(() => {
               text: "C'est bientôt la fin... Rendez-vous dans l'amphi pour la conclusion !",
               bgColor: "#0055FF",
               textColor: "#FFFFFF",
-              closable: false
+              closable: false,
+              timeToClose: 120000,
+              link:  {
+                url: "",
+                label: ""
+              }
           });
           } //else {
             // Aucune des heures n'est encore passée
@@ -67,7 +77,9 @@ WA.onInit().then(() => {
       WA.ui.modal.openModal({
         title: 'tuto',// mandatory, title of the iframe modal.
         src: "https://landing.neosoft.fr/discord-0", // mandatory, url of the iframe modal.
-        position: "center"
+        position: "center",
+        allow: null,
+        allowApi: false
       })
 
   /*  WA.room.area.onEnter('clock').subscribe(() => {
@@ -100,6 +112,17 @@ WA.room.area.onEnter('supportrh').subscribe(() => {
             popup.close();
         }
     }]);
+})
+
+WA.room.area.onEnter('tutoArea').subscribe(() => {
+
+    WA.ui.modal.openModal({
+        title: 'tuto',// mandatory, title of the iframe modal.
+        src: "https://landing.neosoft.fr/discord-0", // mandatory, url of the iframe modal.
+        position: "center",
+        allow: null,
+        allowApi: false
+      })
 })
 
 /*function closePopup(){
