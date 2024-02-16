@@ -121,11 +121,15 @@ WA.room.area.onEnter('supportrh').subscribe(async () => {
     }]);
 })
 
+<<<<<<< HEAD
 // const currentPlayerPosition = await WA.player.getPosition();
 console.log("my position :", await WA.player.getPosition());
 
 // setInterval(async () => { console.log("position :", await WA.player.getPosition()) }, 1000)
 WA.room.area.onEnter('tutoArea').subscribe(() => {
+=======
+WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(() => {
+>>>>>>> a298653df25a54d54346fe71ba68f489272532f6
 
     WA.ui.modal.openModal({
         title: 'tuto',// mandatory, title of the iframe modal.
@@ -133,7 +137,28 @@ WA.room.area.onEnter('tutoArea').subscribe(() => {
         position: "center",
         allow: null,
         allowApi: false
-      })
+    })
+})
+
+WA.room.area.onEnter(AREA.EASTER_EGG.RICK_ROLL).subscribe(() => {
+
+    WA.ui.modal.openModal({
+        title: 'rickRoll',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=opZVDTlwJOw0kQNC&autoplay=1", // mandatory, url of the iframe modal.
+        position: "center",
+        allow: null,
+        allowApi: false
+    })
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.VIDEO_AGENCY).subscribe(() => {
+    WA.ui.modal.openModal({
+        title: 'agencyVideo',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/1OnivPs6c7I?si=fcM3eA5jiw5vQ6Us",
+        position: "center",
+        allow: null,
+        allowApi: false
+    })
 })
 
 /*function closePopup(){
