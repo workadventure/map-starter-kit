@@ -2,6 +2,7 @@
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 import "./gates/gate"
+import "./data/data"
 import { AREA } from "./constantes";
 import { log } from "console";
 
@@ -33,40 +34,40 @@ WA.onInit().then(() => {
 
         // Vérifier si l'heure actuelle correspond à l'heure d'action
         if (maintenant.getTime() === heureAction1.getTime()) {
-          // Déclencher ton action ici
-          //console.log("Action déclenchée à l'heure précise !");
-          //WA.chat.sendChatMessage("Action déclenchée à l'heure précise !", " Mr Robot");
-          WA.ui.banner.openBanner({
-            id: "banner-test",
-            text: "On va bientôt commencer, rendez-vous dans l'amphi ! :)",
-            bgColor: "#0055FF",
-            textColor: "#FFFFFF",
-            closable: false,
-            timeToClose: 120000,
-            link:  {
-                url: "",
-                label: ""
-              }
-        });
+            // Déclencher ton action ici
+            //console.log("Action déclenchée à l'heure précise !");
+            //WA.chat.sendChatMessage("Action déclenchée à l'heure précise !", " Mr Robot");
+            WA.ui.banner.openBanner({
+                id: "banner-test",
+                text: "On va bientôt commencer, rendez-vous dans l'amphi ! :)",
+                bgColor: "#0055FF",
+                textColor: "#FFFFFF",
+                closable: false,
+                timeToClose: 120000,
+                link: {
+                    url: "",
+                    label: ""
+                }
+            });
         } else if (maintenant.getTime() === heureAction2.getTime()) {
             // Déclencher ton action ici
             //console.log("Action déclenchée à l'heure précise !");
             //WA.chat.sendChatMessage("Action déclenchée à l'heure précise !", " Mr Robot");
             WA.ui.banner.openBanner({
-              id: "banner-test",
-              text: "C'est bientôt la fin... Rendez-vous dans l'amphi pour la conclusion !",
-              bgColor: "#0055FF",
-              textColor: "#FFFFFF",
-              closable: false,
-              timeToClose: 120000,
-              link:  {
-                url: "",
-                label: ""
-              }
-          });
-          } //else {
-            // Aucune des heures n'est encore passée
-            //console.log("Aucune des heures n'est encore passée.");
+                id: "banner-test",
+                text: "C'est bientôt la fin... Rendez-vous dans l'amphi pour la conclusion !",
+                bgColor: "#0055FF",
+                textColor: "#FFFFFF",
+                closable: false,
+                timeToClose: 120000,
+                link: {
+                    url: "",
+                    label: ""
+                }
+            });
+        } //else {
+        // Aucune des heures n'est encore passée
+        //console.log("Aucune des heures n'est encore passée.");
         //}
     }
     // Vérifier l'heure toutes les secondes
@@ -75,13 +76,17 @@ WA.onInit().then(() => {
     // Initialisation autorisation des salles
     WA.player.state.saveVariable("authorizedRooms", [1])
     WA.player.state.saveVariable("quests", [])
+    WA.player.state.saveVariable("tutoData", [])
+    WA.player.state.saveVariable("videoAgencyData", [])
+    WA.player.state.saveVariable("EasterEggData", [])
+   
     WA.ui.modal.openModal({
         title: 'tuto',// mandatory, title of the iframe modal.
         src: "https://landing.neosoft.fr/discord-0", // mandatory, url of the iframe modal.
         position: "center",
         allow: null,
         allowApi: false
-      })
+    })
 
     /*  WA.room.area.onEnter('clock').subscribe(() => {
           const today = new Date();
@@ -102,7 +107,7 @@ WA.onInit().then(() => {
 // Message qui s'affiche sur le chat à droite avec le lien du tuto (solution 2)
 //WA.chat.sendChatMessage('Bonjour ! Bienvenue à NIORT voici le tutoriel : https://landing.neosoft.fr/discord-0');
 
-WA.room.area.onEnter('supportrh').subscribe(async () => {
+WA.room.area.onEnter('supportrh').subscribe(() => {
 
     // const today = new Date();
     // const time = today.getHours() + ":" + today.getMinutes();
@@ -112,24 +117,20 @@ WA.room.area.onEnter('supportrh').subscribe(async () => {
         className: "primary",
         callback: (popup) => {
             popup.close();
-            WA.player.moveTo(321, 683, 10).then((result) => {
-                if (result) {
-                    WA.player.moveTo(695, 1255, 10);
-                }
+            WA.player.moveTo(321, 683, 10).then(() => {
+                WA.player.moveTo(488, 687, 10);
             });
         }
     }]);
 })
 
-<<<<<<< HEAD
-// const currentPlayerPosition = await WA.player.getPosition();
-console.log("my position :", await WA.player.getPosition());
+WA.room.area.onLeave('supportrh').subscribe(() => {
+    currentPopup.close();
+})
 
 // setInterval(async () => { console.log("position :", await WA.player.getPosition()) }, 1000)
-WA.room.area.onEnter('tutoArea').subscribe(() => {
-=======
+
 WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(() => {
->>>>>>> a298653df25a54d54346fe71ba68f489272532f6
 
     WA.ui.modal.openModal({
         title: 'tuto',// mandatory, title of the iframe modal.
@@ -147,19 +148,28 @@ WA.room.area.onEnter(AREA.EASTER_EGG.RICK_ROLL).subscribe(() => {
         src: "https://www.youtube.com/embed/dQw4w9WgXcQ?si=opZVDTlwJOw0kQNC&autoplay=1", // mandatory, url of the iframe modal.
         position: "center",
         allow: null,
-        allowApi: false
+        allowApi: false,
+    }, () => {
+        console.log('you got rick rolled !') //function onClose modal
     })
 })
 
-WA.room.area.onEnter(AREA.FLOOR_LAYER.VIDEO_AGENCY).subscribe(() => {
-    WA.ui.modal.openModal({
-        title: 'agencyVideo',// mandatory, title of the iframe modal.
-        src: "https://www.youtube.com/embed/1OnivPs6c7I?si=fcM3eA5jiw5vQ6Us",
-        position: "center",
-        allow: null,
-        allowApi: false
-    })
+WA.room.area.onLeave(AREA.EASTER_EGG.RICK_ROLL).subscribe(() => {
+    WA.ui.modal.closeModal();
 })
+
+// WA.room.area.onEnter(AREA.FLOOR_LAYER.VIDEO_AGENCY).subscribe(() => {
+
+//     WA.ui.modal.openModal({
+//         title: 'agencyVideo',// mandatory, title of the iframe modal.
+//         src: "https://www.youtube.com/embed/1OnivPs6c7I?si=fcM3eA5jiw5vQ6Us",
+//         position: "center",
+//         allow: null,
+//         allowApi: false,
+//     }, () => {
+//         WA.player.moveTo(695, 1255, 10); //onClose modal move player to specified position on map
+//     })
+// })
 
 /*function closePopup(){
     if (currentPopup !== undefined) {
