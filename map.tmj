@@ -1796,6 +1796,94 @@
                  "width":516,
                  "x":1822,
                  "y":572.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":273,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":601.333333333333,
+                 "y":738.666666666667
+                }, 
+                {
+                 "height":117.333333333333,
+                 "id":274,
+                 "name":"helpToNextStep_popup",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":200,
+                 "x":390.666666666667,
+                 "y":542.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":275,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":544,
+                 "y":757.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":276,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":282.666666666667,
+                 "y":653.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":277,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":301.333333333333,
+                 "y":644
+                }, 
+                {
+                 "height":0,
+                 "id":278,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":325.333333333333,
+                 "y":640
+                }, 
+                {
+                 "height":117.333,
+                 "id":279,
+                 "name":"supportRH_popup",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":200,
+                 "x":217.333333333333,
+                 "y":665.3335
+                }, 
+                {
+                 "height":117.333,
+                 "id":280,
+                 "name":"helpCareerArea_popup",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":200,
+                 "x":440,
+                 "y":984.000166666666
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1804,7 +1892,7 @@
          "y":0
         }],
  "nextlayerid":204,
- "nextobjectid":273,
+ "nextobjectid":281,
  "orientation":"orthogonal",
  "properties":[
         {
