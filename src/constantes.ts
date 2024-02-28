@@ -1,14 +1,16 @@
 export const AREA = {
     FLOOR_LAYER: {
         TABLE_GAME: "tableGame",
-        SUPPORT_RH_POPUP: "supportrhPopup",
         CAREER_AREA: "careerArea",
         AGENCY_AREA: "agencyArea",
         TUTO_AREA: "tutoArea",
         VIDEO_AGENCY: "videoAgency",
         HELP_TO_NEXT_STEP: "helpToNextStep",
+        HELP_TO_NEXT_STEP_POP_UP:"helpToNextStep_popup",
         SUPPORT_RH: "supportrh",
-        HELP_CAREER_AREA: "helpCareerArea"
+        SUPPORT_RH_POP_UP: "supportRH_popup",
+        HELP_CAREER_AREA: "helpCareerArea",
+        HELP_CAREER_AREA_POP_UP:"helpCareerArea_popup"
     },
     DOORS_LAYER: {
         ALL_DOORS_CLOSED : "allDoorsClosed",
