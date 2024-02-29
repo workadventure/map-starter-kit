@@ -32,47 +32,47 @@ WA.onInit().then(() => {
     console.log('Scripting API ready');
     console.log('Player tags: ', WA.player.tags)
 
-    function verifierHeure() {
+    // function verifierHeure() {
 
-        // Vérifier si l'heure actuelle correspond à l'heure d'action
-        if (totalSecondes > 0) {
-            let nbJours = Math.floor(totalSecondes / (60 * 60 * 24));
-            let nbHeures = Math.floor((totalSecondes - (nbJours * 60 * 60 * 24)) / (60 * 60));
-            let nbMinutes = Math.floor((totalSecondes - ((nbJours * 60 * 60 * 24 + nbHeures * 60 * 60))) / 60);
-            let nbSecondes = Math.floor(totalSecondes - ((nbJours * 60 * 60 * 24 + nbHeures * 60 * 60 + nbMinutes * 60)));
+    //     // Vérifier si l'heure actuelle correspond à l'heure d'action
+    //     if (totalSecondes > 0) {
+    //         let nbJours = Math.floor(totalSecondes / (60 * 60 * 24));
+    //         let nbHeures = Math.floor((totalSecondes - (nbJours * 60 * 60 * 24)) / (60 * 60));
+    //         let nbMinutes = Math.floor((totalSecondes - ((nbJours * 60 * 60 * 24 + nbHeures * 60 * 60))) / 60);
+    //         let nbSecondes = Math.floor(totalSecondes - ((nbJours * 60 * 60 * 24 + nbHeures * 60 * 60 + nbMinutes * 60)));
 
-            let minutes: string | number = 0;
-            let secondes: string | number = 0;
-            minutes = caracter(nbMinutes);
-            secondes = caracter(nbSecondes);
+    //         let minutes: string | number = 0;
+    //         let secondes: string | number = 0;
+    //         minutes = caracter(nbMinutes);
+    //         secondes = caracter(nbSecondes);
 
-            compteur = minutes + ":" + secondes;
-        }
+    //         compteur = minutes + ":" + secondes;
+    //     }
 
-        totalSecondes--;
+    //     totalSecondes--;
 
-        WA.ui.banner.openBanner({
-            id: "banner-test",
-            text: "Votre rendez-vous en visioconférence commence dans " + compteur,
-            bgColor: "#0055FF",
-            textColor: "#FFFFFF",
-            closable: false,
-            timeToClose: 120000,
-            link: {
-                url: "",
-                label: ""
-            }
+    //     WA.ui.banner.openBanner({
+    //         id: "banner-test",
+    //         text: "Votre rendez-vous en visioconférence commence dans " + compteur,
+    //         bgColor: "#0055FF",
+    //         textColor: "#FFFFFF",
+    //         closable: false,
+    //         timeToClose: 120000,
+    //         link: {
+    //             url: "",
+    //             label: ""
+    //         }
 
-        });
-    }
+    //     });
+    // }
 
 
-    function caracter(nb: number) {
-        return (nb < 10) ? '0' + nb : nb;
-    }
+    // function caracter(nb: number) {
+    //     return (nb < 10) ? '0' + nb : nb;
+    // }
 
-    // Vérifier l'heure toutes les secondes
-    setInterval(verifierHeure, 1000);
+    // // Vérifier l'heure toutes les secondes
+    // setInterval(verifierHeure, 1000);
 
     // Initialisation autorisation des salles
     WA.player.state.saveVariable("authorizedRooms", [1])
