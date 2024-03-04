@@ -127,16 +127,27 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.SUPPORT_RH).subscribe(async () => {
 
 // setInterval(async () => { console.log("position :", await WA.player.getPosition()) }, 1000)
 
-WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(() => {
+WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe( () => {
+    let noteWebsite: any;
 
-    WA.ui.modal.openModal({
-        title: 'tuto',// mandatory, title of the iframe modal.
-        src: "https://landing.neosoft.fr/discord-0", // mandatory, url of the iframe modal.
-        position: "center",
-        allow: null,
-        allowApi: false
-    })
-})
+    noteWebsite =  WA.ui.website.open({
+        url: "src/note.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true,
+    });
+
+});
+
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(() => {
     WA.ui.modal.closeModal();
@@ -183,7 +194,6 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.VIDEO_AGENCY).subscribe(() => {
     WA.state.saveVariable("leaveOnClick", false);
     console.log("leftonclick reset", leftOnClick)
 })
-
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.HELP_TO_NEXT_STEP).subscribe(async () => {
 
