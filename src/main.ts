@@ -31,6 +31,44 @@ let totalSecondes = (fin - maintenant) / 1000;
 WA.onInit().then(() => {
     console.log('Scripting API ready');
     console.log('Player tags: ', WA.player.tags)
+    WA.player.state.saveVariable("authorizedRooms", [1])
+    WA.player.state.saveVariable("quests", [])
+    WA.room.hideLayer("animatedBotNotification")
+    WA.controls.disablePlayerControls();
+    
+    // Attendre 1 seconde avant d'envoyer la notification du bot et de lancer le prompt de présentation
+    let presentationPromptOn: boolean = false;
+    let presentationPrompt: any;
+    setTimeout(() => {
+        presentationPromptOn = true
+
+        currentPopup = WA.ui.website.open({
+            url: "src/note.html",
+            position: {
+                vertical: "bottom",
+                horizontal: "middle",
+            },
+            size: {
+                height: "20vh",
+                width: "75vw",
+            },
+            margin: {
+                bottom: "15vh",
+            },
+            allowApi: true,
+        });
+    }, 1000);
+
+    //Ouvrir modal Tuto si le prompt de présentation est terminé 
+    if (!presentationPromptOn && presentationPrompt != null) {
+        currentPopup = WA.ui.modal.openModal({
+            title: 'tuto',// mandatory, title of the iframe modal.
+            src: "https://landing.neosoft.fr/discord-0", // mandatory, url of the iframe modal.
+            position: "center",
+            allow: null,
+            allowApi: false
+        })
+    }
 
     // function verifierHeure() {
 
@@ -75,16 +113,10 @@ WA.onInit().then(() => {
     // setInterval(verifierHeure, 1000);
 
     // Initialisation autorisation des salles
-    WA.player.state.saveVariable("authorizedRooms", [1])
-    WA.player.state.saveVariable("quests", [])
 
-    WA.ui.modal.openModal({
-        title: 'tuto',// mandatory, title of the iframe modal.
-        src: "https://landing.neosoft.fr/discord-0", // mandatory, url of the iframe modal.
-        position: "center",
-        allow: null,
-        allowApi: false
-    })
+    
+
+
 
     /*  WA.room.area.onEnter('clock').subscribe(() => {
           const today = new Date();
@@ -286,4 +318,4 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
 //     }
 // }
 
-export { };
+export { currentPopup };
