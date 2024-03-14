@@ -4,10 +4,12 @@ import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 import "./gates/gate";
 import * as Data from "./data/data";
 import { AREA } from "./constantes";
+import { UIWebsite } from "@workadventure/iframe-api-typings";
 
 console.log('Script started successfully');
 
 let currentPopup: any = undefined;
+let currentPrompt: UIWebsite;
 let modalOpenTime: number;
 
 WA.player.state.saveVariable("tutoData", []);
@@ -17,58 +19,29 @@ WA.player.state.saveVariable("agencyAreaData", []);
 WA.player.state.saveVariable("EasterEggData", []);
 WA.player.state.saveVariable("leaveOnClick", false);
 
-let compteur: string = "";
-var maintenant: any = new Date();
-// Par défaut : maintenant + 15 minutes
-var fin: any = new Date();
-fin.setHours(maintenant.getHours());
-fin.setMinutes(maintenant.getMinutes() + 15);
-fin.setSeconds(maintenant.getSeconds());
-let totalSecondes = (fin - maintenant) / 1000;
-
 // Waiting for the API to be ready
 
-WA.onInit().then(() => {
+WA.onInit().then(async () => {
     console.log('Scripting API ready');
     console.log('Player tags: ', WA.player.tags)
     WA.player.state.saveVariable("authorizedRooms", [1])
     WA.player.state.saveVariable("quests", [])
-    WA.room.hideLayer("animatedBotNotification")
-    WA.controls.disablePlayerControls();
     
-    // Attendre 1 seconde avant d'envoyer la notification du bot et de lancer le prompt de présentation
-    let presentationPromptOn: boolean = false;
-    let presentationPrompt: any;
-    setTimeout(() => {
-        presentationPromptOn = true
-
-        currentPopup = WA.ui.website.open({
-            url: "src/note.html",
-            position: {
-                vertical: "bottom",
-                horizontal: "middle",
-            },
-            size: {
-                height: "20vh",
-                width: "75vw",
-            },
-            margin: {
-                bottom: "15vh",
-            },
-            allowApi: true,
-        });
-    }, 1000);
-
-    //Ouvrir modal Tuto si le prompt de présentation est terminé 
-    if (!presentationPromptOn && presentationPrompt != null) {
-        currentPopup = WA.ui.modal.openModal({
-            title: 'tuto',// mandatory, title of the iframe modal.
-            src: "https://landing.neosoft.fr/discord-0", // mandatory, url of the iframe modal.
-            position: "center",
-            allow: null,
-            allowApi: false
-        })
-    }
+    currentPrompt = await WA.ui.website.open({
+        url: "src/welcome.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true,
+    });
 
     // function verifierHeure() {
 
@@ -104,7 +77,6 @@ WA.onInit().then(() => {
     //     });
     // }
 
-
     // function caracter(nb: number) {
     //     return (nb < 10) ? '0' + nb : nb;
     // }
@@ -113,10 +85,6 @@ WA.onInit().then(() => {
     // setInterval(verifierHeure, 1000);
 
     // Initialisation autorisation des salles
-
-    
-
-
 
     /*  WA.room.area.onEnter('clock').subscribe(() => {
           const today = new Date();
@@ -133,37 +101,37 @@ WA.onInit().then(() => {
 
 }).catch(e => console.error(e));
 
+WA.room.area.onLeave(AREA.FLOOR_LAYER.START_AREA).subscribe(async () => {
+    console.log('test')
+    await currentPrompt.close();
+})
 
 // Message qui s'affiche sur le chat à droite avec le lien du tuto (solution 2)
 //WA.chat.sendChatMessage('Bonjour ! Bienvenue à NIORT voici le tutoriel : https://landing.neosoft.fr/discord-0');
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(async() => {
+
+    await currentPrompt.close();
+
+    currentPopup = await WA.ui.modal.openModal({
+        title: 'tuto',// mandatory, title of the iframe modal.
+        src: "https://landing.neosoft.fr/discord-0", // mandatory, url of the iframe modal.
+        position: "center",
+        allow: null,
+        allowApi: false
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(async () => {
+    await currentPopup.close();
+})
 
 // const today = new Date();
 // const time = today.getHours() + ":" + today.getMinutes();
 WA.room.area.onEnter(AREA.FLOOR_LAYER.SUPPORT_RH).subscribe(async () => {
 
-    currentPopup = WA.ui.openPopup(AREA.FLOOR_LAYER.SUPPORT_RH_POP_UP, "Besoin d'aide pour trouver la première étape ?", [{
-        label: "Aidez-moi par pitié !",
-        className: "primary",
-        callback: async (popup) => {
-            await popup.close();
-            WA.player.moveTo(422, 590, 10);
-            console.log("support rh pop up closed on btn")
-        }
-    }]);
-})
-
-WA.room.area.onLeave(AREA.FLOOR_LAYER.SUPPORT_RH).subscribe(async () => {
-    await currentPopup.close();
-    console.log("support rh pop up closed on leave")
-})
-
-// setInterval(async () => { console.log("position :", await WA.player.getPosition()) }, 1000)
-
-WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe( () => {
-    let noteWebsite: any;
-
-    noteWebsite =  WA.ui.website.open({
-        url: "src/note.html",
+    currentPrompt = await WA.ui.website.open({
+        url: "src/supportRH.html",
         position: {
             vertical: "bottom",
             horizontal: "middle",
@@ -175,11 +143,15 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe( () => {
         margin: {
             bottom: "15vh",
         },
-        allowApi: true,
-    });
+        allowApi: true
+    })
+})
 
-});
+WA.room.area.onLeave(AREA.FLOOR_LAYER.SUPPORT_RH).subscribe(async () => {
+    await currentPrompt.close();
+})
 
+// setInterval(async () => { console.log("position :", await WA.player.getPosition()) }, 1000)
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(() => {
     WA.ui.modal.closeModal();
@@ -203,6 +175,7 @@ WA.room.area.onLeave(AREA.EASTER_EGG.RICK_ROLL).subscribe(() => {
 WA.room.area.onEnter(AREA.FLOOR_LAYER.VIDEO_AGENCY).subscribe(() => {
 
     modalOpenTime = Date.now();
+    WA.room.showLayer(AREA.FLOOR_LAYER.BOT_3_NOTIFICATION)
 
     WA.ui.modal.openModal({
         title: 'agencyVideo',// mandatory, title of the iframe modal.
