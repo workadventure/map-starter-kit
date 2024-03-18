@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: transparent;
+            font-family: "Press Start 2P", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        #box {
+            position: relative;
+            height: 6em;
+            background-color: aliceblue;
+            border-radius: 10px;
+            padding: 1em;
+        }
+
+        #next {
+            position: absolute;
+            bottom: 1em;
+            right: 1em;
+            background-color: skyblue;
+            padding: 1em 2em;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #next:hover {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="text"></div>
+        <button hidden="true" id="next">Suivant</button>
+    </div>
+</body>
+<script src="welcome.js" type="text/javascript"></script>
+</html>
