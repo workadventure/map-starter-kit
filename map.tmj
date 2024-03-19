@@ -2207,7 +2207,7 @@
                 {
                  "height":32.333333333333,
                  "id":253,
-                 "name":"helpToNextStep",
+                 "name":"betOnBetter",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
@@ -2218,7 +2218,7 @@
                 {
                  "height":93.333333333333,
                  "id":254,
-                 "name":"helpCareerArea",
+                 "name":"betOnTalent",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
@@ -2302,39 +2302,6 @@
                  "width":516,
                  "x":1822,
                  "y":572.666666666667
-                }, 
-                {
-                 "height":117.333333333333,
-                 "id":274,
-                 "name":"helpToNextStep_popup",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":200,
-                 "x":390.666666666667,
-                 "y":542.666666666667
-                }, 
-                {
-                 "height":117.333,
-                 "id":279,
-                 "name":"supportRH_popup",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":200,
-                 "x":217.333333333333,
-                 "y":665.3335
-                }, 
-                {
-                 "height":117.333,
-                 "id":280,
-                 "name":"helpCareerArea_popup",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":200,
-                 "x":440,
-                 "y":984.000166666666
                 }, 
                 {
                  "height":30.5,
