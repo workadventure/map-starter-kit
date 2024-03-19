@@ -10,7 +10,9 @@ export const AREA = {
         SUPPORT_RH: "supportrh",
         SUPPORT_RH_POP_UP: "supportRH_popup",
         HELP_CAREER_AREA: "helpCareerArea",
-        HELP_CAREER_AREA_POP_UP:"helpCareerArea_popup"
+        HELP_CAREER_AREA_POP_UP:"helpCareerArea_popup",
+        BOT_3_NOTIFICATION: "bot3Notification",
+        START_AREA: "startArea"
     },
     DOORS_LAYER: {
         ALL_DOORS_CLOSED : "allDoorsClosed",
