@@ -11,7 +11,8 @@ export const AREA = {
         BET_ON_TALENT: "betOnTalent",
         HELP_CAREER_AREA_POP_UP:"helpCareerArea_popup",
         BOT_3_NOTIFICATION: "bot3Notification",
-        START_AREA: "startArea"
+        START_AREA: "startArea",
+        PACTE_AREA: "pacteArea"
     },
     DOORS_LAYER: {
         ALL_DOORS_CLOSED : "allDoorsClosed",
