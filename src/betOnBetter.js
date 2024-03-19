@@ -1,10 +1,8 @@
 
 const text = [
-    "Bonjour jeune Padawan, et bienvenue sur la map intéractive de notre agence Neosoft Niort !",
-    "Ta mission sera grande, il te faudra trouver et apprendre à travers une quête pleine d'aventures... Mais ne t'inquiète surtout pas : à Néosoft, une aide sera toujours apporté à ceux qui la demandent.",
-    "Oh, j'allais oublier !",
-    "Avant de partir vivre ce voyage inattendu, laisse moi te montrer un tutoriel qui t'expliquera tout ce que tu peux faire ici avant l'ultime boss final (qui est très gentil, dit en passant).",
-    "Appui sur la flèche de gauche sur ton clavier pour t'approcher du personnage."
+    "Hello ! Bienvenue dans la salle \"Bet On Better\". Ici tu trouveras une présentation générale de Neosoft.",
+    "Tout d'abord, un petit mot de Soïg, le président de NeoSoft.",
+    "Tu peux aussi regarder la vidéo de présentation de l'entreprise en t'approchant du PC à côté de moi."
 ];
 let index = 0;
 let textIndex = 0
@@ -15,7 +13,12 @@ function showText() {
         textElement.textContent = text[textIndex].slice(0, index);
     }
     index++;
-
+    if (textIndex == 1) {
+        document.getElementById("videoContainer").style.display = "flex"
+    }
+    if (textIndex != 1) {
+        document.getElementById("videoContainer").style.display = "none"
+    }
     if (index <= text[textIndex].length) {
         setTimeout(showText, 20);
     } else {

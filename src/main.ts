@@ -151,6 +151,28 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.SUPPORT_RH).subscribe(async () => {
     await currentPrompt.close();
 })
 
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_BETTER).subscribe(async () => {
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnBetter.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "80vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_BETTER).subscribe(() => {
+    currentPrompt.close();
+})
+
 // setInterval(async () => { console.log("position :", await WA.player.getPosition()) }, 1000)
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(() => {
@@ -200,41 +222,27 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.VIDEO_AGENCY).subscribe(() => {
     console.log("leftonclick reset", leftOnClick)
 })
 
-WA.room.area.onEnter(AREA.FLOOR_LAYER.HELP_TO_NEXT_STEP).subscribe(async () => {
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
 
-    if ((WA.player.state.authorizedRooms as number[]).includes(2)) {
-        currentPopup = WA.ui.openPopup(AREA.FLOOR_LAYER.HELP_TO_NEXT_STEP_POP_UP, "Besoin d'aide pour trouver la seconde étape ?", [{
-            label: "Aidez-moi par pitié !",
-            className: "primary",
-            callback: async (popup) => {
-                await popup.close();
-                WA.player.moveTo(680, 1275, 10);
-                console.log("next step pop up closed on btn")
-            }
-        }]);
-    }
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnTalent.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "80vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+    
 })
 
-WA.room.area.onLeave(AREA.FLOOR_LAYER.HELP_TO_NEXT_STEP).subscribe(async () => {
-    await currentPopup.close();
-    console.log("next step pop up closed on leave")
-})
-
-WA.room.area.onEnter(AREA.FLOOR_LAYER.HELP_CAREER_AREA).subscribe(async () => {
-
-    if ((WA.player.state.authorizedRooms as number[]).includes(2)) {
-        currentPopup = WA.ui.openPopup(AREA.FLOOR_LAYER.HELP_CAREER_AREA_POP_UP, "Besoin d'aide pour trouver la troisième étape ?", [{
-            label: "Aidez-moi par pitié !",
-            className: "primary",
-            callback: (popup) => {
-                popup.close();
-                WA.player.moveTo(774, 224, 10);
-            }
-        }]);
-    }
-})
-
-WA.room.area.onLeave(AREA.FLOOR_LAYER.HELP_CAREER_AREA).subscribe(() => {
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(() => {
     currentPopup.close();
 })
 
