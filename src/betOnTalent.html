@@ -57,6 +57,27 @@
         #next:hover {
             background-color: white;
         }
+
+        #buttonsContainer {
+            display: none;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+            margin: 1em 0 0 0;
+        }
+
+        .talent {
+            background-color: skyblue;
+            padding: 1em 2em;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .talent:hover {
+            background-color: white;
+        }
     </style>
 </head>
 <body>
@@ -66,6 +87,10 @@
                 <iframe id="video" width="800" height="450" src="https://www.youtube.com/embed/1OnivPs6c7I?si=EeBJ4RUHMv4QfOaT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div id="text"></div>
+            <div hidden="true" id="buttonsContainer">
+                <button class="talent" id="pacte">Voir le Pacte Neosoft</button>
+                <button class="talent" id="career">Voir la page Carrière</button>
+            </div>
             <button hidden="true" id="next">Suivant</button>
         </div>
     </div>

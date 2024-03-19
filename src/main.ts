@@ -24,7 +24,12 @@ WA.player.state.saveVariable("leaveOnClick", false);
 WA.onInit().then(async () => {
     console.log('Scripting API ready');
     console.log('Player tags: ', WA.player.tags)
-    WA.player.state.saveVariable("authorizedRooms", [1])
+    // Autoriser toutes les portes
+    WA.room.hideLayer(AREA.DOORS_LAYER.ALL_DOORS_CLOSED)
+    WA.room.hideLayer(AREA.DOORS_LAYER.DOOR_CAREER_AREA)
+    WA.room.hideLayer(AREA.DOORS_LAYER.DOOR_AGENCY_AREA)
+    WA.room.showLayer(AREA.DOORS_LAYER.ALL_DOORS_OPENED)
+    // WA.player.state.saveVariable("authorizedRooms", [1])
     WA.player.state.saveVariable("quests", [])
     
     currentPrompt = await WA.ui.website.open({
@@ -231,7 +236,7 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
             horizontal: "middle",
         },
         size: {
-            height: "80vh",
+            height: "20vh",
             width: "75vw",
         },
         margin: {
@@ -242,31 +247,16 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
     
 })
 
-WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(() => {
-    currentPopup.close();
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
+    await currentPrompt.close();
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.CAREER_AREA).subscribe(() => {
 
-    modalOpenTime = Date.now();
-
-    WA.ui.modal.openModal({
-        title: 'careerPage',// mandatory, title of the iframe modal.
-        src: "https://landing.neosoft.fr/bet-on-talent",
-        position: "center",
-        allow: null,
-        allowApi: false
-    }, () => {
-        Data.closeModalCallback(modalOpenTime, "careerAreaData", 774, 224, 10);
-        //onClose modal move player to specified position on map
-    })
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.CAREER_AREA).subscribe(() => {
-    let leftOnClick = WA.state.loadVariable("leaveOnClick")
-    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "careerAreaData");
-    WA.state.saveVariable("leaveOnClick", false);
-    console.log("leftonclick reset", leftOnClick)
+   
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {

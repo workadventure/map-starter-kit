@@ -1,8 +1,9 @@
 
 const text = [
     "Hello ! Bienvenue dans la salle \"Bet On Talent\". Ici tu découvriras les informations sur les opportunités de carrière chez Neosoft. ",
-    "Tout d'abord, mot de Barbara, la directrice du développement RH.",
-    "Tu peux visiter notre page carrière en t'approchant de la télé dans cette salle."
+    "Tout d'abord, mot de Barbara, la directrice du développement RH : ",
+    "\" TEST \"",
+    "Tu peux aussi visiter nos différentes pages :"
 ];
 let index = 0;
 let textIndex = 0
@@ -13,10 +14,12 @@ function showText() {
         textElement.textContent = text[textIndex].slice(0, index);
     }
     index++;
-    if (textIndex == 1) {
-        document.getElementById("videoContainer").style.display = "flex"
+
+    console.log(textIndex)
+    if (textIndex === 3) {
+        document.getElementById("buttonsContainer").style.display = "flex"
     }
-    if (textIndex != 1) {
+    if (textIndex !== 3) {
         document.getElementById("videoContainer").style.display = "none"
     }
     if (index <= text[textIndex].length) {
@@ -31,7 +34,7 @@ function showText() {
 
 showText();
 
-const button = document.querySelector("button");
+const button = document.getElementById("next");
 
 button?.addEventListener("click", () => {
     let nextButton = document.getElementById("next")
@@ -45,3 +48,14 @@ button?.addEventListener("click", () => {
     }
     showText();
 });
+
+const pacte = document.getElementById("pacte")
+const career = document.getElementById("career")
+
+pacte?.addEventListener("click", () => {
+    window.open("https://www.neosoft.fr/pourquoi-rejoindre-neosoft/", "_blank")
+})
+
+career?.addEventListener("click", () => {
+    window.open("https://www.neosoft.fr/votre-carriere-chez-neosoft", "_blank")
+})
