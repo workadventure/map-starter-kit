@@ -34,30 +34,30 @@ WA.onInit().then(() => {
     WA.player.state.saveVariable("authorizedRooms", [1])
     WA.player.state.saveVariable("quests", [])
     WA.room.hideLayer("animatedBotNotification")
-    WA.controls.disablePlayerControls();
+    // WA.controls.disablePlayerControls();
     
     // Attendre 1 seconde avant d'envoyer la notification du bot et de lancer le prompt de présentation
     let presentationPromptOn: boolean = false;
     let presentationPrompt: any;
-    setTimeout(() => {
-        presentationPromptOn = true
+    // setTimeout(() => {
+    //     presentationPromptOn = true
 
-        currentPopup = WA.ui.website.open({
-            url: "src/note.html",
-            position: {
-                vertical: "bottom",
-                horizontal: "middle",
-            },
-            size: {
-                height: "20vh",
-                width: "75vw",
-            },
-            margin: {
-                bottom: "15vh",
-            },
-            allowApi: true,
-        });
-    }, 1000);
+    //     currentPopup = WA.ui.website.open({
+    //         url: "src/note.html",
+    //         position: {
+    //             vertical: "bottom",
+    //             horizontal: "middle",
+    //         },
+    //         size: {
+    //             height: "20vh",
+    //             width: "75vw",
+    //         },
+    //         margin: {
+    //             bottom: "15vh",
+    //         },
+    //         allowApi: true,
+    //     });
+    // }, 1000);
 
     //Ouvrir modal Tuto si le prompt de présentation est terminé 
     if (!presentationPromptOn && presentationPrompt != null) {

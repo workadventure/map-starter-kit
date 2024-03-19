@@ -19,7 +19,7 @@ function showText() {
     index++;
 
     if (index <= text[textIndex].length) {
-        setTimeout(showText, 50);
+        setTimeout(showText, 30);
     } else {
         let nextButton = document.getElementById("next")
         if (nextButton) {
