@@ -6,13 +6,13 @@ export const AREA = {
         TUTO_AREA: "tutoArea",
         VIDEO_AGENCY: "videoAgency",
         HELP_TO_NEXT_STEP: "helpToNextStep",
-        HELP_TO_NEXT_STEP_POP_UP:"helpToNextStep_popup",
+        BET_ON_BETTER:"betOnBetter",
         SUPPORT_RH: "supportrh",
-        SUPPORT_RH_POP_UP: "supportRH_popup",
-        HELP_CAREER_AREA: "helpCareerArea",
+        BET_ON_TALENT: "betOnTalent",
         HELP_CAREER_AREA_POP_UP:"helpCareerArea_popup",
         BOT_3_NOTIFICATION: "bot3Notification",
-        START_AREA: "startArea"
+        START_AREA: "startArea",
+        PACTE_AREA: "pacteArea"
     },
     DOORS_LAYER: {
         ALL_DOORS_CLOSED : "allDoorsClosed",

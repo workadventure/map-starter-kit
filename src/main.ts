@@ -24,7 +24,12 @@ WA.player.state.saveVariable("leaveOnClick", false);
 WA.onInit().then(async () => {
     console.log('Scripting API ready');
     console.log('Player tags: ', WA.player.tags)
-    WA.player.state.saveVariable("authorizedRooms", [1])
+    // Autoriser toutes les portes
+    WA.room.hideLayer(AREA.DOORS_LAYER.ALL_DOORS_CLOSED)
+    WA.room.hideLayer(AREA.DOORS_LAYER.DOOR_CAREER_AREA)
+    WA.room.hideLayer(AREA.DOORS_LAYER.DOOR_AGENCY_AREA)
+    WA.room.showLayer(AREA.DOORS_LAYER.ALL_DOORS_OPENED)
+    // WA.player.state.saveVariable("authorizedRooms", [1])
     WA.player.state.saveVariable("quests", [])
     
     currentPrompt = await WA.ui.website.open({
@@ -151,6 +156,28 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.SUPPORT_RH).subscribe(async () => {
     await currentPrompt.close();
 })
 
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_BETTER).subscribe(async () => {
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnBetter.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "80vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_BETTER).subscribe(() => {
+    currentPrompt.close();
+})
+
 // setInterval(async () => { console.log("position :", await WA.player.getPosition()) }, 1000)
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(() => {
@@ -200,65 +227,36 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.VIDEO_AGENCY).subscribe(() => {
     console.log("leftonclick reset", leftOnClick)
 })
 
-WA.room.area.onEnter(AREA.FLOOR_LAYER.HELP_TO_NEXT_STEP).subscribe(async () => {
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
 
-    if ((WA.player.state.authorizedRooms as number[]).includes(2)) {
-        currentPopup = WA.ui.openPopup(AREA.FLOOR_LAYER.HELP_TO_NEXT_STEP_POP_UP, "Besoin d'aide pour trouver la seconde étape ?", [{
-            label: "Aidez-moi par pitié !",
-            className: "primary",
-            callback: async (popup) => {
-                await popup.close();
-                WA.player.moveTo(680, 1275, 10);
-                console.log("next step pop up closed on btn")
-            }
-        }]);
-    }
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnTalent.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+    
 })
 
-WA.room.area.onLeave(AREA.FLOOR_LAYER.HELP_TO_NEXT_STEP).subscribe(async () => {
-    await currentPopup.close();
-    console.log("next step pop up closed on leave")
-})
-
-WA.room.area.onEnter(AREA.FLOOR_LAYER.HELP_CAREER_AREA).subscribe(async () => {
-
-    if ((WA.player.state.authorizedRooms as number[]).includes(2)) {
-        currentPopup = WA.ui.openPopup(AREA.FLOOR_LAYER.HELP_CAREER_AREA_POP_UP, "Besoin d'aide pour trouver la troisième étape ?", [{
-            label: "Aidez-moi par pitié !",
-            className: "primary",
-            callback: (popup) => {
-                popup.close();
-                WA.player.moveTo(774, 224, 10);
-            }
-        }]);
-    }
-})
-
-WA.room.area.onLeave(AREA.FLOOR_LAYER.HELP_CAREER_AREA).subscribe(() => {
-    currentPopup.close();
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
+    await currentPrompt.close();
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.CAREER_AREA).subscribe(() => {
 
-    modalOpenTime = Date.now();
-
-    WA.ui.modal.openModal({
-        title: 'careerPage',// mandatory, title of the iframe modal.
-        src: "https://landing.neosoft.fr/bet-on-talent",
-        position: "center",
-        allow: null,
-        allowApi: false
-    }, () => {
-        Data.closeModalCallback(modalOpenTime, "careerAreaData", 774, 224, 10);
-        //onClose modal move player to specified position on map
-    })
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.CAREER_AREA).subscribe(() => {
-    let leftOnClick = WA.state.loadVariable("leaveOnClick")
-    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "careerAreaData");
-    WA.state.saveVariable("leaveOnClick", false);
-    console.log("leftonclick reset", leftOnClick)
+   
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
