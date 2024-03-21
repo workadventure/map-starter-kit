@@ -14,7 +14,6 @@ function showText() {
     }
     index++;
 
-    console.log(textIndex)
     if (textIndex === text.length) {
         document.getElementById("buttonsContainer").style.display = "flex"
     }
@@ -42,11 +41,10 @@ button?.addEventListener("click", () => {
     }
     index = 0;
     textIndex++;
-    
+
     if (textIndex >= text.length) {
         // document.getElementById("box").style.display = "none";
         window.parent.postMessage({ type: 'closeUIWebsite' }, "*");
-        // window.parent.closeFrame();
         return;
     }
     showText();
