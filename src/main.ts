@@ -305,11 +305,12 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
     })
     
     window.addEventListener('message', function (e)  {
-        console.log("emessage", e.data)
-        console.log("prompt",currentPrompt)
+        // console.log("emessage", e.data)
+        // console.log("prompt",currentPrompt)
         if (e.data.type === 'closeUIWebsite') {
             if (currentPrompt) {
                 currentPrompt.close();
+                console.log('prompteur fermé')
             }
         }
     });
@@ -424,6 +425,150 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
     leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "dataVideoData");
     WA.state.saveVariable("leaveOnClick", false);
 })
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertise.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION1).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink1.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION1).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION2).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink2.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION2).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION3).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink3.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION3).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION4).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink4.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION4).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION5).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink5.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION5).subscribe(async () => {
+    currentPrompt.close()
+});
 
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR).subscribe(async () => {

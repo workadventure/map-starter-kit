@@ -18,7 +18,7 @@ export const AREA = {
         BET_ON_FUTUR_LINK_1: "betOnFutureLink1",
         BET_ON_FUTUR_LINK_2: "betOnFutureLink2",
         BET_ON_FUTUR_LINK_3: "betOnFutureLink3",
-        BET_ON_FUTUR_LINK_4: "betOnFutureLink4"
+        BET_ON_FUTUR_LINK_4: "betOnFutureLink4",
         BET_ON_EXPERTISE: "betOnExpertiseArea",
         BET_ON_EXPERTISE_VIDEO1: "videoCloud",
         BET_ON_EXPERTISE_CITATION1: "citationCloud",
