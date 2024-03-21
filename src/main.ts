@@ -426,11 +426,91 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
 })
 
 
-// function closePopup(){
-//     if (currentPopup !== undefined) {
-//         currentPopup.close();
-//         currentPopup = undefined;
-//     }
-// }
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR).subscribe(async () => {
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnFutur.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR).subscribe(async () => {
+    currentPrompt.close()
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_1).subscribe(async () => {
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnFuturLink1.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_1).subscribe(async () => {
+    currentPrompt.close();
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_2).subscribe(async () => {
+    currentPopup = await WA.ui.modal.openModal({
+        title: 'testament1',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/lUwhcTyrV1E?si=lWIb_M2-V8lugSMZ", // mandatory, url of the iframe modal.
+        position: "center",
+        allow: null,
+        allowApi: true,
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_2).subscribe(async () => {
+    await currentPopup.close()
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_3).subscribe(async () => {
+    currentPopup = await WA.ui.modal.openModal({
+        title: 'testament2',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/e5B5YUTsPqs?si=nwIcxbNQ5dHat8Sc", // mandatory, url of the iframe modal.
+        position: "center",
+        allow: null,
+        allowApi: true,
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_3).subscribe(async () => {
+    await currentPopup.close()
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_4).subscribe(async () => {
+    currentPopup = await WA.ui.modal.openModal({
+        title: 'portrait',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/AG5aU_I34EQ?si=MN1DQfnKunkBjW6l", // mandatory, url of the iframe modal.
+        position: "center",
+        allow: null,
+        allowApi: true,
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_4).subscribe(async () => {
+    await currentPopup.close()
+})
+
 
 export { currentPopup };
