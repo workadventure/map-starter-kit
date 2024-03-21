@@ -31,7 +31,7 @@ WA.onInit().then(async () => {
     WA.room.showLayer(AREA.DOORS_LAYER.ALL_DOORS_OPENED)
     // WA.player.state.saveVariable("authorizedRooms", [1])
     WA.player.state.saveVariable("quests", [])
-    
+
     currentPrompt = await WA.ui.website.open({
         url: "src/welcome.html",
         position: {
@@ -114,7 +114,7 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.START_AREA).subscribe(async () => {
 // Message qui s'affiche sur le chat à droite avec le lien du tuto (solution 2)
 //WA.chat.sendChatMessage('Bonjour ! Bienvenue à NIORT voici le tutoriel : https://landing.neosoft.fr/discord-0');
 
-WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(async() => {
+WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(async () => {
 
     await currentPrompt.close();
 
@@ -244,7 +244,7 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
         },
         allowApi: true
     })
-    
+
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
@@ -256,7 +256,7 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.CAREER_AREA).subscribe(() => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.CAREER_AREA).subscribe(() => {
-   
+
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
@@ -281,6 +281,50 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
     WA.state.saveVariable("leaveOnClick", false);
     console.log("leftonclick reset", leftOnClick)
 })
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnAgency.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+    function closeFrame(){
+        currentPrompt.close();
+    }
+
+    window.addEventListener('message', function(e) {
+        // console.log("emessage", e.data)
+        
+        
+        if (e.data.type === 'closeUIWebsite') {
+            // if (e.data.type === 'closePrompt') {
+            if (currentPrompt) {
+                currentPrompt.close();
+            }
+        }
+    });
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
+    await currentPrompt.close();
+})
+
+document.getElementById('next')?.addEventListener('click', () => {
+    currentPrompt.close();
+});
 
 // function closePopup(){
 //     if (currentPopup !== undefined) {
