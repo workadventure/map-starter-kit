@@ -13,7 +13,12 @@ export const AREA = {
         BOT_3_NOTIFICATION: "bot3Notification",
         START_AREA: "startArea",
         PACTE_AREA: "pacteArea",
-        BET_ON_AGENCY: "betOnAgencyArea"
+        BET_ON_AGENCY: "betOnAgencyArea",
+        BET_ON_FUTUR: "betOnFutureArea",
+        BET_ON_FUTUR_LINK_1: "betOnFutureLink1",
+        BET_ON_FUTUR_LINK_2: "betOnFutureLink2",
+        BET_ON_FUTUR_LINK_3: "betOnFutureLink3",
+        BET_ON_FUTUR_LINK_4: "betOnFutureLink4"
     },
     DOORS_LAYER: {
         ALL_DOORS_CLOSED : "allDoorsClosed",
