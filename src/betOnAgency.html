@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>betOnAgency</title>
+    <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
         }
 
         #videoContainer {
-            /* Important de laisser a none, devient "flex" dans betOnAgency.js au moment de l'afficher */
+            /* Important de laisser a none, devient "flex" dans betOnBetter.js au moment de l'afficher */
             display: none;
             justify-content: center;
             margin: 2em 0;
@@ -55,6 +55,27 @@
         }
 
         #next:hover {
+            background-color: white;
+        }
+
+        #buttonsContainer {
+            display: none;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+            margin: 1em 0 0 0;
+        }
+
+        .talent {
+            background-color: skyblue;
+            padding: 1em 2em;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .talent:hover {
             background-color: white;
         }
     </style>
