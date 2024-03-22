@@ -25,21 +25,15 @@
             display: flex;
             align-items: flex-end;
             position: absolute;
+            text-align: justify;
         }
 
         #box {
-            min-height: 6em;
+            min-height: 7em;
             background-color: aliceblue;
             border-radius: 10px;
             padding: 1em;
             min-width: 70em;
-        }
-
-        #videoContainer {
-            /* Important de laisser a none, devient "flex" dans betOnBetter.js au moment de l'afficher */
-            display: none;
-            justify-content: center;
-            margin: 2em 0;
         }
 
         #next {
@@ -59,7 +53,7 @@
         }
 
         #buttonsContainer {
-            display: none;
+            display: flex;
             width: 100%;
             flex-direction: row;
             justify-content: space-around;
@@ -83,13 +77,10 @@
 <body>
     <div id="container">
         <div id="box">
-            <div id="videoContainer">
-                <iframe id="video" width="800" height="450" src="https://www.youtube.com/embed/1OnivPs6c7I?si=EeBJ4RUHMv4QfOaT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
             <div id="text"></div>
-            <button hidden="true" id="next">Suivant</button>
+            <button hidden="true" id="next">Fermer</button>
         </div>
     </div>
 </body>
-<script src="betOnAgency.js" type="text/javascript"></script>
+<script src="betOnExpertiseLink1.js" type="text/javascript"></script>
 </html>

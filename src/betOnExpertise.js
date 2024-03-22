@@ -1,7 +1,6 @@
 
 const text = [
-    "Hello ! Bienvenue dans la salle \"Bet On Agency\". Ici tu découvriras les informations sur l'agence de Niort de Neosoft. ",
-    "Tu peux voir une vidéo de présentation de l'agence en te rapprochant de la grande table à gauche dans cette cuisine ! ",
+    "Te voilà dans la salle “Bet on Expertise”. Tu trouveras ici des informations sur les différentes communautés d'expert de Neosoft. Tu peux regarder les différentes vidéos sur chacune de nos expertises sur les différents ordinateurs dans cette pièce. "
 ];
 let index = 0;
 let textIndex = 0
@@ -17,9 +16,7 @@ function showText() {
     if (textIndex === text.length) {
         document.getElementById("buttonsContainer").style.display = "flex"
     }
-    if (textIndex !== text.length) {
-        document.getElementById("videoContainer").style.display = "none"
-    }
+   
     if (index <= text[textIndex].length) {
         setTimeout(showText, 20);
     } else {

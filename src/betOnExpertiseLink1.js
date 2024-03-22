@@ -1,7 +1,6 @@
 
 const text = [
-    "Hello ! Bienvenue dans la salle \"Bet On Agency\". Ici tu découvriras les informations sur l'agence de Niort de Neosoft. ",
-    "Tu peux voir une vidéo de présentation de l'agence en te rapprochant de la grande table à gauche dans cette cuisine ! ",
+    "« Aujourd'hui, la bonne stratégie SI est celle qui permet d'allier les avantages de chaque modèle de ressources informatiques (Infra & Cloud) aux usages, en prenant en compte la manière dont les produits et les services sont consommés. » - Rémy Roux, Practice Leader Infra & Cloud"
 ];
 let index = 0;
 let textIndex = 0
@@ -17,9 +16,7 @@ function showText() {
     if (textIndex === text.length) {
         document.getElementById("buttonsContainer").style.display = "flex"
     }
-    if (textIndex !== text.length) {
-        document.getElementById("videoContainer").style.display = "none"
-    }
+   
     if (index <= text[textIndex].length) {
         setTimeout(showText, 20);
     } else {

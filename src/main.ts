@@ -16,6 +16,11 @@ WA.player.state.saveVariable("tutoData", []);
 WA.player.state.saveVariable("videoAgencyData", []);
 WA.player.state.saveVariable("careerAreaData", []);
 WA.player.state.saveVariable("agencyAreaData", []);
+WA.player.state.saveVariable("cloudVideoData", []);
+WA.player.state.saveVariable("devopsVideoData", []);
+WA.player.state.saveVariable("cyberVideoData", []);
+WA.player.state.saveVariable("agiliteVideoData", []);
+WA.player.state.saveVariable("dataVideoData", []);
 WA.player.state.saveVariable("EasterEggData", []);
 WA.player.state.saveVariable("leaveOnClick", false);
 
@@ -31,7 +36,7 @@ WA.onInit().then(async () => {
     WA.room.showLayer(AREA.DOORS_LAYER.ALL_DOORS_OPENED)
     // WA.player.state.saveVariable("authorizedRooms", [1])
     WA.player.state.saveVariable("quests", [])
-    
+
     currentPrompt = await WA.ui.website.open({
         url: "src/welcome.html",
         position: {
@@ -114,7 +119,7 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.START_AREA).subscribe(async () => {
 // Message qui s'affiche sur le chat à droite avec le lien du tuto (solution 2)
 //WA.chat.sendChatMessage('Bonjour ! Bienvenue à NIORT voici le tutoriel : https://landing.neosoft.fr/discord-0');
 
-WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(async() => {
+WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(async () => {
 
     await currentPrompt.close();
 
@@ -244,7 +249,7 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
         },
         allowApi: true
     })
-    
+
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
@@ -256,7 +261,7 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.CAREER_AREA).subscribe(() => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.CAREER_AREA).subscribe(() => {
-   
+
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
@@ -265,7 +270,7 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
 
     WA.ui.modal.openModal({
         title: 'agencyPage',// mandatory, title of the iframe modal.
-        src: "https://landing.neosoft.fr/bet-on-niort",
+        src: "https://www.youtube.com/embed/5pJA1LPln2Q?si=fbc3rVS91R7-gg-z",
         position: "center",
         allow: null,
         allowApi: false
@@ -279,14 +284,378 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
     let leftOnClick = WA.state.loadVariable("leaveOnClick")
     leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "agencyAreaData");
     WA.state.saveVariable("leaveOnClick", false);
-    console.log("leftonclick reset", leftOnClick)
 })
 
-// function closePopup(){
-//     if (currentPopup !== undefined) {
-//         currentPopup.close();
-//         currentPopup = undefined;
-//     }
-// }
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnAgency.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+    
+    window.addEventListener('message', function (e)  {
+        // console.log("emessage", e.data)
+        // console.log("prompt",currentPrompt)
+        if (e.data.type === 'closeUIWebsite') {
+            if (currentPrompt) {
+                currentPrompt.close();
+                console.log('prompteur fermé')
+            }
+        }
+    });
+   
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
+    await currentPrompt.close();
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
+
+    modalOpenTime = Date.now();
+
+    WA.ui.modal.openModal({
+        title: 'videoPracticeCloud',
+        src: "https://www.youtube.com/embed/OxnPvT5mzS8?si=rCsVFgItB3UvEJeQ",
+        position: "center",
+        allow: null,
+        allowApi: false
+    }, () => {
+        Data.closeModalCallback(modalOpenTime, "cloudVideoData");
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
+    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cloudVideoData");
+    WA.state.saveVariable("leaveOnClick", false);
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO2).subscribe(() => {
+
+    modalOpenTime = Date.now();
+
+    WA.ui.modal.openModal({
+        title: 'videoPracticeDevops',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/b4hgCNsJlD8?si=Vdz0z7aprYsteIDx",
+        position: "center",
+        allow: null,
+        allowApi: false
+    }, () => {
+        Data.closeModalCallback(modalOpenTime, "devopsVideoData");
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO2).subscribe(() => {
+    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "devopsVideoData");
+    WA.state.saveVariable("leaveOnClick", false);
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO3).subscribe(() => {
+
+    modalOpenTime = Date.now();
+
+    WA.ui.modal.openModal({
+        title: 'videoPracticeCyber',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/tilQXxlJWVE?si=kiChXpRdlBVP-TL5",
+        position: "center",
+        allow: null,
+        allowApi: false
+    }, () => {
+        Data.closeModalCallback(modalOpenTime, "cyberVideoData");
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO3).subscribe(() => {
+    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cyberVideoData");
+    WA.state.saveVariable("leaveOnClick", false);
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO4).subscribe(() => {
+
+    modalOpenTime = Date.now();
+
+    WA.ui.modal.openModal({
+        title: 'videoPracticeAgilite',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/6irwlk9Smv8?si=1dGdDRqj_w7NWS9H",
+        position: "center",
+        allow: null,
+        allowApi: false
+    }, () => {
+        Data.closeModalCallback(modalOpenTime, "agiliteVideoData");
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO4).subscribe(() => {
+    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "agiliteVideoData");
+    WA.state.saveVariable("leaveOnClick", false);
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
+
+    modalOpenTime = Date.now();
+
+    WA.ui.modal.openModal({
+        title: 'videoPracticeData',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/dgHbKOAgSpA?si=WzSw2LIRbeDzRFBy",
+        position: "center",
+        allow: null,
+        allowApi: false
+    }, () => {
+        Data.closeModalCallback(modalOpenTime, "dataVideoData");
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
+    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "dataVideoData");
+    WA.state.saveVariable("leaveOnClick", false);
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertise.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION1).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink1.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION1).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION2).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink2.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION2).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION3).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink3.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION3).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION4).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink4.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION4).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION5).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink5.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION5).subscribe(async () => {
+    currentPrompt.close()
+});
+
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR).subscribe(async () => {
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnFutur.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR).subscribe(async () => {
+    currentPrompt.close()
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_1).subscribe(async () => {
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnFuturLink1.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_1).subscribe(async () => {
+    currentPrompt.close();
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_2).subscribe(async () => {
+    currentPopup = await WA.ui.modal.openModal({
+        title: 'testament1',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/lUwhcTyrV1E?si=lWIb_M2-V8lugSMZ", // mandatory, url of the iframe modal.
+        position: "center",
+        allow: null,
+        allowApi: true,
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_2).subscribe(async () => {
+    await currentPopup.close()
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_3).subscribe(async () => {
+    currentPopup = await WA.ui.modal.openModal({
+        title: 'testament2',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/e5B5YUTsPqs?si=nwIcxbNQ5dHat8Sc", // mandatory, url of the iframe modal.
+        position: "center",
+        allow: null,
+        allowApi: true,
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_3).subscribe(async () => {
+    await currentPopup.close()
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_4).subscribe(async () => {
+    currentPopup = await WA.ui.modal.openModal({
+        title: 'portrait',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/AG5aU_I34EQ?si=MN1DQfnKunkBjW6l", // mandatory, url of the iframe modal.
+        position: "center",
+        allow: null,
+        allowApi: true,
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_4).subscribe(async () => {
+    await currentPopup.close()
+})
+
 
 export { currentPopup };

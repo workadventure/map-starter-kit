@@ -35,13 +35,6 @@
             min-width: 70em;
         }
 
-        #videoContainer {
-            /* Important de laisser a none, devient "flex" dans betOnBetter.js au moment de l'afficher */
-            display: none;
-            justify-content: center;
-            margin: 2em 0;
-        }
-
         #next {
             position: absolute;
             bottom: 1em;
@@ -57,39 +50,15 @@
         #next:hover {
             background-color: white;
         }
-
-        #buttonsContainer {
-            display: none;
-            width: 100%;
-            flex-direction: row;
-            justify-content: space-around;
-            margin: 1em 0 0 0;
-        }
-
-        .talent {
-            background-color: skyblue;
-            padding: 1em 2em;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .talent:hover {
-            background-color: white;
-        }
     </style>
 </head>
 <body>
     <div id="container">
         <div id="box">
-            <div id="videoContainer">
-                <iframe id="video" width="800" height="450" src="https://www.youtube.com/embed/1OnivPs6c7I?si=EeBJ4RUHMv4QfOaT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
             <div id="text"></div>
             <button hidden="true" id="next">Suivant</button>
         </div>
     </div>
 </body>
-<script src="betOnAgency.js" type="text/javascript"></script>
+<script src="betOnFutur.js" type="text/javascript"></script>
 </html>

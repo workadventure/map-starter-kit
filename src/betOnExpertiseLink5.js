@@ -1,7 +1,6 @@
 
 const text = [
-    "Hello ! Bienvenue dans la salle \"Bet On Agency\". Ici tu découvriras les informations sur l'agence de Niort de Neosoft. ",
-    "Tu peux voir une vidéo de présentation de l'agence en te rapprochant de la grande table à gauche dans cette cuisine ! ",
+    "« J'ai rejoint Neosoft pour concrétiser un projet qui me tenait à cœur depuis longtemps : fédérer un réseau de spécialistes en capacité à construire des solutions communes, innovantes et plus green pour nos clients » - Nicolas Huche, Practice Leader Data "
 ];
 let index = 0;
 let textIndex = 0
@@ -17,9 +16,7 @@ function showText() {
     if (textIndex === text.length) {
         document.getElementById("buttonsContainer").style.display = "flex"
     }
-    if (textIndex !== text.length) {
-        document.getElementById("videoContainer").style.display = "none"
-    }
+   
     if (index <= text[textIndex].length) {
         setTimeout(showText, 20);
     } else {

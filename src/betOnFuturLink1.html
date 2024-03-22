@@ -35,13 +35,6 @@
             min-width: 70em;
         }
 
-        #videoContainer {
-            /* Important de laisser a none, devient "flex" dans betOnBetter.js au moment de l'afficher */
-            display: none;
-            justify-content: center;
-            margin: 2em 0;
-        }
-
         #next {
             position: absolute;
             bottom: 1em;
@@ -59,7 +52,7 @@
         }
 
         #buttonsContainer {
-            display: none;
+            display: flex;
             width: 100%;
             flex-direction: row;
             justify-content: space-around;
@@ -83,13 +76,13 @@
 <body>
     <div id="container">
         <div id="box">
-            <div id="videoContainer">
-                <iframe id="video" width="800" height="450" src="https://www.youtube.com/embed/1OnivPs6c7I?si=EeBJ4RUHMv4QfOaT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
             <div id="text"></div>
+            <div hidden="true" id="buttonsContainer">
+                <button class="talent" id="publication">Voir la publication</button>
+            </div>
             <button hidden="true" id="next">Suivant</button>
         </div>
     </div>
 </body>
-<script src="betOnAgency.js" type="text/javascript"></script>
+<script src="betOnFutureLink1.js" type="text/javascript"></script>
 </html>
