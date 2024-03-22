@@ -657,5 +657,29 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_4).subscribe(async () =>
     await currentPopup.close()
 })
 
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnYou.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU).subscribe(async () => {
+    await currentPrompt.close();
+})
+
 
 export { currentPopup };
