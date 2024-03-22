@@ -270,8 +270,7 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
 
     WA.ui.modal.openModal({
         title: 'agencyPage',// mandatory, title of the iframe modal.
-        // src: "https://landing.neosoft.fr/bet-on-niort",
-        src:"https://www.youtube.com/embed/5pJA1LPln2Q?si=fbc3rVS91R7-gg-z",
+        src: "https://www.youtube.com/embed/5pJA1LPln2Q?si=fbc3rVS91R7-gg-z",
         position: "center",
         allow: null,
         allowApi: false
@@ -304,136 +303,273 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
         },
         allowApi: true
     })
-
-    WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
     
-        modalOpenTime = Date.now();
-    
-        WA.ui.modal.openModal({
-            title: 'videoPracticeCloud',// mandatory, title of the iframe modal.
-            src:"https://www.youtube.com/embed/OxnPvT5mzS8?si=rCsVFgItB3UvEJeQ",
-            position: "center",
-            allow: null,
-            allowApi: false
-        }, () => {
-            Data.closeModalCallback(modalOpenTime, "cloudVideoData");
-        })
-    })
-
-    WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
-        let leftOnClick = WA.state.loadVariable("leaveOnClick")
-        leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cloudVideoData");
-        WA.state.saveVariable("leaveOnClick", false);
-    })
-
-    WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO2).subscribe(() => {
-    
-        modalOpenTime = Date.now();
-    
-        WA.ui.modal.openModal({
-            title: 'videoPracticeDevops',// mandatory, title of the iframe modal.
-            src:"https://www.youtube.com/embed/b4hgCNsJlD8?si=Vdz0z7aprYsteIDx",
-            position: "center",
-            allow: null,
-            allowApi: false
-        }, () => {
-            Data.closeModalCallback(modalOpenTime, "devopsVideoData");
-        })
-    })
-
-    WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO2).subscribe(() => {
-        let leftOnClick = WA.state.loadVariable("leaveOnClick")
-        leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "devopsVideoData");
-        WA.state.saveVariable("leaveOnClick", false);
-    })
-
-    WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO3).subscribe(() => {
-    
-        modalOpenTime = Date.now();
-    
-        WA.ui.modal.openModal({
-            title: 'videoPracticeCyber',// mandatory, title of the iframe modal.
-            src:"https://www.youtube.com/embed/tilQXxlJWVE?si=kiChXpRdlBVP-TL5",
-            position: "center",
-            allow: null,
-            allowApi: false
-        }, () => {
-            Data.closeModalCallback(modalOpenTime, "cyberVideoData");
-        })
-    })
-
-    WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO3).subscribe(() => {
-        let leftOnClick = WA.state.loadVariable("leaveOnClick")
-        leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cyberVideoData");
-        WA.state.saveVariable("leaveOnClick", false);
-    })
-
-    WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO4).subscribe(() => {
-    
-        modalOpenTime = Date.now();
-    
-        WA.ui.modal.openModal({
-            title: 'videoPracticeAgilite',// mandatory, title of the iframe modal.
-            src:"https://www.youtube.com/embed/6irwlk9Smv8?si=1dGdDRqj_w7NWS9H",
-            position: "center",
-            allow: null,
-            allowApi: false
-        }, () => {
-            Data.closeModalCallback(modalOpenTime, "agiliteVideoData");
-        })
-    })
-
-    WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO4).subscribe(() => {
-        let leftOnClick = WA.state.loadVariable("leaveOnClick")
-        leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "agiliteVideoData");
-        WA.state.saveVariable("leaveOnClick", false);
-    })
-
-    WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
-    
-        modalOpenTime = Date.now();
-    
-        WA.ui.modal.openModal({
-            title: 'videoPracticeData',// mandatory, title of the iframe modal.
-            src:"https://www.youtube.com/embed/dgHbKOAgSpA?si=WzSw2LIRbeDzRFBy",
-            position: "center",
-            allow: null,
-            allowApi: false
-        }, () => {
-            Data.closeModalCallback(modalOpenTime, "dataVideoData");
-        })
-    })
-
-    WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
-        let leftOnClick = WA.state.loadVariable("leaveOnClick")
-        leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "dataVideoData");
-        WA.state.saveVariable("leaveOnClick", false);
-    })
-
-    function closeFrame(){
-        currentPrompt.close();
-    }
-
-    window.addEventListener('message', function(e) {
+    window.addEventListener('message', function (e)  {
         // console.log("emessage", e.data)
-        
+        // console.log("prompt",currentPrompt)
         if (e.data.type === 'closeUIWebsite') {
-            // if (e.data.type === 'closePrompt') {
             if (currentPrompt) {
                 currentPrompt.close();
+                console.log('prompteur fermé')
             }
         }
     });
-
+   
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
     await currentPrompt.close();
 })
 
-document.getElementById('next')?.addEventListener('click', () => {
-    currentPrompt.close();
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
+
+    modalOpenTime = Date.now();
+
+    WA.ui.modal.openModal({
+        title: 'videoPracticeCloud',
+        src: "https://www.youtube.com/embed/OxnPvT5mzS8?si=rCsVFgItB3UvEJeQ",
+        position: "center",
+        allow: null,
+        allowApi: false
+    }, () => {
+        Data.closeModalCallback(modalOpenTime, "cloudVideoData");
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
+    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cloudVideoData");
+    WA.state.saveVariable("leaveOnClick", false);
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO2).subscribe(() => {
+
+    modalOpenTime = Date.now();
+
+    WA.ui.modal.openModal({
+        title: 'videoPracticeDevops',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/b4hgCNsJlD8?si=Vdz0z7aprYsteIDx",
+        position: "center",
+        allow: null,
+        allowApi: false
+    }, () => {
+        Data.closeModalCallback(modalOpenTime, "devopsVideoData");
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO2).subscribe(() => {
+    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "devopsVideoData");
+    WA.state.saveVariable("leaveOnClick", false);
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO3).subscribe(() => {
+
+    modalOpenTime = Date.now();
+
+    WA.ui.modal.openModal({
+        title: 'videoPracticeCyber',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/tilQXxlJWVE?si=kiChXpRdlBVP-TL5",
+        position: "center",
+        allow: null,
+        allowApi: false
+    }, () => {
+        Data.closeModalCallback(modalOpenTime, "cyberVideoData");
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO3).subscribe(() => {
+    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cyberVideoData");
+    WA.state.saveVariable("leaveOnClick", false);
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO4).subscribe(() => {
+
+    modalOpenTime = Date.now();
+
+    WA.ui.modal.openModal({
+        title: 'videoPracticeAgilite',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/6irwlk9Smv8?si=1dGdDRqj_w7NWS9H",
+        position: "center",
+        allow: null,
+        allowApi: false
+    }, () => {
+        Data.closeModalCallback(modalOpenTime, "agiliteVideoData");
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO4).subscribe(() => {
+    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "agiliteVideoData");
+    WA.state.saveVariable("leaveOnClick", false);
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
+
+    modalOpenTime = Date.now();
+
+    WA.ui.modal.openModal({
+        title: 'videoPracticeData',// mandatory, title of the iframe modal.
+        src: "https://www.youtube.com/embed/dgHbKOAgSpA?si=WzSw2LIRbeDzRFBy",
+        position: "center",
+        allow: null,
+        allowApi: false
+    }, () => {
+        Data.closeModalCallback(modalOpenTime, "dataVideoData");
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
+    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "dataVideoData");
+    WA.state.saveVariable("leaveOnClick", false);
+})
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertise.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE).subscribe(async () => {
+    currentPrompt.close()
 });
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION1).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink1.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION1).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION2).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink2.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION2).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION3).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink3.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION3).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION4).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink4.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION4).subscribe(async () => {
+    currentPrompt.close()
+});
+
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION5).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnExpertiseLink5.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "30vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_CITATION5).subscribe(async () => {
+    currentPrompt.close()
+});
+
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR).subscribe(async () => {
     currentPrompt = await WA.ui.website.open({

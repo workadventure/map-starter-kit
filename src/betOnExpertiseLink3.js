@@ -1,7 +1,6 @@
 
 const text = [
-    "Hello ! Bienvenue dans la salle \"Bet On Agency\". Ici tu découvriras les informations sur l'agence de Niort de Neosoft. ",
-    "Tu peux voir une vidéo de présentation de l'agence en te rapprochant de la grande table à gauche dans cette cuisine ! ",
+    "« Il est vrai que la cybersécurité peut sembler être un sujet austère au premier abord, mais il s'agit d'un enjeu crucial pour la protection des données, des systèmes et de la propriété intellectuelle de nos clients. La maîtrise des systèmes d'information est en effet impérative pour répondre à ces enjeux. » - Mouhédine Habache, Practice Leader Cybersécurité "
 ];
 let index = 0;
 let textIndex = 0
@@ -17,9 +16,7 @@ function showText() {
     if (textIndex === text.length) {
         document.getElementById("buttonsContainer").style.display = "flex"
     }
-    if (textIndex !== text.length) {
-        document.getElementById("videoContainer").style.display = "none"
-    }
+   
     if (index <= text[textIndex].length) {
         setTimeout(showText, 20);
     } else {
