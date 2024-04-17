@@ -35,6 +35,7 @@ jobs:
       - name: Generate .env.secret
         run: |
           echo "API_KEY=${{ secrets.API_KEY }}" > .env.secret
+          echo "URL_MAP_STORAGE=${{ secrets.URL_MAP_STORAGE }}"  > .env.secret
 
       - name: Extract UPLOAD_MODE from .env
         run: echo "UPLOAD_MODE=$(grep UPLOAD_MODE .env | cut -d '=' -f2)" >> $GITHUB_ENV
