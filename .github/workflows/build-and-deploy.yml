@@ -45,7 +45,7 @@ jobs:
               FOLDER: dist/
               BASE_BRANCH: master
           else
-            echo "Unknown UPLOAD_MODE. Skipping deployment !"
+            echo "Unknown UPLOAD_MODE. Skipping deployment."
           fi
 
       - name: Bash2
