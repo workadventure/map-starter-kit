@@ -42,8 +42,8 @@ jobs:
           else
             echo "Unknown UPLOAD_MODE. Skipping deployment."
           fi
-        # env:
-        #   UPLOAD_MODE: ${{ env.UPLOAD_MODE }}
+        env:
+          UPLOAD_MODE: ${{ env.UPLOAD_MODE }}
 
       - name: Bash2
         run: |

@@ -7,7 +7,8 @@
     "dev": "vite",
     "start": "vite",
     "build": "tsc && vite build",
-    "prod": "vite preview"
+    "prod": "vite preview",
+    "upload": "upload-wa-map"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
@@ -19,6 +20,6 @@
   },
   "dependencies": {
     "@workadventure/scripting-api-extra": "^1.8.1",
-    "@workadventure/upload-maps": "^1.5.1"
+    "@workadventure/upload-maps": "^1.5.4"
   }
 }
