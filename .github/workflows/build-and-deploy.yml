@@ -26,14 +26,8 @@ jobs:
       - name: "Build scripts"
         run: npm run build
 
-      - name: Add API_KEY to GitHub Secrets
-        run: |
-          gh secret set API_KEY --body "$(grep API_KEY .env.secret | cut -d '=' -f2)" --repo alexarts/map-starter-kit-test
-        env:
-          GH_REPO: ${{ github.repository }}
-
-      - name: Extract UPLOAD_MODE from .env and add to GitHub Secrets
-        run: echo "UPLOAD_MODE=$(grep UPLOAD_MODE .env | cut -d '=' -f2)" >> $GITHUB_ENV
+      - name: Set API_KEY as GitHub secret
+        run: echo "::add-mask::$(grep API_KEY .env.secret | cut -d '=' -f2)" && echo "API_KEY=$(grep API_KEY .env.secret | cut -d '=' -f2)" >> $GITHUB_ENV
 
       - name: Deploy based on UPLOAD_MODE
         run: |
