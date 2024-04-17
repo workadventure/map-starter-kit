@@ -26,14 +26,24 @@ jobs:
       - name: "Build scripts"
         run: npm run build
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        if: github.ref == 'refs/heads/master'
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: dist/ # The folder the action should deploy.
-          BASE_BRANCH: master
+
+      - name: Deploy based on UPLOAD_MODE
+      run: |
+        if [[ $UPLOAD_MODE == "MAP_STORAGE" ]]; then
+          npx @workadventure/upload-maps upload.js
+        elif [[ $UPLOAD_MODE == "GH_PAGES" ]]; then
+          npx github-pages-deploy-action@releases/v3
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            BRANCH: gh-pages
+            FOLDER: dist/
+            BASE_BRANCH: master
+        else
+          echo "Unknown UPLOAD_MODE. Skipping deployment."
+        fi
+
+        - env:
+            UPLOAD_MODE: ${{ secrets.UPLOAD_MODE }}
+
 
       - name: Bash2
         run: |
