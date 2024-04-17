@@ -28,8 +28,11 @@ jobs:
 
       # - name: Set API_KEY as GitHub secret
       #   run: echo "::add-mask::$(grep API_KEY .env.secret | cut -d '=' -f2)" && echo "API_KEY=$(grep API_KEY .env.secret | cut -d '=' -f2)" >> $GITHUB_ENV
-      - name: Set API_KEY as environment variable
-        run: echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
+      - name: Use API key from secrets github
+        id: use_apikey
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        # run: echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
 
       - name: Deploy based on UPLOAD_MODE
         run: |
