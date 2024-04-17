@@ -32,7 +32,7 @@ jobs:
       - name: Deploy based on UPLOAD_MODE
         run: |
           if [[ $UPLOAD_MODE == "MAP_STORAGE" ]]; then
-            npx @workadventure/upload-maps upload.js
+            npx @workadventure/upload-maps upload.js --api-key ${{ secrets.API_KEY }}
           elif [[ $UPLOAD_MODE == "GH_PAGES" ]]; then
             npx github-pages-deploy-action@releases/v3
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
