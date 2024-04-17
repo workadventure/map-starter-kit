@@ -32,6 +32,9 @@ jobs:
           API_KEY: ${{ secrets.API_KEY }}
         run: echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
 
+      - name: Extract UPLOAD_MODE from .env
+        run: echo "UPLOAD_MODE=$(grep UPLOAD_MODE .env | cut -d '=' -f2)" >> $GITHUB_ENV
+
       - name: Deploy based on UPLOAD_MODE
         run: |
           if [[ $UPLOAD_MODE == "MAP_STORAGE" ]]; then
