@@ -28,11 +28,9 @@ jobs:
 
       - name: Deploy based on UPLOAD_MODE
         run: |
-          if ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}; then
-            echo "Deploying to Map Storage..."
+          if [[ $UPLOAD_MODE == "MAP_STORAGE" ]]; then
             npx @workadventure/upload-maps upload.js
-          elif ${{ env.UPLOAD_MODE == 'GH_PAGES' }}; then
-            echo "Deploying to GH Pages..."
+          elif [[ $UPLOAD_MODE == "GH_PAGES" ]]; then
             npx github-pages-deploy-action@releases/v3
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               BRANCH: gh-pages
