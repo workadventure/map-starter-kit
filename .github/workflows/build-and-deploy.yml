@@ -52,7 +52,3 @@ jobs:
           else
             echo "Unknown UPLOAD_MODE. Skipping deployment!"
           fi
-
-      - name: Bash2
-        run: |
-          ls -al
