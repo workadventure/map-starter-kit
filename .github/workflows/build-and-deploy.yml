@@ -26,8 +26,8 @@ jobs:
       - name: "Build scripts"
         run: npm run build
 
-      - name: Set UPLOAD_MODE
-        run: echo "UPLOAD_MODE" >> $GITHUB_ENV
+      - name: Extract UPLOAD_MODE from .env and add to GitHub Secrets
+        run: echo "UPLOAD_MODE=$(grep UPLOAD_MODE .env | cut -d '=' -f2)" >> $GITHUB_ENV
 
       - name: Deploy based on UPLOAD_MODE
         run: |
