@@ -26,6 +26,9 @@ jobs:
       - name: "Build scripts"
         run: npm run build
 
+      - name: Set UPLOAD_MODE
+        run: echo "UPLOAD_MODE=MAP_STORAGE" >> $GITHUB_ENV
+
       - name: Deploy based on UPLOAD_MODE
         run: |
           if [[ $UPLOAD_MODE == "MAP_STORAGE" ]]; then
@@ -40,7 +43,7 @@ jobs:
             echo "Unknown UPLOAD_MODE. Skipping deployment."
           fi
         env:
-          UPLOAD_MODE: ${{ secrets.UPLOAD_MODE }}
+          UPLOAD_MODE: ${{ env.UPLOAD_MODE }}
 
       - name: Bash2
         run: |
