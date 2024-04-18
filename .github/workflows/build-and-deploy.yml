@@ -42,11 +42,11 @@ jobs:
       - name: Extract UPLOAD_MODE from .env
         run: echo "UPLOAD_MODE=$(grep UPLOAD_MODE .env | cut -d '=' -f2)" >> $GITHUB_ENV
 
-      - name: Deploy based on MAP STORAGE
+      - name: Deploy in MAP STORAGE
         if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
         run: npx @workadventure/upload-maps upload.js
 
-      - name: Deploy based on GITHUB PAGES
+      - name: Deploy on GITHUB PAGES
         if: ${{ env.UPLOAD_MODE == 'GH_PAGES' }}
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
@@ -54,7 +54,3 @@ jobs:
           BRANCH: gh-pages
           FOLDER: dist/
           BASE_BRANCH: master
-
-      # - name: Bash2
-      #   run: ls -al
-      #     ls -al
