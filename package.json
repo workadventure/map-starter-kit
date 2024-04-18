@@ -20,6 +20,6 @@
   },
   "dependencies": {
     "@workadventure/scripting-api-extra": "^1.8.1",
-    "@workadventure/upload-maps": "^1.5.6"
+    "@workadventure/upload-maps": "^1.5.9"
   }
 }
