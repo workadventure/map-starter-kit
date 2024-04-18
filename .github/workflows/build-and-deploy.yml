@@ -55,6 +55,6 @@ jobs:
           FOLDER: dist/
           BASE_BRANCH: main
 
-      - name: Bash2
-        run: ls -al
-          ls -al
+      # - name: Bash2
+      #   run: ls -al
+      #     ls -al
