@@ -50,7 +50,7 @@ jobs:
           if [[ $UPLOAD_MODE == "MAP_STORAGE" ]]; then
             npx @workadventure/upload-maps upload.js
           elif [[ $UPLOAD_MODE == "GH_PAGES" ]]; then
-            npx github-pages-deploy-action@releases/v3
+          uses: JamesIves/github-pages-deploy-action@releases/v3
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               BRANCH: gh-pages
               FOLDER: dist/
