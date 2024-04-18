@@ -47,8 +47,7 @@ jobs:
 
       - name: Deploy based MAP STORAGE
         if: [[ $UPLOAD_MODE == "MAP_STORAGE" ]]; then
-        run: |
-          npx @workadventure/upload-maps upload.js
+        run: npx @workadventure/upload-maps upload.js
 
       - name: Deploy based on GITHUB PAGES
         uses: JamesIves/github-pages-deploy-action@releases/v3
