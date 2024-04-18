@@ -45,16 +45,20 @@ jobs:
       - name: Extract UPLOAD_MODE from .env
         run: echo "UPLOAD_MODE=$(grep UPLOAD_MODE .env | cut -d '=' -f2)" >> $GITHUB_ENV
 
-      - name: Deploy based on UPLOAD_MODE
+      - name: Deploy based MAP STORAGE
+        if: [[ $UPLOAD_MODE == "MAP_STORAGE" ]]; then
         run: |
-          if [[ $UPLOAD_MODE == "MAP_STORAGE" ]]; then
-            npx @workadventure/upload-maps upload.js
-          elif [[ $UPLOAD_MODE == "GH_PAGES" ]]; then
-          uses: JamesIves/github-pages-deploy-action@releases/v3
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              BRANCH: gh-pages
-              FOLDER: dist/
-              BASE_BRANCH: master
-          else
-            echo "Unknown UPLOAD_MODE. Skipping deployment !"
-          fi
+          npx @workadventure/upload-maps upload.js
+
+      - name: Deploy based on GITHUB PAGES
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        if: [[ $UPLOAD_MODE == "GH_PAGES" ]]; then
+        with:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            BRANCH: gh-pages # The branch the action should deploy to.
+            FOLDER: dist/ # The folder the action should deploy.
+            BASE_BRANCH: master
+
+      - name: Bash2
+        run: |
+          ls -al
