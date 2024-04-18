@@ -15,16 +15,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
           registry-url: "https://registry.npmjs.org"
 
-      - name: Install dependencies
+      - name: "Install dependencies"
         run: npm install
 
-      - name: Build scripts
+      - name: "Build scripts"
         run: npm run build
 
       - name: Use API key from secrets
@@ -58,3 +57,4 @@ jobs:
 
       - name: Bash2
         run: ls -al
+          ls -al
