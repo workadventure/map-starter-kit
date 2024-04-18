@@ -32,6 +32,12 @@ jobs:
           API_KEY: ${{ secrets.API_KEY }}
         run: echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
 
+      - name: Use URL Map STORAGE from secrets github
+        id: use_urlmapstorage
+        env:
+          URL_MAP_STORAGE: ${{ secrets.URL_MAP_STORAGE }}
+        run: echo "URL_MAP_STORAGE=${{ secrets.URL_MAP_STORAGE }}" >> $GITHUB_ENV
+
       - name: Generate .env.secret
         run: |
           echo "API_KEY=${{ secrets.API_KEY }}" > .env.secret
