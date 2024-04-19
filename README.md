@@ -57,4 +57,4 @@ If you add third party assets in your map, do not forget to:
 1. Credit the author and license with the "tilesetCopyright" property present in the properties of each tilesets in the `map.tmj` file
 2. Add the license text in LICENSE.assets
 
-Update du readme for le mode upload !!!
+To know how you can upload your map, you can go to the officiel doc of workadventure : [Upload map documentation](https://docs.workadventu.re/map-building/tiled-editor/)
