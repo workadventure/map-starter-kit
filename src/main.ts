@@ -7,11 +7,71 @@ console.log('Script started successfully');
 let currentPopup: any = undefined;
 let formWebsite: any = undefined;
 
-// Waiting for the API to be ready
-WA.onInit().then(() => {
-    console.log('Scripting API ready');
-    console.log('Player tags: ',WA.player.tags)
+let index: number = 0;
+let players: any[] = [
+    // {
+    //     name: "WanHeda",
+    //     age: "24",
+    //     gender: "homme",
+    //     searching: "femme",
+    // },
+    // {
+    //     name: "John",
+    //     age: "30",
+    //     gender: "homme",
+    //     searching: "femme",
+    // },
+    // {
+    //     name: "Alice",
+    //     age: "28",
+    //     gender: "femme",
+    //     searching: "homme",
+    // },
+    // {
+    //     name: "Bob",
+    //     age: "35",
+    //     gender: "homme",
+    //     searching: "femme",
+    // },
+    // {
+    //     name: "Eve",
+    //     age: "25",
+    //     gender: "femme",
+    //     searching: "homme",
+    // },
+    // {
+    //     name: "Michael",
+    //     age: "40",
+    //     gender: "homme",
+    //     searching: "femme",
+    // },
+    // {
+    //     name: "Sophie",
+    //     age: "22",
+    //     gender: "femme",
+    //     searching: "homme",
+    // },
+    // {
+    //     name: "David",
+    //     age: "27",
+    //     gender: "homme",
+    //     searching: "femme",
+    // },
+    // {
+    //     name: "Emily",
+    //     age: "32",
+    //     gender: "femme",
+    //     searching: "homme",
+    // },
+    {
+        name: "Mark",
+        age: "29",
+        gender: "homme",
+        searching: "femme",
+    }
+]
 
+WA.onInit().then(() => {
     WA.room.area.onEnter("registrationArea").subscribe(async () => {
         console.log("Entering visibleNote layer");
 
@@ -36,16 +96,32 @@ WA.onInit().then(() => {
         formWebsite.close();
     })
 
-    WA.room.area.onEnter('clock').subscribe(() => {
-        // const today = new Date();
-        // const time = today.getHours() + ":" + today.getMinutes();
-        // currentPopup = WA.ui.openPopup("clockPopup", "It's " + time, []);
-        currentPopup = WA.ui.openPopup("clockPopup", "Hello World", []);
+
+
+
+    //code Nicolas
+    WA.room.area.onEnter('showPlayer').subscribe(openPopup)
+    WA.room.area.onEnter('validatePlayer').subscribe(() => {
+        const hasPlayers = Array.isArray(players) && players.length > 0;
+        const isValidIndex = index >= 0 && index < players.length;
+        
+        if (hasPlayers && isValidIndex) {
+            const playerName = players[index].name;
+            WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
+        }
+    })
+    WA.room.area.onEnter('nextPlayer').subscribe(() => {
+        closePopup()
+        index = index + 1;
+        openPopup()
     })
 
-    WA.room.area.onLeave('clock').subscribe(closePopup)
+    WA.room.area.onLeave('showPlayer').subscribe(closePopup)
+    //fin code nicolas
 
-    // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
+
+
+    
     bootstrapExtra().then(() => {
         console.log('Scripting API Extra ready');
     }).catch(e => console.error(e));
@@ -58,6 +134,22 @@ function closePopup(){
         currentPopup = undefined;
     }
 }
+
+function openPopup() {
+    try {
+        currentPopup = WA.ui.openPopup("playersPopup", displayNotes(players[index]), []);
+    } catch (e) {
+        currentPopup = WA.ui.openPopup("playersPopup", "Il n'y a pas de prétendant(e)", []);
+    }
+}
+
+function displayNotes(player: {name: string, age: string, gender: string, searching: string}){
+    return player.name + ", " + player.age + " ans\n" + player.gender.capitalize() + " cherche " + player.searching
+}
+
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
 
 
 export {};

@@ -497,8 +497,41 @@
                  "y":161
                 }, 
                 {
-                 "height":62,
+                 "height":111.666666666667,
                  "id":22,
+                 "name":"playersPopup",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":222,
+                 "x":165.666666666667,
+                 "y":257.666666666667
+                }, 
+                {
+                 "height":95,
+                 "id":23,
+                 "name":"registrationArea",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":62,
+                 "x":256,
+                 "y":449
+                }, 
+                {
+                 "height":39.697,
+                 "id":24,
+                 "name":"nextPlayer",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":50.2727,
+                 "x":315.280316666667,
+                 "y":380.984833333333
+                }, 
+                {
+                 "height":62,
+                 "id":25,
                  "name":"dateZone",
                  "properties":[
                         {
@@ -525,20 +558,44 @@
                  "type":"area",
                  "visible":true,
                  "width":187,
-                 "x":516,
-                 "y":96
+                 "x":546.5,
+                 "y":76.5
                 }, 
                 {
-                 "height":95,
-                 "id":23,
-                 "name":"registrationArea",
+                 "height":48.697,
+                 "id":26,
+                 "name":"showPlayer",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":62,
-                 "x":256,
-                 "y":449
+                 "width":222.2727,
+                 "x":165.61365,
+                 "y":373.568166666667
+                }, 
+                {
+                 "height":39.697,
+                 "id":27,
+                 "name":"validatePlayer",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":50.2727,
+                 "x":186.86365,
+                 "y":380.6515
+                }, 
+                {
+                 "height":111.667,
+                 "id":28,
+                 "name":"validatePlayerPopup",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":222,
+                 "x":438.5,
+                 "y":267.1665
                 }],
+         "offsetx":0,
+         "offsety":2.5,
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -620,7 +677,7 @@
          "y":0
         }],
  "nextlayerid":63,
- "nextobjectid":24,
+ "nextobjectid":29,
  "orientation":"orthogonal",
  "properties":[
         {
