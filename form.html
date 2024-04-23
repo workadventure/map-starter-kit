@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://play.workadventu.re/iframe_api.js"></script>
+        <script type="module" src="./form.ts"></script>
     <title>Form</title>
     <style>
         /* FORM */
@@ -36,34 +38,6 @@
     </style>
 </head>
 <body>
-    <script>
-        import { WA } from '/wa-api.js';
-        import { formWebsite } from '/form-website.js';
-        
-        window.checkInformation = function() {
-            let firstName = document.getElementById("firstName").value;
-            let lastName = document.getElementById("lastName").value;
-            let username = document.getElementById("username").value;
-            let phone = document.getElementById("phone").value;
-            let email = document.getElementById("email").value;
-            let password = document.getElementById("password").value;
-
-            if (firstName === "" || lastName === "" || email === "" || password === "") {
-                alert("Veuillez remplir les champs obligatoires");
-            } else {
-                alert("Inscription réussie");
-                WA.player.state.firstName = firstName;
-                WA.player.state.lastName = lastName;
-                WA.player.state.username = username;
-                WA.player.state.phone = phone;
-                WA.player.state.email = email;
-                WA.player.state.password = password;
-                alert(JSON.stringify(WA.player.state));
-                formWebsite.close();
-            }
-        }
-    </script>
-
     <div class="logo">
         <a href="https://workadventu.re/" target="_blank" title="Workadventure">
             <img src="/images/logo.svg" alt="WorkAdventure logo" />
@@ -89,7 +63,7 @@
             <label for="password">Mot de passe:</label>
             <input type="password" id="password" name="password" required minlength="8">
     
-            <input type="submit" value="S'inscrire" onclick="checkInformation()">
+            <input id="inscrire" type="submit" value="S'inscrire">
         </form>
     </div>
 
