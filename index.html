@@ -29,6 +29,7 @@
             document.getElementById('gettingStartedLink').href = gettingStartedLink;
 
         };
+
     </script>
     <style>
         html, body {
@@ -134,18 +135,25 @@
             display: block;
             padding: 2rem 5vw;
         }
+
+        /* ARROW */
+        .arrow {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+            margin-right: 10px;
+        }
+
+        .left {
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+        }
     </style>
 </head>
 
-<body>
+<body>   
     <div class="content">
-        <header>
-            <div class="logo">
-                <a href="https://workadventu.re/" target="_blank" title="Workadventure">
-                    <img src="/images/logo.svg" alt="WorkAdventure logo" />
-                </a>
-            </div>
-        </header>
         <main>
             <section>
                 <h2>Test my map</h2>

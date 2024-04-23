@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <style>
+        /* FORM */
+        #formulaireInscription {
+            background-color: white;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="https://workadventu.re/" target="_blank" title="Workadventure">
+            <img src="/images/logo.svg" alt="WorkAdventure logo" />
+        </a>
+    </div>
+    <div id="formulaireInscription">
+        <form action="#" method="POST"> 
+            <label for="firstName">Prénom:</label>
+            <input type="text" id="firstName" name="firstName" required>
+    
+            <label for="lastName">Nom:</label>
+            <input type="text" id="lastName" name="lastName" required>
+    
+            <label for="username">Pseudo Instagram:</label>
+            <input type="text" id="username" name="username">
+    
+            <label for="phone">Numéro de téléphone:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Entrez 10 chiffres">
+    
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required minlength="8">
+    
+            <input type="submit" value="S'inscrire" onclick="checkInformation()">
+        </form>
+    </div>
+    
+</body>
+</html>
