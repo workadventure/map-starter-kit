@@ -1,4 +1,5 @@
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
+import { closePopup, updatePopup } from "./functions";
 
 console.log('Script started successfully');
 
@@ -15,21 +16,21 @@ WA.onInit().then(() => {
         currentPopup = WA.ui.openPopup("clockPopup", "It's " + time, []);
     });
 
-    WA.room.area.onLeave('clock').subscribe(closePopup);
+    WA.room.area.onLeave('clock').subscribe(() => closePopup(currentPopup));
 
     WA.room.area.onEnter('timer').subscribe(() => {
         let count = 60;
-        updatePopup(count);
+        currentPopup = updatePopup(currentPopup, count);
         const timer = setInterval(() => {
             count--;
-            updatePopup(count);
+            currentPopup = updatePopup(currentPopup, count);
             if (count <= 0) {
                 clearInterval(timer);
             }
         }, 1000);
     });
 
-    WA.room.area.onLeave('timer').subscribe(closePopup);
+    WA.room.area.onLeave('timer').subscribe(() => closePopup(currentPopup));
 
     let noteWebsite: any;
 
@@ -95,23 +96,5 @@ WA.onInit().then(() => {
     }).catch(e => console.error(e));
 
 }).catch(e => console.error(e));
-
-function closePopup(){
-    if (currentPopup !== undefined) {
-        currentPopup.close();
-        currentPopup = undefined;
-    }
-}
-
-function updatePopup(count: number) {
-    if (currentPopup !== undefined) {
-        currentPopup.close();
-    }
-    if (count > 0) {
-        currentPopup = WA.ui.openPopup("timerPopup", "Remaining: " + count + " seconds", []);
-    } else {
-        currentPopup = WA.ui.openPopup("timerPopup", "Time's up!", []);
-    }
-}
 
 export {};
