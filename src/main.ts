@@ -1,10 +1,11 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
-
+import game_data from '../game_data/game_data.json'
 console.log('Script started successfully');
 
 let currentPopup: any = undefined;
+
 
 // Waiting for the API to be ready
 WA.onInit().then(() => {
