@@ -418,15 +418,21 @@
                  "y":224
                 }, 
                 {
-                 "height":39.6969696969697,
+                 "height":1,
                  "id":17,
-                 "name":"clock",
+                 "name":"players",
+                 "properties":[
+                        {
+                         "name":"persist",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
-                 "type":"area",
+                 "type":"variable",
                  "visible":true,
-                 "width":50.2727272727272,
-                 "x":438.484848484849,
-                 "y":96.3333333333333
+                 "width":1,
+                 "x":218.484848484849,
+                 "y":0.999999999999972
                 }, 
                 {
                  "height":64,
@@ -593,6 +599,61 @@
                  "width":222,
                  "x":438.5,
                  "y":267.1665
+                }, 
+                {
+                 "height":39.697,
+                 "id":29,
+                 "name":"clock",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":50.2727,
+                 "x":425.530316666667,
+                 "y":85.6515
+                }, 
+                {
+                 "height":1,
+                 "id":31,
+                 "name":"indexPlayers",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"persist",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":126.833333333333,
+                 "y":3.66666666666667
+                }, 
+                {
+                 "height":1,
+                 "id":32,
+                 "name":"index",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"persist",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":169.5,
+                 "y":3
                 }],
          "offsetx":0,
          "offsety":2.5,
@@ -677,7 +738,7 @@
          "y":0
         }],
  "nextlayerid":63,
- "nextobjectid":29,
+ "nextobjectid":33,
  "orientation":"orthogonal",
  "properties":[
         {
