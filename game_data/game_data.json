@@ -1,0 +1,360 @@
+{
+  "components": [
+    {
+      "short_name": "cpu",
+      "long_name": "Processeur"
+    },
+    {
+      "short_name": "cg",
+      "long_name": "Carte Graphique"
+    },
+    {
+      "short_name": "ram",
+      "long_name": "Mémoire Vive"
+    },
+    {
+      "short_name": "alim",
+      "long_name": "alimentation"
+    },
+    {
+      "short_name": "clavier",
+      "long_name": "Clavier"
+    },
+    {
+      "short_name": "souris",
+      "long_name": "Souris"
+    },
+    {
+      "short_name": "ecran",
+      "long_name": "Écran"
+    }
+  ],
+  "difficulties": [
+    {
+      "level": 1,
+      "computers_number": 5,
+      "interval": 41,
+      "timeout": 45
+    },
+    {
+      "level": 2,
+      "computers_number": 10,
+      "interval": 41,
+      "timeout": 45
+    },
+    {
+      "level": 3,
+      "computers_number": 15,
+      "interval": 31,
+      "timeout": 45
+    },
+    {
+      "level": 4,
+      "computers_number": 20,
+      "interval": 31,
+      "timeout": 45
+    }
+  ],
+  "tickets": [
+    {
+      "level": 1,
+      "demands": [
+        {
+          "description": "Mon écran ne fonctionne plus !!",
+          "components": [
+            {
+              "short_name": "ecran",
+              "submitted": false
+            }
+          ],
+          "submitted_count" : 0
+        },
+        {
+          "description": "Je crois que je manque de mémoire",
+          "components": [
+            {
+              "short_name": "ram",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Mon processeur est en surchauffe",
+          "components": [
+            {
+              "short_name": "cpu",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Ma carte graphique affiche des artefacts",
+          "components": [
+            {
+              "short_name": "cg",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Mon clavier a des touches qui ne fonctionnent pas",
+          "components": [
+            {
+              "short_name": "clavier",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "demands": [
+        {
+          "description": "J'ai des problèmes d'affichage",
+          "components": [
+            {
+              "short_name": "ecran",
+              "submitted": false
+            },
+            {
+              "short_name": "cg",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Mon ordinateur est lent, je dois manquer de mémoire",
+          "components": [
+            {
+              "short_name": "ram",
+              "submitted": false
+            },
+            {
+              "short_name": "cpu",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Mon ordinateur chauffe, à l'aide !!",
+          "components": [
+            {
+              "short_name": "cpu",
+              "submitted": false
+            },
+            {
+              "short_name": "alim",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "J'ai des problèmes de puissance de calcul",
+          "components": [
+            {
+              "short_name": "cg",
+              "submitted": false
+            },
+            {
+              "short_name": "ram",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Je ne peux plus controller mon ordinateur ?!",
+          "components": [
+            {
+              "short_name": "clavier",
+              "submitted": false
+            },
+            {
+              "short_name": "souris",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "demands": [
+        {
+          "description": "Mon système semble lent et instable",
+          "components": [
+            {
+              "short_name": "ram",
+              "submitted": false
+            },
+            {
+              "short_name": "cpu",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Certains programmes ne répondent pas comme ils le devraient",
+          "components": [
+            {
+              "short_name": "cpu",
+              "submitted": false
+            },
+            {
+              "short_name": "ram",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "L'affichage de mon ordinateur est parfois déformé ou flou",
+          "components": [
+            {
+              "short_name": "cg",
+              "submitted": false
+            },
+            {
+              "short_name": "ecran",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Mon système émet des bruits inhabituels et chauffe beaucoup",
+          "components": [
+            {
+              "short_name": "cpu",
+              "submitted": false
+            },
+            {
+              "short_name": "alim",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Certains périphériques ne sont pas reconnus par mon ordinateur",
+          "components": [
+            {
+              "short_name": "cg",
+              "submitted": false
+            },
+            {
+              "short_name": "cpu",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "demands": [
+        {
+          "description": "Bonjour, depuis peu, mon ordinateur est lent et ne correspond plus à mes besoins. Merci de renouveler les composants importants",
+          "components": [
+            {
+              "short_name": "cg",
+              "submitted": false
+            },
+            {
+              "short_name": "ram",
+              "submitted": false
+            },
+            {
+              "short_name": "cpu",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Bonjour, j'aimerais un renouvelement de mes composants. Cordialement",
+          "components": [
+            {
+              "short_name": "clavier",
+              "submitted": false
+            },
+            {
+              "short_name": "souris",
+              "submitted": false
+            },
+            {
+              "short_name": "ecran",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "L'autonomie de mon ordinateur est considérablement réduite et il chauffe excessivement",
+          "components": [
+            {
+              "short_name": "cpu",
+              "submitted": false
+            },
+            {
+              "short_name": "ram",
+              "submitted": false
+            },
+            {
+              "short_name": "alim",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Les performances visuelles de mon ordinateur ne sont pas au niveau de mes besoin, merci de corriger cela...",
+          "components": [
+            {
+              "short_name": "ram",
+              "submitted": false
+            },
+            {
+              "short_name": "ecran",
+              "submitted": false
+            },
+            {
+              "short_name": "cg",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        },
+        {
+          "description": "Bonjour, je souhaiterait améliorer les capacités de calcul de mon ordinateur. Il me faudrait aussi une nouvelle souris svp",
+          "components": [
+            {
+              "short_name": "souris",
+              "submitted": false
+            },
+            {
+              "short_name": "ram",
+              "submitted": false
+            },
+            {
+              "short_name": "cpu",
+              "submitted": false
+            }
+          ],
+          "submitted_count":  0
+        }
+      ]
+    }
+  ]
+}
