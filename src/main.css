@@ -1,0 +1,7 @@
+.popupComposant {
+    background-color: #212F3D;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+}
