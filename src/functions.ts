@@ -56,13 +56,15 @@ export const getTickets = (game_data: { components?: { short_name: string; long_
     })
 
     // Chaque ticket ordonné au hasard
-    shuffle_array(tickets)
+    /*shuffle_array(tickets)*/
     tickets.forEach((i) => {
       i.interval = get_interval(level_object.interval) * 1000
     })
   }
 
-  return tickets
+  console.log('liste des tickets : ');
+  console.log(tickets);
+  return tickets;
 }
 
 export function closePopup(currentPopup: any) {
@@ -83,4 +85,33 @@ export function updatePopup(currentPopup: any, count: number) {
     }
 
     return currentPopup;
+}
+
+/*
+
+ */
+export const addComponent = (ticket, component: string) => {
+  ticket.submitted_count++
+  let toAdd = ticket.components.find((i) => {
+    return i.short_name == component && !i.submitted;
+  })
+  if(toAdd){
+    toAdd.submitted = true;
+  }
+
+  if(ticket.components.length == ticket.submitted_count){
+    checkComputerFinished(ticket);
+  }
+}
+
+export const checkComputerFinished = (ticket) => {
+  let componentsSubmittedGood = ticket.components.filter(i => {
+    return i.submitted;
+  })
+
+  if(componentsSubmittedGood.length == ticket.components.length){
+    //computerIsGood(ticket);
+  }else{
+    //computerIsBad(ticket);
+  }
 }
