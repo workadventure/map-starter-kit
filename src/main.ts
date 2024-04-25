@@ -260,12 +260,14 @@ WA.onInit()
     }
 
 async function timerGame(timer: number) {
-  let count = setInterval(async () => {
+  let count = setInterval(() => {
     timer--;
     if (timerPopup) {
-      closePopup(timerPopup);
+      timerPopup.then((popup) => {
+        popup.close();
+      })
     }
-    timerPopup = await WA.ui.website.open({
+    timerPopup = WA.ui.website.open({
       url: `./src/timerPopup.html?timer=${timer}`,
       position: {
         vertical: "top",
@@ -279,7 +281,9 @@ async function timerGame(timer: number) {
     });
     if (timer <= 0) {
       clearInterval(count);
-      closePopup(timerPopup);
+      timerPopup.then((popup) => {
+        popup.close();
+      })
     }
   }, 1000);
 }
