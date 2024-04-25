@@ -581,6 +581,17 @@
                  "width":30,
                  "x":479.333333333333,
                  "y":254
+                }, 
+                {
+                 "height":66,
+                 "id":25,
+                 "name":"resultPopup",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":120,
+                 "x":156,
+                 "y":314
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -663,7 +674,7 @@
          "y":0
         }],
  "nextlayerid":70,
- "nextobjectid":25,
+ "nextobjectid":26,
  "orientation":"orthogonal",
  "properties":[
         {

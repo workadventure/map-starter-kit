@@ -5,7 +5,7 @@ import { closePopup, updatePopup } from "./functions";
 console.log('Script started successfully');
 
 let currentPopup: any = undefined;
-
+let startTime = Date.now();
 
 // Waiting for the API to be ready
 WA.onInit().then(() => {
@@ -89,9 +89,30 @@ WA.onInit().then(() => {
         podiumWebsite.close();
     });
 
-    WA.room.setTiles([
-        { x: 250, y: 250, tile: "test", layer: "podium" },
-    ]);
+    setTimeout(() => {
+        let elapsedTime = Date.now() - startTime;
+        elapsedTime = elapsedTime / 1000;
+
+        if (enterCounter > 5) {
+            let welcomePopup = WA.ui.openPopup("resultPopup", "Win, " + WA.player.name + ", you are the best! Your score: " + enterCounter + ", Time taken: " + elapsedTime + " seconds", []);
+
+            setTimeout(() => {
+                welcomePopup.close();
+            }, 10000);
+        }
+
+        else {
+            let welcomePopup = WA.ui.openPopup("resultPopup", "Lose, " + WA.player.name + ", you are the worst! Your score: " + enterCounter + ", Time taken: " + elapsedTime + " seconds", []);
+
+            setTimeout(() => {
+                welcomePopup.close();
+            }, 10000);
+        }
+    }, 10000);
+
+    console.log('Player name: ', WA.player.name);
+    console.log('Player ID: ', WA.player.id);
+    console.log('Player language: ', WA.player.language);
 
     bootstrapExtra().then(() => {
         console.log('Scripting API Extra ready');
