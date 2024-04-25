@@ -1,12 +1,13 @@
 import { ITiledMapTileLayer } from "@workadventure/tiled-map-type-guard/dist/ITiledMapTileLayer";
 import { VariableDescriptor, bootstrapExtra, getLayersMap, getVariables, findLayerBoundaries } from "@workadventure/scripting-api-extra";
+import { closePopup } from './functions';
 
 const layers = getLayersMap();
 
 let popup;
-let popupContent = 'Composants : \n';
+let popupContent = '';
 
-function newStepArea(computerAreaName: string) {
+export function newStepArea(computerAreaName: string, ticket) {
     const area = WA.room.area.create({
         name: computerAreaName,
         x: 450,
@@ -16,15 +17,14 @@ function newStepArea(computerAreaName: string) {
     });
 
     WA.room.area.onEnter(computerAreaName).subscribe(() => {
+        popupContent = '"' + ticket.description + '"' + '\nComposants : 0 /'  + ticket.components.length;
         popup = WA.ui.openPopup('computer1Popup', popupContent, []);
     });
 
     WA.room.area.onLeave(computerAreaName).subscribe(() => {
-        popup.close();
+        closePopup(popup);
     });
 }
-
-newStepArea('computer1Area');
 
 export function dropItemInComputer(computerAreaName: string, itemName: string) {
     WA.room.area.onEnter(computerAreaName).subscribe(() => {

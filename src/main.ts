@@ -3,9 +3,9 @@ import game_data from "../game_data/game_data.json";
 import {
   addComponent,
   closePopup,
-  getTickets,
+  getTickets, startGame,
   updatePopup,
-} from "./functions";
+} from './functions';
 import { getItem } from "./inventory";
 
 console.log("Script started successfully");
@@ -65,7 +65,7 @@ WA.onInit()
       startGameMessage = WA.ui.displayActionMessage({
         message: "Appuyez sur 'Espace' pour démarrer la partie",
         callback: () => {
-          //Start Game
+          startGame(game_tickets);
         }
       });
     });
