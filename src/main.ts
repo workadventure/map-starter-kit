@@ -263,7 +263,7 @@ async function timerGame(timer: number) {
   let count = setInterval(async () => {
     timer--;
     if (timerPopup) {
-      await closePopup(timerPopup);
+      closePopup(timerPopup);
     }
     timerPopup = await WA.ui.website.open({
       url: `./src/timerPopup.html?timer=${timer}`,
@@ -279,7 +279,7 @@ async function timerGame(timer: number) {
     });
     if (timer <= 0) {
       clearInterval(count);
-      await closePopup(timerPopup);
+      closePopup(timerPopup);
     }
   }, 1000);
 }
