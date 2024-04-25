@@ -1,16 +1,32 @@
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 import game_data from '../game_data/game_data.json';
-import { closePopup, updatePopup } from "./functions";
+import { addComponent, closePopup, getTickets, updatePopup } from './functions';
+import { getItem } from './inventory';
 
 console.log('Script started successfully');
 
 let currentPopup: any = undefined;
+let game_tickets: any[] = [];
 let startTime = Date.now();
 
 // Waiting for the API to be ready
 WA.onInit().then(() => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
+
+    const items = ['above/processeur', 'above/carteMere', 'above/ram', 'above/carteGraphique', 'above/ssd', 'above/disqueDur', 'above/ventirad', 'above/alimentation'];
+
+    items.forEach((item) => {
+        getItem(item);
+    });
+
+    WA.room.area.onEnter('get_tickets').subscribe(() => {
+        game_tickets = getTickets(game_data, 2)
+    });
+
+    WA.room.area.onEnter('add_component').subscribe(() => {
+        addComponent(game_tickets[0], 'ram')
+    });
 
     WA.room.area.onEnter('clock').subscribe(() => {
         const today = new Date();

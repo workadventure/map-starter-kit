@@ -62,7 +62,7 @@ export const getTickets = (game_data: { components?: { short_name: string; long_
     })
   }
 
-  return tickets
+  return tickets;
 }
 
 export function closePopup(currentPopup: any) {
@@ -83,4 +83,39 @@ export function updatePopup(currentPopup: any, count: number) {
     }
 
     return currentPopup;
+}
+
+/*
+  Ajoute un composant au ticket
+  ticket: le ticket concerné (objet ticket)
+  component : le nom du composant à ajouter (string)
+ */
+export const addComponent = (ticket, component: string) => {
+  ticket.submitted_count++
+  let toAdd = ticket.components.find((i) => {
+    return i.short_name == component && !i.submitted;
+  })
+  if(toAdd){
+    toAdd.submitted = true;
+  }
+
+  if(ticket.components.length == ticket.submitted_count){
+    checkComputerFinished(ticket);
+  }
+}
+
+/*
+  Vérifie si l'ordinateur est bon
+ ticket: le ticket concerné (objet ticket)
+ */
+export const checkComputerFinished = (ticket) => {
+  let componentsSubmittedGood = ticket.components.filter(i => {
+    return i.submitted;
+  })
+
+  if(componentsSubmittedGood.length == ticket.components.length){
+    //computerIsGood(ticket);
+  }else{
+    //computerIsBad(ticket);
+  }
 }
