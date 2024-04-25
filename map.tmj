@@ -1156,7 +1156,7 @@
         {
          "columns":10,
          "firstgid":2956,
-         "image":"tilesets\/automation spritesheet 2.png",
+         "image":"tilesets\/automation spritesheet.png",
          "imageheight":3776,
          "imagewidth":320,
          "margin":0,
@@ -1169,7 +1169,7 @@
         {
          "columns":16,
          "firstgid":4136,
-         "image":"tilesets\/hardware_transparent_bg 2.png",
+         "image":"tilesets\/hardware_transparent_bg.png",
          "imageheight":320,
          "imagewidth":512,
          "margin":0,
@@ -1182,7 +1182,7 @@
         {
          "columns":5,
          "firstgid":4296,
-         "image":"tilesets\/DarkRoad 2.png",
+         "image":"tilesets\/DarkRoad.png",
          "imageheight":96,
          "imagewidth":160,
          "margin":0,
