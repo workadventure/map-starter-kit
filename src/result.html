@@ -27,13 +27,26 @@
             color: #666;
         }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const playerName = urlParams.get('playerName');
+
+            document.getElementById('playerName').textContent = playerName;
+        });
+    </script>
+
 </head>
 <body>
     <div class="result-container">
-        <h1>Résultats</h1>
-        <p>Nom : Joueur</p>
-        <p>Score : 2</p>
-        <p>Temps écoulé : 10 secondes</p>
+        <h1>Temps écoulé !</h1>
+        <hr>
+        <p id="playerName"></p>
+        <!-- TODO: Trouver comment afficher les pc -->
+        <p>PC 10/10</p>
+        <!-- TODO: Afficher des messages customs en fonction du résultat -->
+        <p>Bravo !</p>
     </div>
 </body>
 </html>

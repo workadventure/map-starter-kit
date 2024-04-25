@@ -28,6 +28,8 @@ WA.onInit()
     console.log("Player ID: ", WA.player.id);
     console.log("Player language: ", WA.player.language);
 
+    const playerName = WA.player.name;
+
     const items = [
       "above/processeur",
       "above/carteMere",
@@ -212,28 +214,6 @@ WA.onInit()
       podiumWebsite.close();
     });
 
-    WA.room.onEnterLayer("result").subscribe(async () => {
-      resultWebsite = await WA.ui.website.open({
-        url: "./src/result.html",
-        position: {
-          vertical: "top",
-          horizontal: "middle",
-        },
-        size: {
-          height: "100vh",
-          width: "70vw",
-        },
-        margin: {
-          top: "5vh",
-        },
-        allowApi: true,
-      });
-    });
-
-    WA.room.onLeaveLayer("result").subscribe(() => {
-      resultWebsite.close();
-    });
-
     bootstrapExtra()
       .then(() => {
         console.log("Scripting API Extra ready");
@@ -259,34 +239,57 @@ WA.onInit()
       });
     }
 
-async function timerGame(timer: number) {
-  let count = setInterval(() => {
-    timer--;
-    if (timerPopup) {
-      timerPopup.then((popup) => {
-        popup.close();
-      })
+    async function timerGame(timer: number) {
+      let count = setInterval(() => {
+        timer--;
+        if (timerPopup) {
+          timerPopup.then((popup) => {
+            popup.close();
+          });
+        }
+        timerPopup = WA.ui.website.open({
+          url: `./src/timerPopup.html?timer=${timer}`,
+          position: {
+            vertical: "top",
+            horizontal: "middle",
+          },
+          size: {
+            height: "100px",
+            width: "100px",
+          },
+          allowApi: true,
+        });
+        if (timer <= 0) {
+          clearInterval(count);
+          timerPopup.then((popup) => {
+            popup.close();
+          });
+          resultWebsite = WA.ui.website.open({
+            url: `./src/result.html?playerName=${playerName}`,
+            position: {
+              vertical: "top",
+              horizontal: "middle",
+            },
+            size: {
+              height: "100vh",
+              width: "70vw",
+            },
+            margin: {
+              top: "5vh",
+            },
+            allowApi: true,
+          });
+
+          if (resultWebsite) {
+            setTimeout(() => {
+              resultWebsite.then((popup) => {
+                popup.close();
+              });
+            }, 3000);
+          }
+        }
+      }, 1000);
     }
-    timerPopup = WA.ui.website.open({
-      url: `./src/timerPopup.html?timer=${timer}`,
-      position: {
-        vertical: "top",
-        horizontal: "middle",
-      },
-      size: {
-        height: "100px",
-        width: "100px",
-      },
-      allowApi: true,
-    });
-    if (timer <= 0) {
-      clearInterval(count);
-      timerPopup.then((popup) => {
-        popup.close();
-      })
-    }
-  }, 1000);
-}
   })
   .catch((e) => console.error(e));
 
