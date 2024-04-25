@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://play.workadventu.re/iframe_api.js"></script>
+        <link rel="stylesheet" href="inventory.css" />
+    </head>
+    <body>
+        <div class="inventoryContainer"></div>
+    </body>
+    <script type="module">
+        import { bootstrapExtra, getLayersMap, getVariables } from "@workadventure/scripting-api-extra";
+        const layers = getLayersMap();
+
+        function setItemGettedToInventory(itemName) {
+            return layers.then((layer) => {
+                Object.entries(layer.get(itemName)).forEach((key) => {
+                    if (key[0] === 'properties') {
+                        Object.values(key[1]).forEach((value) => {       
+                            if (value.name === 'getted' && value.value === true) {
+                                insertItemToInventory(itemName);
+                            }
+                        }
+                    )};
+                });
+            });
+        }
+
+        function insertItemToInventory(itemName) {
+            const inventoryContainer = document.querySelector('.inventoryContainer');
+
+            const item = document.createElement('div');
+            item.classList.add('item');
+            const itemImage = document.createElement('img');
+            itemImage.src = 'tilesets/items/' + itemName.substring(5) + '.png';
+            item.appendChild(itemImage);
+
+            inventoryContainer.appendChild(item);
+        }
+        
+        const items = ['above/processeur', 'above/carteMere', 'above/ram', 'above/carteGraphique', 'above/ssd', 'above/disqueDur', 'above/ventirad', 'above/alimentation'];
+
+        items.forEach((item) => {
+            setItemGettedToInventory(item);
+        });
+    </script>
+</html>
