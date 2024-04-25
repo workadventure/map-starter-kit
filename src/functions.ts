@@ -3,6 +3,8 @@
 /*
   Donne un numéro aléatoire entre un min et un max
  */
+import { newStepArea } from './computer';
+
 export function get_random_number(min: number, max: number) {
   const minCeiled = Math.ceil(min);
   const maxFloored = Math.floor(max);
@@ -89,6 +91,10 @@ export function updatePopup(currentPopup: any, count: number) {
     }
 
     return currentPopup;
+}
+
+export const startGame = (tickets) => {
+  newStepArea('computer_0', tickets[0]);
 }
 
 /*

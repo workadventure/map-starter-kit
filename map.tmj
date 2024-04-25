@@ -431,8 +431,19 @@
                  "type":"area",
                  "visible":true,
                  "width":150,
-                 "x":390,
-                 "y":365
+                 "x":396,
+                 "y":313
+                }, 
+                {
+                 "height":42.75,
+                 "id":45,
+                 "name":"computer_1",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":39.5,
+                 "x":444,
+                 "y":504.25
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -830,7 +841,7 @@
          "y":0
         }],
  "nextlayerid":81,
- "nextobjectid":45,
+ "nextobjectid":48,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -859,7 +870,7 @@
          "value":"src\/main.ts"
         }],
  "renderorder":"right-down",
- "tiledversion":"1.8.4",
+ "tiledversion":"1.10.2",
  "tileheight":32,
  "tilesets":[
         {
@@ -1435,6 +1446,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.8",
+ "version":"1.10",
  "width":31
 }
