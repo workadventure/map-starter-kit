@@ -682,6 +682,28 @@
                  "width":32,
                  "x":96.0231772090777,
                  "y":446.909965644616
+                }, 
+                {
+                 "height":1,
+                 "id":38,
+                 "name":"validatedIndex",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"persist",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":84.4830999517141,
+                 "y":0.862868179623371
                 }],
          "offsetx":0,
          "offsety":2.5,
@@ -766,7 +788,7 @@
          "y":0
         }],
  "nextlayerid":63,
- "nextobjectid":38,
+ "nextobjectid":39,
  "orientation":"orthogonal",
  "properties":[
         {
