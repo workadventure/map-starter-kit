@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<style>
+    .timerPopup {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: none;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    .timer {
+        font-weight: 900;
+        font-size: 3em;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    let timer = urlParams.get('timer');
+    document.getElementById('timer').textContent = timer;
+
+    const countdown = setInterval(() => {
+        timer--;
+        document.getElementById('timer').textContent = timer;
+
+        if (timer <= 0) {
+            clearInterval(countdown);
+        }
+    }, 1000);
+});
+</script>
+
+<body>
+    <div class="timerPopup">
+        <span id="timer" class="timer"></span>
+    </div>
+</body>
+</html>
