@@ -12,6 +12,7 @@ console.log("Script started successfully");
 
 let currentPopup: any = undefined;
 let changeDifficultyLevelMessage: any = undefined;
+let startGameMessage: any = undefined;
 let game_tickets: any[] = [];
 let startTime = Date.now();
 let level: number = 1;
@@ -57,13 +58,21 @@ WA.onInit()
         changeDifficultyLevelMessage.remove()
     });
 
+    WA.room.area.onEnter('startGame').subscribe(() => {
+      startGameMessage = WA.ui.displayActionMessage({
+        message: "Appuyez sur 'Espace' pour démarrer la partie",
+        callback: () => {
+          //Start Game
+        }
+      });
+    });
+    WA.room.area.onLeave('startGame').subscribe(() => {
+      startGameMessage.remove()
+    });
+
     WA.room.area.onEnter("add_component").subscribe(() => {
       addComponent(game_tickets[0], "ram");
     });
-
-    WA.room.area.onEnter('changeDifficulty').subscribe(() => {
-        //Démarrer la partie
-    })
 
     WA.room.area.onLeave("timer").subscribe(() => closePopup(currentPopup));
 
