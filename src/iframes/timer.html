@@ -91,11 +91,21 @@
       }
     };
 
-    const TIME_LIMIT = 20;
+    const TIME_LIMIT = 10;
     let timePassed = 0;
     let timeLeft = TIME_LIMIT;
     let timerInterval = null;
     let remainingPathColor = COLOR_CODES.info.color;
+    const countdownSound = WA.sound.loadSound("/audio/countdown.mp3");
+    const soundConfig = {
+      volume: 0.25,
+      loop: false,
+      rate: 1,
+      detune: 1,
+      delay: 0,
+      seek: 0,
+      mute: false
+    };
 
     document.getElementById("timer").innerHTML = `
       <div class="base-timer">
@@ -140,7 +150,12 @@
         setCircleDasharray();
         setRemainingPathColor(timeLeft);
 
+        if (timeLeft === 5) {
+          countdownSound.play(soundConfig);
+        }
+
         if (timeLeft === 0) {
+          countdownSound.stop();
           onTimesUp();
         }
       }, 1000);

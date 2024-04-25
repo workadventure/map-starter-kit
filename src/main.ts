@@ -6,6 +6,16 @@ console.log('Script started successfully');
 
 let currentPopup: any = undefined;
 let timerIframe: any = undefined;
+const suspenseStartAudio = WA.sound.loadSound("/audio/suspense-start.mp3");
+const soundConfig = {
+    volume: 0.25,
+    loop: false,
+    rate: 1,
+    detune: 1,
+    delay: 0,
+    seek: 0,
+    mute: false
+  };
 
 // Waiting for the API to be ready
 WA.onInit().then(async () => {
@@ -47,6 +57,10 @@ WA.onInit().then(async () => {
             });
         } else if(status === "STARTED"){
             timerIframe.close();
+            suspenseStartAudio.play(soundConfig);
+            setInterval(() => {
+                suspenseStartAudio.stop();
+            }, 4000);
             console.log('Game started');
         } else if(status === "FINISHED"){
             console.log('Game finished');

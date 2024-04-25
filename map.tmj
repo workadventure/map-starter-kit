@@ -393,6 +393,40 @@
                 {
                  "height":31.5397727272727,
                  "id":20,
+                 "name":"tombstone",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"object",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":31.9090909090909,
+                 "x":736.6020256917,
+                 "y":96.1489624505929
+                }, 
+                {
+                 "height":31.5398,
+                 "id":23,
+                 "name":"countPlayer",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":31.9091,
+                 "x":735.628783333333,
+                 "y":129.9801
+                }, 
+                {
+                 "height":31.5398,
+                 "id":24,
                  "name":"gameStatus",
                  "properties":[
                         {
@@ -403,9 +437,9 @@
                  "rotation":0,
                  "type":"variable",
                  "visible":true,
-                 "width":31.9090909090909,
-                 "x":928.1020256917,
-                 "y":96.1489624505929
+                 "width":31.9091,
+                 "x":928.878783333333,
+                 "y":96.6467666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -519,8 +553,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":67,
- "nextobjectid":23,
+ "nextlayerid":69,
+ "nextobjectid":25,
  "orientation":"orthogonal",
  "properties":[
         {
