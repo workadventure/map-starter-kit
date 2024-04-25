@@ -92,7 +92,7 @@ WA.onInit()
       showPopup(
         "Processeur",
         "Element central de votre ordinateur, responsable de l'execution des programmes et de la gestion des ressources de votre ordinateur.",
-        "processeur"
+        "cpu"
       );
     });
 
@@ -100,7 +100,7 @@ WA.onInit()
       showPopup(
         "Carte mère",
         "Elément central de votre ordinateur, responsable de la communication entre les différents composants de votre ordinateur.",
-        "carteMere"
+        "motherboard"
       );
     });
 
@@ -116,7 +116,7 @@ WA.onInit()
       showPopup(
         "Carte graphique",
         "Permet de traiter les informations graphiques de votre ordinateur.",
-        "carteGraphique"
+        "graphics card"
       );
     });
 
@@ -132,7 +132,7 @@ WA.onInit()
       showPopup(
         "Disque dur",
         "Permet de stocker de manière permanente vos données et programmes.",
-        "disqueDur"
+        "hard drive"
       );
     });
 
@@ -148,7 +148,7 @@ WA.onInit()
       showPopup(
         "Alimentation",
         "Permet d'alimenter votre ordinateur en électricité.",
-        "alimentation"
+        "power supply"
       );
     });
 
