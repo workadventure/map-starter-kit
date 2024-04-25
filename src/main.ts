@@ -1,9 +1,14 @@
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
-import game_data from '../game_data/game_data.json';
-import { addComponent, closePopup, getTickets, updatePopup } from './functions';
-import { getItem } from './inventory';
+import game_data from "../game_data/game_data.json";
+import {
+  addComponent,
+  closePopup,
+  getTickets,
+  updatePopup,
+} from "./functions";
+import { getItem } from "./inventory";
 
-console.log('Script started successfully');
+console.log("Script started successfully");
 
 let currentPopup: any = undefined;
 let changeDifficultyLevelMessage: any = undefined;
@@ -19,10 +24,19 @@ WA.onInit().then(() => {
     console.log('Player ID: ', WA.player.id);
     console.log('Player language: ', WA.player.language);
 
-    const items = ['above/processeur', 'above/carteMere', 'above/ram', 'above/carteGraphique', 'above/ssd', 'above/disqueDur', 'above/ventirad', 'above/alimentation'];
+    const items = [
+      "above/processeur",
+      "above/carteMere",
+      "above/ram",
+      "above/carteGraphique",
+      "above/ssd",
+      "above/disqueDur",
+      "above/ventirad",
+      "above/alimentation",
+    ];
 
     items.forEach((item) => {
-        getItem(item);
+      getItem(item);
     });
 
     game_tickets = getTickets(game_data, level)
@@ -45,8 +59,8 @@ WA.onInit().then(() => {
         changeDifficultyLevelMessage.remove()
     });
 
-    WA.room.area.onEnter('add_component').subscribe(() => {
-        addComponent(game_tickets[0], 'ram')
+    WA.room.area.onEnter("add_component").subscribe(() => {
+      addComponent(game_tickets[0], "ram");
     });
 
     WA.room.area.onEnter('changeDifficulty').subscribe(() => {
@@ -119,10 +133,29 @@ WA.onInit().then(() => {
         resultWebsite.close();
     });
 
-    bootstrapExtra().then(() => {
-        console.log('Scripting API Extra ready');
-    }).catch(e => console.error(e));
+    WA.room.setTiles([{ x: 250, y: 250, tile: "test", layer: "podium" }]);
 
-}).catch(e => console.error(e));
+    bootstrapExtra()
+      .then(() => {
+        console.log("Scripting API Extra ready");
+      })
+      .catch((e) => console.error(e));
+
+    async function showPopup(title: string, description: string, image: string) {
+      currentPopup = await WA.ui.website.open({
+        url: `./src/componantsPopup.html?title=${title}&description=${description}&image=${image}`,
+        position: {
+          vertical: "bottom",
+          horizontal: "left",
+        },
+        size: {
+          height: "260px",
+          width: "20%",
+        },
+        allowApi: true,
+      });
+    }
+  })
+  .catch((e) => console.error(e));
 
 export {};
