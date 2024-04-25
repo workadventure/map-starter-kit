@@ -27,8 +27,8 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 index: "./index.html",
-                note: "./src/note.html",
                 podium: "./src/podium.html",
+                result: "./src/result.html",
                 ...getMapsScripts(maps),
             },
         },
