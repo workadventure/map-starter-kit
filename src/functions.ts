@@ -71,7 +71,7 @@ export const getTickets = (game_data: { components?: { short_name: string; long_
  * @param currentPopup les données du popup
  */
 
-export async function closePopup(currentPopup: any) {
+export function closePopup(currentPopup: any) {
     if (currentPopup !== undefined) {
         currentPopup.close();
         currentPopup = undefined;
@@ -112,7 +112,7 @@ export const addComponent = (ticket, component: string) => {
 
 /*
   Vérifie si l'ordinateur est bon
- ticket: le ticket concerné (objet ticket)
+  ticket: le ticket concerné (objet ticket)
  */
 export const checkComputerFinished = (ticket) => {
   let componentsSubmittedGood = ticket.components.filter(i => {
