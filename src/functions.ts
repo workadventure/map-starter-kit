@@ -62,6 +62,7 @@ export const getTickets = (game_data: { components?: { short_name: string; long_
     })
   }
 
+  console.log(tickets);
   return tickets;
 }
 

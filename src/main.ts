@@ -6,8 +6,10 @@ import { getItem } from './inventory';
 console.log('Script started successfully');
 
 let currentPopup: any = undefined;
+let changeDifficultyLevelMessage: any = undefined;
 let game_tickets: any[] = [];
 let startTime = Date.now();
+let level: number = 1;
 
 // Waiting for the API to be ready
 WA.onInit().then(() => {
@@ -23,13 +25,35 @@ WA.onInit().then(() => {
         getItem(item);
     });
 
-    WA.room.area.onEnter('get_tickets').subscribe(() => {
-        game_tickets = getTickets(game_data, 2)
+    game_tickets = getTickets(game_data, level)
+
+    WA.room.area.onEnter('changeDifficulty').subscribe(() => {
+        currentPopup = WA.ui.openPopup("showDifficultyPopup", "Niveau de difficulté : " + level, []);
+
+        changeDifficultyLevelMessage = WA.ui.displayActionMessage({
+            message: "Appuyez sur 'Espace' pour changer le niveau de difficulté",
+            callback: () => {
+                level = (level % game_data.difficulties.length)+1
+                closePopup( currentPopup )
+                currentPopup = WA.ui.openPopup("showDifficultyPopup", "Niveau de difficulté : " + level, []);
+                game_tickets = getTickets(game_data, level)
+            }
+        });
+    });
+    WA.room.area.onLeave('changeDifficulty').subscribe(() => {
+        closePopup( currentPopup )
+        changeDifficultyLevelMessage.remove()
     });
 
     WA.room.area.onEnter('add_component').subscribe(() => {
         addComponent(game_tickets[0], 'ram')
     });
+
+    WA.room.area.onEnter('changeDifficulty').subscribe(() => {
+        //Démarrer la partie
+    })
+
+    WA.room.area.onLeave('clock').subscribe(() => closePopup(currentPopup));
 
     WA.room.area.onEnter('timer').subscribe(() => {
         let count = 60;
