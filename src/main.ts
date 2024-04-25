@@ -20,14 +20,6 @@ WA.onInit().then(() => {
         addComponent(game_tickets[0], 'ram')
     });
 
-    WA.room.area.onEnter('clock').subscribe(() => {
-        const today = new Date();
-        const time = today.getHours() + ":" + today.getMinutes();
-        currentPopup = WA.ui.openPopup("clockPopup", "It's " + time, []);
-    });
-
-    WA.room.area.onLeave('clock').subscribe(() => closePopup(currentPopup));
-
     WA.room.area.onEnter('timer').subscribe(() => {
         let count = 60;
         currentPopup = updatePopup(currentPopup, count);
@@ -69,6 +61,28 @@ WA.onInit().then(() => {
         noteWebsite.close();
     });
 
+    WA.room.area.onEnter("processeurPopup").subscribe(async() => {
+        currentPopup = await WA.ui.website.open({
+            url: "./src/processeurPopup.html",
+            position: {
+                vertical: "bottom",
+                horizontal: "left",
+            },
+            size: {
+                height: "160px",
+                width: "50%",
+            },
+            margin: {
+                bottom: "10px",
+            },
+            allowApi: true,
+        });
+    })
+
+    WA.room.area.onLeave("processeurPopup").subscribe(() => {
+        currentPopup.close();
+    });
+
     let podiumWebsite: any;
 
     let enterCounter = 0;
@@ -100,6 +114,7 @@ WA.onInit().then(() => {
     WA.room.setTiles([
         { x: 250, y: 250, tile: "test", layer: "podium" },
     ]);
+
 
     bootstrapExtra().then(() => {
         console.log('Scripting API Extra ready');
