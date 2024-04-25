@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<style>
+    .popupContainer {
+        background-color: #212F3D;
+        color: white;
+        font-family: Arial, sans-serif;
+        padding: 5px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        border: solid 5px #56EAFF;
+    }
+    .popupContainer img {
+        width: 50px;
+        height: 50px;
+    }
+    .popupText {
+        display: flex;
+        flex-direction: column;
+    }
+    .popupTitle {
+        margin: 0;
+        font-size: medium;
+        text-decoration: underline;
+    }
+    .popupDesc {
+        margin: 5px 0 0 0;
+        font-size: small;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const title = urlParams.get('title');
+    const desc = urlParams.get('description');
+    const image = urlParams.get('image');
+
+    let imageElement = document.getElementById('image');
+    imageElement.src = `../tilesets/items/${image}.png`;
+    imageElement.alt = `image ${image}`;
+    document.getElementById('title').textContent = title;
+    document.getElementById('description').textContent = desc;
+});
+</script>
+
+<body>
+    <div class="popupContainer">
+        <img id="image">
+        <div class="popupText">
+            <h2 id="title" class="popupTitle"></h2>
+            <p id="description" class="popupDesc"></p>
+        </div>
+    </div>
+</body>
+</html>
