@@ -65,7 +65,12 @@ export const getTickets = (game_data: { components?: { short_name: string; long_
   return tickets;
 }
 
-export function closePopup(currentPopup: any) {
+/**
+ * Ferme un popup
+ * @param currentPopup les données du popup
+ */
+
+export async function closePopup(currentPopup: any) {
     if (currentPopup !== undefined) {
         currentPopup.close();
         currentPopup = undefined;
