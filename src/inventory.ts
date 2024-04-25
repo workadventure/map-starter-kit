@@ -1,5 +1,6 @@
 import { VariableDescriptor, bootstrapExtra, getLayersMap, getVariables, findLayerBoundaries } from "@workadventure/scripting-api-extra";
 import { ITiledMapTileLayer } from "@workadventure/tiled-map-type-guard/dist/ITiledMapTileLayer";
+import { dropItemInComputer } from "./computer";
 
 /**
  * On récupère les layers de la map
@@ -71,20 +72,5 @@ export function getItem(itemName: string) {
     /**
      * TODO: zone qui correspond au pc
      */
-    WA.room.area.onEnter('zone').subscribe(() => {
-        WA.room.setProperty(itemName, 'getted', false);
-
-        layers.then((layer) => {
-            Object.entries(layer.get(itemName) as ITiledMapTileLayer).forEach((key) => {
-                if (key[0] === 'properties') {
-                    Object.values(key[1]).forEach((value) => {
-                        if (value.name === 'getted' && value.value === true) {
-                            value.value = false;
-                            WA.room.showLayer(itemName);
-                        }
-                    }
-                )};
-            });
-        });
-    });
+    dropItemInComputer('computer1Area', itemName);
 }
