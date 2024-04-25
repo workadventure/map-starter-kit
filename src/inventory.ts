@@ -5,9 +5,6 @@ import { ITiledMapTileLayer } from "@workadventure/tiled-map-type-guard/dist/ITi
  * On récupère les layers de la map
  */
 const layers = getLayersMap();
-layers.then((layer) => {
-    console.log(layer);
-});
 
 /**
  * On créer un menu pour l'inventaire
@@ -43,14 +40,11 @@ WA.ui.actionBar.addButton({
  * @returns 
  */
 export function getItem(itemName: string) {
-    console.log('ok')
     WA.room.onEnterLayer(itemName).subscribe(() => {
         console.log('entrer dans la zone')
         const triggerMessage = WA.ui.displayActionMessage({
-            message: `Appuyer sur 'space' pour récupérer ${itemName} !`,
+            message: `Appuyer sur 'space' pour récupérer ${itemName.substring(6)} !`,
             callback: () => {
-                WA.chat.sendChatMessage("confirmed", "trigger message logic")
-
                 WA.room.setProperty(itemName, 'getted', true);
                 
                 layers.then((layer) => {
@@ -67,10 +61,11 @@ export function getItem(itemName: string) {
                 });
             }
         });
-    });
 
-    WA.room.onLeaveLayer(itemName).subscribe(() => {
-        
+        /* on supprime le message si on sort de la zone */
+        WA.room.onLeaveLayer(itemName).subscribe(() => {
+            triggerMessage.remove();
+        });
     });
 
     /**

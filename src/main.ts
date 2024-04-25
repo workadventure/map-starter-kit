@@ -11,7 +11,10 @@ import { getItem } from "./inventory";
 console.log("Script started successfully");
 
 let currentPopup: any = undefined;
+let changeDifficultyLevelMessage: any = undefined;
 let game_tickets: any[] = [];
+let startTime = Date.now();
+let level: number = 1;
 
 // Waiting for the API to be ready
 WA.onInit()
@@ -34,25 +37,33 @@ WA.onInit()
       getItem(item);
     });
 
-    WA.room.area.onEnter("get_tickets").subscribe(() => {
-      game_tickets = getTickets(game_data, 2);
+    game_tickets = getTickets(game_data, level)
+
+    WA.room.area.onEnter('changeDifficulty').subscribe(() => {
+        currentPopup = WA.ui.openPopup("showDifficultyPopup", "Niveau de difficulté : " + level, []);
+
+        changeDifficultyLevelMessage = WA.ui.displayActionMessage({
+            message: "Appuyez sur 'Espace' pour changer le niveau de difficulté",
+            callback: () => {
+                level = (level % game_data.difficulties.length)+1
+                closePopup( currentPopup )
+                currentPopup = WA.ui.openPopup("showDifficultyPopup", "Niveau de difficulté : " + level, []);
+                game_tickets = getTickets(game_data, level)
+            }
+        });
+    });
+    WA.room.area.onLeave('changeDifficulty').subscribe(() => {
+        closePopup( currentPopup )
+        changeDifficultyLevelMessage.remove()
     });
 
     WA.room.area.onEnter("add_component").subscribe(() => {
       addComponent(game_tickets[0], "ram");
     });
 
-    WA.room.area.onEnter("timer").subscribe(() => {
-      let count = 60;
-      currentPopup = updatePopup(currentPopup, count);
-      const timer = setInterval(() => {
-        count--;
-        currentPopup = updatePopup(currentPopup, count);
-        if (count <= 0) {
-          clearInterval(timer);
-        }
-      }, 1000);
-    });
+    WA.room.area.onEnter('changeDifficulty').subscribe(() => {
+        //Démarrer la partie
+    })
 
     WA.room.area.onLeave("timer").subscribe(() => closePopup(currentPopup));
 
@@ -115,9 +126,30 @@ WA.onInit()
       });
     });
 
-    WA.room.onLeaveLayer("podium").subscribe(() => {
-      podiumWebsite.close();
-    });
+    setTimeout(() => {
+        let elapsedTime = Date.now() - startTime;
+        elapsedTime = elapsedTime / 1000;
+
+        if (enterCounter > 5) {
+            let welcomePopup = WA.ui.openPopup("resultPopup", "Win, " + WA.player.name + ", you are the best! Your score: " + enterCounter + ", Time taken: " + elapsedTime + " seconds", []);
+
+            setTimeout(() => {
+                welcomePopup.close();
+            }, 10000);
+        }
+
+        else {
+            let welcomePopup = WA.ui.openPopup("resultPopup", "Lose, " + WA.player.name + ", you are the worst! Your score: " + enterCounter + ", Time taken: " + elapsedTime + " seconds", []);
+
+            setTimeout(() => {
+                welcomePopup.close();
+            }, 10000);
+        }
+    }, 10000);
+
+    console.log('Player name: ', WA.player.name);
+    console.log('Player ID: ', WA.player.id);
+    console.log('Player language: ', WA.player.language);
 
     WA.room.setTiles([{ x: 250, y: 250, tile: "test", layer: "podium" }]);
 
