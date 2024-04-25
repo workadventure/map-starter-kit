@@ -83,9 +83,9 @@ export function updatePopup(currentPopup: any, count: number) {
         currentPopup.close();
     }
     if (count > 0) {
-        currentPopup = WA.ui.openPopup("timerPopup", "Remaining: " + count + " seconds", []);
+        currentPopup = WA.ui.openPopup("timerPopup", "Temps restant : " + count + " secondes", []);
     } else {
-        currentPopup = WA.ui.openPopup("timerPopup", "Time's up!", []);
+        currentPopup = WA.ui.openPopup("timerPopup", "Temps écoulé", []);
     }
 
     return currentPopup;
