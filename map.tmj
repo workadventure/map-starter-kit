@@ -345,6 +345,83 @@
                  "width":63.3333333333334,
                  "x":576.333333333333,
                  "y":320.333333333333
+                }, 
+                {
+                 "height":48.18,
+                 "id":34,
+                 "name":"carteMerePopup",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":57.77,
+                 "x":226.817635003532,
+                 "y":580.033645496769
+                }, 
+                {
+                 "height":48.18,
+                 "id":35,
+                 "name":"ramPopup",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":57.77,
+                 "x":294.543297929194,
+                 "y":580.286601098678
+                }, 
+                {
+                 "height":48.18,
+                 "id":36,
+                 "name":"carteGraphiquePopup",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":57.77,
+                 "x":356.91539095245,
+                 "y":580.286601098678
+                }, 
+                {
+                 "height":48.18,
+                 "id":37,
+                 "name":"ssdPopup",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":57.77,
+                 "x":419.781355459736,
+                 "y":580.998042449132
+                }, 
+                {
+                 "height":48.18,
+                 "id":38,
+                 "name":"disqueDurPopup",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":57.77,
+                 "x":484.459315507699,
+                 "y":581.253164014558
+                }, 
+                {
+                 "height":48.18,
+                 "id":39,
+                 "name":"ventiradPopup",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":57.77,
+                 "x":548.474170863446,
+                 "y":581.497495523549
+                }, 
+                {
+                 "height":48.18,
+                 "id":40,
+                 "name":"alimentationPopup",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":57.77,
+                 "x":612.589380964057,
+                 "y":581.497495523549
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -709,7 +786,7 @@
          "y":0
         }],
  "nextlayerid":80,
- "nextobjectid":34,
+ "nextobjectid":41,
  "orientation":"orthogonal",
  "properties":[
         {

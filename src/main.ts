@@ -94,14 +94,85 @@ WA.onInit()
     });
 
     WA.room.area.onEnter("processeurPopup").subscribe(async () => {
-      showPopup("processeur", 
-      "Element central de votre ordinateur, responsable de l'execution des programmes et de la gestion des ressources de votre ordinateur.");
+      showPopup("Processeur", 
+      "Element central de votre ordinateur, responsable de l'execution des programmes et de la gestion des ressources de votre ordinateur.",
+       "processeur");
+    });
+
+    WA.room.area.onEnter("carteMerePopup").subscribe(async () => {
+      showPopup("Carte mère", 
+      "Elément central de votre ordinateur, responsable de la communication entre les différents composants de votre ordinateur.",
+       "carteMere");
+    });
+
+    WA.room.area.onEnter("ramPopup").subscribe(async () => {
+      showPopup("Mémoire vive", 
+      "Permet de stocker temporairement les données de vos programmes en cours d'execution.",
+       "ram");
+    });
+
+    WA.room.area.onEnter("carteGraphiquePopup").subscribe(async () => {
+      showPopup("Carte graphique", 
+      "Permet de traiter les informations graphiques de votre ordinateur.",
+       "carteGraphique");
+    });
+
+    WA.room.area.onEnter("ssdPopup").subscribe(async () => {
+      showPopup("SSD", 
+      "Permet de stocker de manière permanente vos données et programmes.",
+       "ssd");
+    });
+
+    WA.room.area.onEnter("disqueDurPopup").subscribe(async () => {
+      showPopup("Disque dur", 
+      "Permet de stocker de manière permanente vos données et programmes.",
+       "disqueDur");
+    });
+
+    WA.room.area.onEnter("ventiradPopup").subscribe(async () => {
+      showPopup("Ventirad", 
+      "Permet de refroidir votre processeur pour éviter la surchauffe.",
+       "ventirad");
+    });
+
+    WA.room.area.onEnter("alimentationPopup").subscribe(async () => {
+      showPopup("Alimentation", 
+      "Permet d'alimenter votre ordinateur en électricité.",
+       "alimentation");
     });
 
     WA.room.area.onLeave("processeurPopup").subscribe(async () => {
       closePopup(currentPopup);
     });
 
+    WA.room.area.onLeave("carteMerePopup").subscribe(async () => {
+      closePopup(currentPopup);
+    });
+
+    WA.room.area.onLeave("ramPopup").subscribe(async () => {
+      closePopup(currentPopup);
+    });
+
+    WA.room.area.onLeave("carteGraphiquePopup").subscribe(async () => {
+      closePopup(currentPopup);
+    });
+
+    WA.room.area.onLeave("ssdPopup").subscribe(async () => {
+      closePopup(currentPopup);
+    });
+
+    WA.room.area.onLeave("disqueDurPopup").subscribe(async () => {
+      closePopup(currentPopup);
+    });
+
+    WA.room.area.onLeave("ventiradPopup").subscribe(async () => {
+      closePopup(currentPopup);
+    });
+
+    WA.room.area.onLeave("alimentationPopup").subscribe(async () => {
+      closePopup(currentPopup);
+    });
+    
     let podiumWebsite: any;
 
     let enterCounter = 0;
@@ -159,9 +230,9 @@ WA.onInit()
       })
       .catch((e) => console.error(e));
 
-    async function showPopup(title: string, description: string) {
+    async function showPopup(title: string, description: string, image: string) {
       currentPopup = await WA.ui.website.open({
-        url: `./src/componantsPopup.html?title=${title}&description=${description}`,
+        url: `./src/componantsPopup.html?title=${title}&description=${description}&image=${image}`,
         position: {
           vertical: "bottom",
           horizontal: "left",

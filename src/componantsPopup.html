@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const urlParams = new URLSearchParams(window.location.search);
     const title = urlParams.get('title');
     const desc = urlParams.get('description');
-    const image = title.toLowerCase();
+    const image = urlParams.get('image');
 
     let imageElement = document.getElementById('image');
     imageElement.src = `../tilesets/items/${image}.png`;
