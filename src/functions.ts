@@ -1,5 +1,9 @@
 // Fonctions basiques
+let timer: number;
+let score: number = 0;
+let playerName: string;
 
+import { get } from "http";
 /*
   Donne un numéro aléatoire entre un min et un max
  */
@@ -17,12 +21,12 @@ export function get_random_number(min: number, max: number) {
  */
 export const get_interval = (interval: number) => {
   // chiffre au hasard : une chance sur 50
-  if(get_random_number(1, 51) == 20){
+  if (get_random_number(1, 51) == 20) {
     return 15;
-  }else{
+  } else {
     return get_random_number(25, interval);
   }
-}
+};
 
 /*
   Trie un tableau au hasard
@@ -86,7 +90,11 @@ export function updatePopup(currentPopup: any, count: number) {
     currentPopup.close();
   }
   if (count > 0) {
-    currentPopup = WA.ui.openPopup("timerPopup", "Temps restant : " + count + " secondes", []);
+    currentPopup = WA.ui.openPopup(
+      "timerPopup",
+      "Temps restant : " + count + " secondes",
+      []
+    );
   } else {
     currentPopup = WA.ui.openPopup("timerPopup", "Temps écoulé", []);
   }
@@ -140,5 +148,102 @@ export const checkComputerFinished = () => {
     //computerIsBad();
   }
 
-  getNextTicket()
-}
+  getNextTicket();
+};
+
+/*
+  Set le timer de la partie
+ */
+export const setTimerforGame = (timeSet: number) => {
+  return (timer = timeSet);
+};
+
+/*
+  Get le timer de la partie
+*/
+const getTimerforGame = () => {
+  return timer;
+};
+
+/*
+  Set le score de la partie
+ */
+export const setScoreforGame = (scoreGame: number) => {
+  return (score = scoreGame);
+};
+
+/*
+  Get le score de la partie
+*/
+const getScoreforGame = () => {
+  return score;
+};
+
+/*
+  Set le playerName de la partie
+ */
+export const setPlayerNameforGame = (playerNameForGame: string) => {
+  return (playerName = playerNameForGame);
+};
+
+/*
+  Get le playerName de la partie
+*/
+const getPlayerNameForGame = () => {
+  return playerName;
+};
+
+/*
+  Afficher le timer de la partie
+ */
+export const gameStarted = (totalTickets: number) => {
+  let timer = getTimerforGame();
+  let score = getScoreforGame();
+  let playerName = getPlayerNameForGame();
+  let timerPopup: any = undefined;
+  let count = setInterval(async () => {
+    timer--;
+    if (timerPopup) {
+      let popup = await timerPopup;
+      popup.close();
+    }
+    timerPopup = WA.ui.website.open({
+      url: `./src/timerPopup.html?timer=${timer}`,
+      position: {
+        vertical: "top",
+        horizontal: "middle",
+      },
+      size: {
+        height: "100px",
+        width: "100px",
+      },
+      allowApi: true,
+    });
+    if (timer <= 0 || score == totalTickets) {
+      clearInterval(count);
+      if (timerPopup) {
+        let popup = await timerPopup;
+        popup.close();
+      }
+      let resultPopup = WA.ui.website.open({
+        url: `./src/result.html?playerName=${playerName}&totalTickets=${totalTickets}&score=${score}`,
+        position: {
+          vertical: "top",
+          horizontal: "middle",
+        },
+        size: {
+          height: "100vh",
+          width: "70vw",
+        },
+        margin: {
+          top: "5vh",
+        },
+        allowApi: true,
+      });
+      setTimeout(async () => {
+        let popup = await resultPopup;
+        popup.close();
+      }, 5000);
+    }
+  }, 1000);
+};

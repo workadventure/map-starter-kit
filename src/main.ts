@@ -5,7 +5,12 @@ import {
   closePopup,
   getTickets,
   startGame,
-} from './functions';
+  updatePopup,
+  setTimerforGame,
+  setScoreforGame,
+  setPlayerNameforGame,
+  gameStarted,
+} from "./functions";
 import { getItem } from "./inventory";
 
 console.log("Script started successfully");
@@ -27,6 +32,7 @@ export const getNextTicket = () => {
   current_ticket = game_tickets[current_ticket_id];
 }
 
+    setPlayerNameforGame(WA.player.name);
 
 async function showPopup(
   title: string,

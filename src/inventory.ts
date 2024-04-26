@@ -1,4 +1,6 @@
-import { getLayersMap } from "@workadventure/scripting-api-extra";
+import { VariableDescriptor, bootstrapExtra, getLayersMap, getVariables, findLayerBoundaries } from "@workadventure/scripting-api-extra";
+import { ITiledMapTileLayer } from "@workadventure/tiled-map-type-guard/dist/ITiledMapTileLayer";
+import { dropItemInComputer } from "./computer";
 
 /**
  * On récupère les layers de la map
