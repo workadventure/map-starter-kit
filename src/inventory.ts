@@ -1,11 +1,4 @@
-import { VariableDescriptor, bootstrapExtra, getLayersMap, getVariables, findLayerBoundaries } from "@workadventure/scripting-api-extra";
-import { ITiledMapTileLayer } from "@workadventure/tiled-map-type-guard/dist/ITiledMapTileLayer";
-import { dropItemInComputer } from "./computer";
-
-/**
- * On récupère les layers de la map
- */
-const layers = getLayersMap();
+import { getLayersMap } from "@workadventure/scripting-api-extra";
 
 /**
  * On créer un menu pour l'inventaire
@@ -46,22 +39,7 @@ export function getItem(itemName: string) {
         const triggerMessage = WA.ui.displayActionMessage({
             message: `Appuyer sur 'space' pour récupérer ${itemName.substring(6)} !`,
             callback: () => {
-                WA.room.setProperty(itemName, 'getted', true);
-                
-                layers.then((layer) => {
-                    Object.entries(layer.get(itemName) as ITiledMapTileLayer).forEach((key) => {
-                        if (key[0] === 'properties') {
-                            Object.values(key[1]).forEach((value) => {
-                                if (value.name === 'getted' && value.value === false) {
-                                    value.value = true;
-                                    WA.room.hideLayer(itemName);
-                                    let mySound = WA.sound.loadSound("sound/pickup.ogg");
-                                    mySound.play();
-                                }
-                            }
-                        )};
-                    });
-                });
+                WA.player.item = itemName.substring(6);
             }
         });
 
@@ -70,9 +48,4 @@ export function getItem(itemName: string) {
             triggerMessage.remove();
         });
     });
-
-    /**
-     * TODO: zone qui correspond au pc
-     */
-    dropItemInComputer('computer1Area', itemName);
 }

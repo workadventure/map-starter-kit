@@ -7,7 +7,8 @@ import { get } from "http";
 /*
   Donne un numéro aléatoire entre un min et un max
  */
-import { newStepArea } from "./computer";
+import { updateStepArea } from './computer';
+import { current_ticket, getNextTicket } from './main';
 
 export function get_random_number(min: number, max: number) {
   const minCeiled = Math.ceil(min);
@@ -43,42 +44,33 @@ export function shuffle_array(array: any[]) {
   game_data : les données du fichier game_data.json (importé dans main.ts)
   level : le numéro du niveau
  */
-export const getTickets = (
-  game_data: {
-    components?: { short_name: string; long_name: string }[];
-    difficulties: any;
-    tickets: any;
-  },
-  level: number
-) => {
+export const getTickets = (game_data: { components?: { short_name: string; long_name: string; }[]; difficulties: any; tickets: any; },
+  level: number) => {
   let tickets: any[] = [];
-  const level_object = game_data.difficulties.find((i: { level: number }) => {
-    return i.level == level;
+  const level_object = game_data.difficulties.find((i: { level: number; }) => {
+    return i.level == level
   });
 
-  if (typeof level_object !== "undefined") {
+  if(typeof level_object !== 'undefined'){
     // Récupération des tickets
-    let unformated_tickets = game_data.tickets
-      .filter((i: { level: number }) => {
-        return i.level <= level_object.level;
-      })
-      .map((j: { demands: any }) => {
-        return j.demands;
-      });
+    let unformated_tickets = game_data.tickets.filter((i: { level: number; }) => {
+      return i.level <= level_object.level;
+    }).map((j: { demands: any; }) => {
+      return j.demands;
+    });
     unformated_tickets.forEach((i: any[]) => {
       Array.prototype.push.apply(tickets, i);
-    });
+    })
 
     // Chaque ticket ordonné au hasard
-    shuffle_array(tickets);
+    shuffle_array(tickets)
     tickets.forEach((i) => {
-      i.interval = get_interval(level_object.interval) * 1000;
-    });
+      i.interval = get_interval(level_object.interval) * 1000
+    })
   }
 
-  console.log(tickets);
   return tickets;
-};
+}
 
 /**
  * Ferme un popup
@@ -109,43 +101,51 @@ export function updatePopup(currentPopup: any, count: number) {
   return currentPopup;
 }
 
-export const startGame = (tickets) => {
-  newStepArea("computer_0", tickets[0]);
-};
+export const startGame = () => {
+  updateStepArea();
+}
 
 /*
   Ajoute un composant au ticket
   ticket: le ticket concerné (objet ticket)
   component : le nom du composant à ajouter (string)
  */
-export const addComponent = (ticket, component: string) => {
-  ticket.submitted_count++;
-  let toAdd = ticket.components.find((i) => {
-    return i.short_name == component && !i.submitted;
-  });
-  if (toAdd) {
-    toAdd.submitted = true;
-  }
+export const addComponent = (component: string) => {
+  if(WA.player.item){
+    current_ticket.submitted_count++
+    let toAdd = current_ticket.components.find((i) => {
+      return i.short_name == component && !i.submitted;
+    })
+    if(toAdd){
+      toAdd.submitted = true;
+    }
 
-  if (ticket.components.length == ticket.submitted_count) {
-    checkComputerFinished(ticket);
+    WA.player.item == null;
+
+    if(current_ticket.components.length == current_ticket.submitted_count){
+      checkComputerFinished();
+    }
+
+    updateStepArea();
   }
-};
+}
 
 /*
   Vérifie si l'ordinateur est bon
   ticket: le ticket concerné (objet ticket)
  */
-export const checkComputerFinished = (ticket) => {
-  let componentsSubmittedGood = ticket.components.filter((i) => {
+export const checkComputerFinished = () => {
+  let componentsSubmittedGood = current_ticket.components.filter(i => {
     return i.submitted;
-  });
+  })
 
-  if (componentsSubmittedGood.length == ticket.components.length) {
-    //computerIsGood(ticket);
-  } else {
-    //computerIsBad(ticket);
+  if(componentsSubmittedGood.length == current_ticket.components.length){
+    //computerIsGood();
+  }else{
+    //computerIsBad();
   }
+
+  getNextTicket();
 };
 
 /*
