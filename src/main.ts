@@ -30,16 +30,7 @@ WA.onInit()
 
     const playerName = WA.player.name;
 
-    const items = [
-      "above/processeur",
-      "above/carteMere",
-      "above/ram",
-      "above/carteGraphique",
-      "above/ssd",
-      "above/disqueDur",
-      "above/ventirad",
-      "above/alimentation",
-    ];
+    const items = ['above/cpu', 'above/motherboard', 'above/ram', 'above/graphics_card', 'above/ssd', 'above/hard_drive', 'above/ventirad', 'above/power_supply'];
 
     items.forEach((item) => {
       getItem(item);
@@ -118,7 +109,7 @@ WA.onInit()
       showPopup(
         "Carte graphique",
         "Permet de traiter les informations graphiques de votre ordinateur.",
-        "graphics card"
+        "graphics_card"
       );
     });
 
@@ -134,7 +125,7 @@ WA.onInit()
       showPopup(
         "Disque dur",
         "Permet de stocker de manière permanente vos données et programmes.",
-        "hard drive"
+        "hard_drive"
       );
     });
 
@@ -150,7 +141,7 @@ WA.onInit()
       showPopup(
         "Alimentation",
         "Permet d'alimenter votre ordinateur en électricité.",
-        "power supply"
+        "power_supply"
       );
     });
 
