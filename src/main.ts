@@ -184,34 +184,9 @@ WA.onInit()
     console.log("Player ID: ", WA.player.id);
     console.log("Player language: ", WA.player.language);
 
-    // Initialisation des tickets et des jeux
     setPlayerNameforGame(WA.player.name);
-    game_tickets = getTickets(game_data, level);
 
-    // Liste des ordinateurs à alterner
-    const computers = [
-      "computers/computer2",
-      "computers/computer3",
-      "computers/computer4",
-      "computers/computer5",
-      "computers/computer6",
-      "computers/computer7",
-      "computers/computer8",
-      "computers/computer9",
-      "computers/computer10",
-      "computers/computer11",
-      "computers/computer12",
-      "computers/computer13",
-      "computers/computer14",
-      "computers/computer15",
-      "computers/computer16",
-      "computers/computer1",
-      "computers/computer17",
-      "computers/computer18",
-      "computers/computer19",
-      "computers/computer20",
-      "computers/computer21",
-    ];
+    game_tickets = getTickets(game_data, level);
 
     WA.room.area.onEnter("changeDifficulty").subscribe(() => {
       currentPopup = WA.ui.openPopup(
@@ -249,7 +224,6 @@ WA.onInit()
           setTimerforGame(60);
           setScoreforGame(0);
           gameStarted(game_tickets.length);
-          moveComputer();
         },
       });
     });
@@ -283,40 +257,6 @@ WA.onInit()
     WA.room.onLeaveLayer("podium").subscribe(() => {
       podiumWebsite.close();
     });
-
-    function moveComputer() {
-      // Cache tous les ordinateurs au début
-      computers.forEach(computer => {
-        WA.room.hideLayer(computer);
-      });
-
-      let currentComputerIndex = 0;
-
-      // Démarre l'alternance d'affichage des ordinateurs
-      const intervalId = setInterval(() => {
-        // Cache tous les ordinateurs à chaque itération
-        computers.forEach(computer => {
-          WA.room.hideLayer(computer);
-        });
-
-        // Affiche seulement l'ordinateur courant
-        WA.room.showLayer(computers[currentComputerIndex]);
-
-        // Mise à jour de l'index pour la prochaine itération
-        currentComputerIndex = (currentComputerIndex + 1) % computers.length;
-      }, 1000);
-
-      // Arrêter l'intervalle après 10 secondes
-      setTimeout(() => {
-        clearInterval(intervalId);
-        // Assurez-vous que tous les ordinateurs sont cachés à la fin
-        computers.forEach(computer => {
-          WA.room.hideLayer(computer);
-        });
-      }, 25000);
-    }
-
-
 
     bootstrapExtra()
       .then(() => {
