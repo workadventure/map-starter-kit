@@ -69,7 +69,6 @@ export const getTickets = (game_data: { components?: { short_name: string; long_
     })
   }
 
-  console.log(tickets);
   return tickets;
 }
 
@@ -123,10 +122,8 @@ export const addComponent = (component: string) => {
 
     WA.player.item == null;
 
-    console.log('old ticket')
-    console.log(current_ticket)
     if(current_ticket.components.length == current_ticket.submitted_count){
-      checkComputerFinished(current_ticket);
+      checkComputerFinished();
     }
 
     updateStepArea();
