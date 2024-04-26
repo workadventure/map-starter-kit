@@ -1,75 +1,76 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Résultats du Jeu</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .result-container {
-            text-align: center;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .result-container {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        color: #333;
+      }
+      p {
+        color: #666;
+      }
     </style>
+    <script src="https://play.workadventu.re/iframe_api.js"></script>
+    <script type="module">
+      import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 
-    <script>
-        import { bootstrapExtra } from "@workadventure/scripting-api-extra";
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const playerName = urlParams.get("playerName");
+        const totalPc = urlParams.get("totalTickets");
+        const score = urlParams.get("score");
+        const messages = [":(", "Bien joué !", "Parfait !"];
+        let mySound;
 
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const playerName = urlParams.get('playerName');
-            const totalPc = urlParams.get('totalTickets');
-            const score = urlParams.get('score');
-            const messages = [':(', 'Bien joué !', 'Parfait !',];
-
-            document.getElementById('playerName').textContent = playerName;
-            document.getElementById('totalPc').textContent = `PC ${score}/${totalPc}`;
-            switch (true) {
-                case score < totalPc / 2:
-                    document.getElementById('resultMessage').textContent = messages[0];
-                    let mySound = WA.sound.loadSound("sound/fail.ogg");
-                    mySound.play();
-                    break;
-                case score < totalPc:
-                    document.getElementById('resultMessage').textContent = messages[1];
-                    let mySound = WA.sound.loadSound("sound/success.ogg");
-                    mySound.play();
-                    break;
-                default:
-                    document.getElementById('resultMessage').textContent = messages[2];
-                    let mySound = WA.sound.loadSound("sound/success.ogg");
-                    mySound.play();
-                    break;
-            }
-        });
+        console.log(playerName, totalPc, score);
+        document.getElementById("playerName").textContent = playerName;
+        document.getElementById(
+          "totalPc"
+        ).textContent = `PC ${score}/${totalPc}`;
+        switch (true) {
+          case score < totalPc / 2:
+            document.getElementById("resultMessage").textContent = messages[0];
+            mySound = WA.sound.loadSound("sound/fail.ogg");
+            mySound.play();
+            break;
+          case score < totalPc:
+            document.getElementById("resultMessage").textContent = messages[1];
+            mySound = WA.sound.loadSound("sound/success.ogg");
+            mySound.play();
+            break;
+          default:
+            document.getElementById("resultMessage").textContent = messages[2];
+            mySound = WA.sound.loadSound("sound/success.ogg");
+            mySound.play();
+            break;
+        }
+      });
     </script>
-
-</head>
-<body>
+  </head>
+  <body>
     <div class="result-container">
-        <h1>Temps écoulé !</h1> 
-        <hr>
-        <p id="playerName"></p>
-        <!-- TODO: Trouver comment afficher les pc -->
-        <p id="totalPc"></p>
-        <!-- TODO: Afficher des messages customs en fonction du résultat -->
-        <p id="resultMessage"></p>
+      <h1>Temps écoulé !</h1>
+      <hr />
+      <p id="playerName"></p>
+      <p id="totalPc"></p>
+      <p id="resultMessage"></p>
     </div>
-</body>
+  </body>
 </html>
