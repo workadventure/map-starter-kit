@@ -55,6 +55,8 @@ export function getItem(itemName: string) {
                                 if (value.name === 'getted' && value.value === false) {
                                     value.value = true;
                                     WA.room.hideLayer(itemName);
+                                    let mySound = WA.sound.loadSound("sound/pickup.ogg");
+                                    mySound.play();
                                 }
                             }
                         )};

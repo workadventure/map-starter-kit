@@ -59,6 +59,8 @@ WA.onInit()
             []
           );
           game_tickets = getTickets(game_data, level);
+          let mySound = WA.sound.loadSound("sound/button.ogg");
+          mySound.play();
         },
       });
     });
@@ -75,6 +77,8 @@ WA.onInit()
           setTimerforGame(60);
           setScoreforGame(0);
           gameStarted(game_tickets.length);
+          let mySound = WA.sound.loadSound("sound/button.ogg");
+          mySound.play();
         },
       });
     });

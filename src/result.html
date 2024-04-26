@@ -29,6 +29,8 @@
     </style>
 
     <script>
+        import { bootstrapExtra } from "@workadventure/scripting-api-extra";
+
         document.addEventListener('DOMContentLoaded', (event) => {
             const urlParams = new URLSearchParams(window.location.search);
             const playerName = urlParams.get('playerName');
@@ -41,12 +43,18 @@
             switch (true) {
                 case score < totalPc / 2:
                     document.getElementById('resultMessage').textContent = messages[0];
+                    let mySound = WA.sound.loadSound("sound/fail.ogg");
+                    mySound.play();
                     break;
                 case score < totalPc:
                     document.getElementById('resultMessage').textContent = messages[1];
+                    let mySound = WA.sound.loadSound("sound/success.ogg");
+                    mySound.play();
                     break;
                 default:
                     document.getElementById('resultMessage').textContent = messages[2];
+                    let mySound = WA.sound.loadSound("sound/success.ogg");
+                    mySound.play();
                     break;
             }
         });
