@@ -221,8 +221,7 @@ WA.onInit()
           current_ticket = game_tickets[0];
           activateAreas();
           startGame();
-          setTimerforGame(60);
-          setScoreforGame(0);
+          setTimerforGame(game_data.difficulties[level - 1].timeout);
           gameStarted(game_tickets.length);
         },
       });

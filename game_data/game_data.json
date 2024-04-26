@@ -38,25 +38,19 @@
       "level": 1,
       "computers_number": 5,
       "interval": 41,
-      "timeout": 45
+      "timeout": 60
     },
     {
       "level": 2,
       "computers_number": 10,
       "interval": 41,
-      "timeout": 45
+      "timeout": 90
     },
     {
       "level": 3,
       "computers_number": 15,
       "interval": 31,
-      "timeout": 45
-    },
-    {
-      "level": 4,
-      "computers_number": 20,
-      "interval": 31,
-      "timeout": 45
+      "timeout": 120
     }
   ],
   "tickets": [
