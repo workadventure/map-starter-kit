@@ -3,30 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podium</title>
+    <title>Podium des Meilleurs Joueurs</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .podium-container {
             text-align: center;
             padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f4f4f4;
         }
-        .podium-entry {
+        .player {
             margin: 10px;
             padding: 10px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #ccc;
         }
-        .podium-entry-gold { color: gold; }
-        .podium-entry-silver { color: silver; }
-        .podium-entry-bronze { color: #cd7f32; }
+        .first-place {
+            color: gold;
+        }
+        .second-place {
+            color: silver;
+        }
+        .third-place {
+            color: #cd7f32;
+        }
     </style>
 </head>
 <body>
-<h1>Podium</h1>
-<div class="podium-entry podium-entry-gold">1. Joueur1 - Score : 250, Temps : 2m 00s</div>
-<div class="podium-entry podium-entry-silver">2. Joueur2 - Score : 240, Temps : 2m 30s</div>
-<div class="podium-entry podium-entry-bronze">3. Joueur3 - Score : 230, Temps : 3m 00s</div>
+<div class="podium-container">
+    <h1>Top 3 Joueurs</h1>
+    <div id="firstPlace" class="player first-place"></div>
+    <div id="secondPlace" class="player second-place"></div>
+    <div id="thirdPlace" class="player third-place"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Simulé: Vous devriez récupérer ces données via une API ou autre moyen de votre backend
+        const players = [
+            { name: "Joueur 1", time: "2m 30s", score: 850 },
+            { name: "Joueur 2", time: "2m 45s", score: 800 },
+            { name: "Joueur 3", time: "3m 00s", score: 750 }
+        ];
+
+        document.getElementById('firstPlace').textContent = `${players[0].name} - Temps: ${players[0].time}, Score: ${players[0].score}`;
+        document.getElementById('secondPlace').textContent = `${players[1].name} - Temps: ${players[1].time}, Score: ${players[1].score}`;
+        document.getElementById('thirdPlace').textContent = `${players[2].name} - Temps: ${players[2].time}, Score: ${players[2].score}`;
+    });
+</script>
 </body>
 </html>
