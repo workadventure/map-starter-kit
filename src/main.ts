@@ -1,11 +1,9 @@
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 import game_data from "../game_data/game_data.json";
 import {
-  addComponent,
   closePopup,
   getTickets,
   startGame,
-  updatePopup,
 } from "./functions";
 import { getItem } from "./inventory";
 
@@ -15,9 +13,18 @@ let currentPopup: any = undefined;
 let timerPopup: any = undefined;
 let changeDifficultyLevelMessage: any = undefined;
 let startGameMessage: any = undefined;
-let game_tickets: any[] = [];
 let startTime = Date.now();
 let level: number = 1;
+let game_tickets: any[] = [];
+let current_ticket_id = 0;
+
+export let current_ticket = null;
+
+export const getNextTicket = () => {
+  debugger
+  current_ticket_id++
+  current_ticket = game_tickets[current_ticket_id];
+}
 
 // Waiting for the API to be ready
 WA.onInit()
@@ -31,14 +38,14 @@ WA.onInit()
     const playerName = WA.player.name;
 
     const items = [
-      "above/processeur",
-      "above/carteMere",
+      "above/alim",
+      "above/cg",
+      "above/cm",
+      "above/hdd",
+      "above/cpu",
       "above/ram",
-      "above/carteGraphique",
       "above/ssd",
-      "above/disqueDur",
-      "above/ventirad",
-      "above/alimentation",
+      "above/ven",
     ];
 
     items.forEach((item) => {
@@ -79,15 +86,12 @@ WA.onInit()
         callback: () => {
           timerGame(60);
           startGame(game_tickets);
+          current_ticket = game_tickets[0];
         },
       });
     });
     WA.room.area.onLeave("startGame").subscribe(() => {
       startGameMessage.remove();
-    });
-
-    WA.room.area.onEnter("add_component").subscribe(() => {
-      addComponent(game_tickets[0], "ram");
     });
 
     WA.room.area.onEnter("processeurPopup").subscribe(() => {

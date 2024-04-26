@@ -3,7 +3,8 @@
 /*
   Donne un numéro aléatoire entre un min et un max
  */
-import { newStepArea } from './computer';
+import { destroyStepArea, newStepArea } from './computer';
+import { current_ticket, getNextTicket } from './main';
 
 export function get_random_number(min: number, max: number) {
   const minCeiled = Math.ceil(min);
@@ -94,7 +95,7 @@ export function updatePopup(currentPopup: any, count: number) {
 }
 
 export const startGame = (tickets) => {
-  newStepArea('computer_0', tickets[0]);
+  newStepArea('computer_0');
 }
 
 /*
@@ -102,17 +103,17 @@ export const startGame = (tickets) => {
   ticket: le ticket concerné (objet ticket)
   component : le nom du composant à ajouter (string)
  */
-export const addComponent = (ticket, component: string) => {
-  ticket.submitted_count++
-  let toAdd = ticket.components.find((i) => {
+export const addComponent = (component: string) => {
+  current_ticket.submitted_count++
+  let toAdd = current_ticket.components.find((i) => {
     return i.short_name == component && !i.submitted;
   })
   if(toAdd){
     toAdd.submitted = true;
   }
 
-  if(ticket.components.length == ticket.submitted_count){
-    checkComputerFinished(ticket);
+  if(current_ticket.components.length == current_ticket.submitted_count){
+    checkComputerFinished(current_ticket);
   }
 }
 
@@ -120,14 +121,18 @@ export const addComponent = (ticket, component: string) => {
   Vérifie si l'ordinateur est bon
   ticket: le ticket concerné (objet ticket)
  */
-export const checkComputerFinished = (ticket) => {
-  let componentsSubmittedGood = ticket.components.filter(i => {
+export const checkComputerFinished = () => {
+  let componentsSubmittedGood = current_ticket.components.filter(i => {
     return i.submitted;
   })
 
-  if(componentsSubmittedGood.length == ticket.components.length){
-    //computerIsGood(ticket);
+  if(componentsSubmittedGood.length == current_ticket.components.length){
+    //computerIsGood();
   }else{
-    //computerIsBad(ticket);
+    //computerIsBad();
   }
+
+  destroyStepArea('computer_0')
+  getNextTicket()
+  newStepArea('computer_1');
 }

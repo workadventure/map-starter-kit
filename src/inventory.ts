@@ -1,12 +1,16 @@
 import { VariableDescriptor, bootstrapExtra, getLayersMap, getVariables, findLayerBoundaries } from "@workadventure/scripting-api-extra";
 import { ITiledMapTileLayer } from "@workadventure/tiled-map-type-guard/dist/ITiledMapTileLayer";
 import { dropItemInComputer } from "./computer";
+import { addComponent, startGame } from './functions';
+import { current_ticket } from './main';
 
 /**
  * On récupère les layers de la map
  */
 const layers = getLayersMap();
 
+let startGameMessage: any = undefined;
+let dropItemMessage: any = undefined;
 /**
  * On créer un menu pour l'inventaire
  * Ce menu est lié à une iframe qui affiche l'inventaire
@@ -46,19 +50,19 @@ export function getItem(itemName: string) {
         const triggerMessage = WA.ui.displayActionMessage({
             message: `Appuyer sur 'space' pour récupérer ${itemName.substring(6)} !`,
             callback: () => {
-                WA.room.setProperty(itemName, 'getted', true);
-                
-                layers.then((layer) => {
-                    Object.entries(layer.get(itemName) as ITiledMapTileLayer).forEach((key) => {
-                        if (key[0] === 'properties') {
-                            Object.values(key[1]).forEach((value) => {
-                                if (value.name === 'getted' && value.value === false) {
-                                    value.value = true;
-                                    WA.room.hideLayer(itemName);
-                                }
-                            }
-                        )};
+                WA.player.item = itemName.substring(6);
+
+                WA.room.area.onEnter("computer_1").subscribe(() => {
+                    dropItemMessage = WA.ui.displayActionMessage({
+                        message: "Appuyez sur 'Espace' pour ajouter le composant à l'ordinateur",
+                        callback: () => {
+                            addComponent(current_ticket, WA.player.item);
+                            console.log(current_ticket)
+                        },
                     });
+                });
+                WA.room.area.onLeave("computer_1").subscribe(() => {
+                    dropItemMessage.remove();
                 });
             }
         });
@@ -72,5 +76,5 @@ export function getItem(itemName: string) {
     /**
      * TODO: zone qui correspond au pc
      */
-    dropItemInComputer('computer1Area', itemName);
+    /*dropItemInComputer('computer1Area', itemName);*/
 }
