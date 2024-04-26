@@ -1,3 +1,26 @@
+# Membres du groupe
+- ***MAGANGA Inès*** (ines-mgg)
+  - Design de la map, popup des composants, timer
+- ***DE DOMENICO Victor*** (Nirdeo)
+  - Score, timer, podium, animation du tapis roulant
+- ***Davigny Théo*** (Thivalaine)
+  - Prise et dépot d'un objet, sons, 
+- ***COPPE Rafael*** (RafaelCoppe)
+  - Génération des tickets, dépot d'un objet dans un ordinateur, gestion de la réponse utilisateur
+
+# Installation et lancement
+```shell
+npm install
+npm run dev
+```
+
+# ATTENTION BUG !!!!!!!!!!!!!
+Si, après avoir rechargé la page, vous voyez les boutons en double : 
+
+![img.png](bug.png)
+
+Arrètez le ```npm run dev``` (et la binouze) et relancez-le
+
 # WorkAdventure Map Starter Kit
 
 ![map](./map.png)
