@@ -152,7 +152,7 @@ export const checkComputerFinished = (ticket) => {
   Set le timer de la partie
  */
 export const setTimerforGame = (timeSet: number) => {
-  return timer = timeSet;
+  return (timer = timeSet);
 };
 
 /*
@@ -166,7 +166,7 @@ const getTimerforGame = () => {
   Set le score de la partie
  */
 export const setScoreforGame = (scoreGame: number) => {
-  return score = scoreGame;
+  return (score = scoreGame);
 };
 
 /*
@@ -180,7 +180,7 @@ const getScoreforGame = () => {
   Set le playerName de la partie
  */
 export const setPlayerNameforGame = (playerNameForGame: string) => {
-  return playerName = playerNameForGame;
+  return (playerName = playerNameForGame);
 };
 
 /*
@@ -198,13 +198,11 @@ export const gameStarted = (totalTickets: number) => {
   let score = getScoreforGame();
   let playerName = getPlayerNameForGame();
   let timerPopup: any = undefined;
-  let resultWebsite: any = undefined;
-  let count = setInterval(() => {
+  let count = setInterval(async () => {
     timer--;
     if (timerPopup) {
-      timerPopup.then((popup) => {
-        popup.close();
-      });
+      let popup = await timerPopup;
+      popup.close();
     }
     timerPopup = WA.ui.website.open({
       url: `./src/timerPopup.html?timer=${timer}`,
@@ -220,10 +218,11 @@ export const gameStarted = (totalTickets: number) => {
     });
     if (timer <= 0 || score == totalTickets) {
       clearInterval(count);
-      timerPopup.then((popup) => {
+      if (timerPopup) {
+        let popup = await timerPopup;
         popup.close();
-      });
-      resultWebsite = WA.ui.website.open({
+      }
+      let resultPopup = WA.ui.website.open({
         url: `./src/result.html?playerName=${playerName}&totalTickets=${totalTickets}&score=${score}`,
         position: {
           vertical: "top",
@@ -238,14 +237,10 @@ export const gameStarted = (totalTickets: number) => {
         },
         allowApi: true,
       });
-
-      if (resultWebsite) {
-        setTimeout(() => {
-          resultWebsite.then((popup) => {
-            popup.close();
-          });
-        }, 3000);
-      }
+      setTimeout(async () => {
+        let popup = await resultPopup;
+        popup.close();
+      }, 5000);
     }
-  });
+  }, 1000);
 };
