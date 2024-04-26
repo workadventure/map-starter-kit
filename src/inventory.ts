@@ -1,16 +1,10 @@
-import { VariableDescriptor, bootstrapExtra, getLayersMap, getVariables, findLayerBoundaries } from "@workadventure/scripting-api-extra";
-import { ITiledMapTileLayer } from "@workadventure/tiled-map-type-guard/dist/ITiledMapTileLayer";
-import { dropItemInComputer } from "./computer";
-import { addComponent, startGame } from './functions';
-import { current_ticket } from './main';
+import { getLayersMap } from "@workadventure/scripting-api-extra";
 
 /**
  * On récupère les layers de la map
  */
 const layers = getLayersMap();
 
-let startGameMessage: any = undefined;
-let dropItemMessage: any = undefined;
 /**
  * On créer un menu pour l'inventaire
  * Ce menu est lié à une iframe qui affiche l'inventaire
@@ -51,19 +45,6 @@ export function getItem(itemName: string) {
             message: `Appuyer sur 'space' pour récupérer ${itemName.substring(6)} !`,
             callback: () => {
                 WA.player.item = itemName.substring(6);
-
-                WA.room.area.onEnter("computer_1").subscribe(() => {
-                    dropItemMessage = WA.ui.displayActionMessage({
-                        message: "Appuyez sur 'Espace' pour ajouter le composant à l'ordinateur",
-                        callback: () => {
-                            addComponent(current_ticket, WA.player.item);
-                            console.log(current_ticket)
-                        },
-                    });
-                });
-                WA.room.area.onLeave("computer_1").subscribe(() => {
-                    dropItemMessage.remove();
-                });
             }
         });
 
@@ -72,9 +53,4 @@ export function getItem(itemName: string) {
             triggerMessage.remove();
         });
     });
-
-    /**
-     * TODO: zone qui correspond au pc
-     */
-    /*dropItemInComputer('computer1Area', itemName);*/
 }

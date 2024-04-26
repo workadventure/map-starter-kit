@@ -1,33 +1,182 @@
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 import game_data from "../game_data/game_data.json";
 import {
+  addComponent,
   closePopup,
   getTickets,
   startGame,
-  updatePopup,
-  setTimerforGame,
-  setScoreforGame,
-  setPlayerNameforGame,
-  gameStarted,
-} from "./functions";
+} from './functions';
 import { getItem } from "./inventory";
 
 console.log("Script started successfully");
 
 let currentPopup: any = undefined;
+let timerPopup: any = undefined;
 let changeDifficultyLevelMessage: any = undefined;
 let startGameMessage: any = undefined;
 let startTime = Date.now();
 let level: number = 1;
 let game_tickets: any[] = [];
 let current_ticket_id = 0;
+let dropItemMessage: any = undefined;
 
 export let current_ticket = null;
 
 export const getNextTicket = () => {
-  debugger
   current_ticket_id++
   current_ticket = game_tickets[current_ticket_id];
+}
+
+
+async function showPopup(
+  title: string,
+  description: string,
+  image: string
+) {
+  currentPopup = await WA.ui.website.open({
+    url: `./src/componantsPopup.html?title=${title}&description=${description}&image=${image}`,
+    position: {
+      vertical: "bottom",
+      horizontal: "left",
+    },
+    size: {
+      height: "260px",
+      width: "20%",
+    },
+    allowApi: true,
+  });
+}
+
+const items = [
+  "above/alim",
+  "above/cg",
+  "above/cm",
+  "above/hdd",
+  "above/cpu",
+  "above/ram",
+  "above/ssd",
+  "above/ven",
+];
+
+const activateAreas = () => {
+  items.forEach((item) => {
+    getItem(item);
+  });
+
+  WA.room.area.onEnter("processeurPopup").subscribe(() => {
+    showPopup(
+      "Processeur",
+      "Element central de votre ordinateur, responsable de l'execution des programmes et de la gestion des ressources de votre ordinateur.",
+      "cpu"
+    );
+  });
+
+  WA.room.area.onEnter("carteMerePopup").subscribe(() => {
+    showPopup(
+      "Carte mère",
+      "Elément central de votre ordinateur, responsable de la communication entre les différents composants de votre ordinateur.",
+      "motherboard"
+    );
+  });
+
+  WA.room.area.onEnter("ramPopup").subscribe(() => {
+    showPopup(
+      "Mémoire vive",
+      "Permet de stocker temporairement les données de vos programmes en cours d'execution.",
+      "ram"
+    );
+  });
+
+  WA.room.area.onEnter("carteGraphiquePopup").subscribe(() => {
+    showPopup(
+      "Carte graphique",
+      "Permet de traiter les informations graphiques de votre ordinateur.",
+      "graphics card"
+    );
+  });
+
+  WA.room.area.onEnter("ssdPopup").subscribe(() => {
+    showPopup(
+      "SSD",
+      "Permet de stocker de manière permanente vos données et programmes.",
+      "ssd"
+    );
+  });
+
+  WA.room.area.onEnter("disqueDurPopup").subscribe(() => {
+    showPopup(
+      "Disque dur",
+      "Permet de stocker de manière permanente vos données et programmes.",
+      "hard drive"
+    );
+  });
+
+  WA.room.area.onEnter("ventiradPopup").subscribe(() => {
+    showPopup(
+      "Ventirad",
+      "Permet de refroidir votre processeur pour éviter la surchauffe.",
+      "ventirad"
+    );
+  });
+
+  WA.room.area.onEnter("alimentationPopup").subscribe(() => {
+    showPopup(
+      "Alimentation",
+      "Permet d'alimenter votre ordinateur en électricité.",
+      "power supply"
+    );
+  });
+
+  WA.room.area.onLeave("processeurPopup").subscribe(() => {
+    closePopup(currentPopup);
+  });
+
+  WA.room.area.onLeave("carteMerePopup").subscribe(() => {
+    closePopup(currentPopup);
+  });
+
+  WA.room.area.onLeave("ramPopup").subscribe(() => {
+    closePopup(currentPopup);
+  });
+
+  WA.room.area.onLeave("carteGraphiquePopup").subscribe(() => {
+    closePopup(currentPopup);
+  });
+
+  WA.room.area.onLeave("ssdPopup").subscribe(() => {
+    closePopup(currentPopup);
+  });
+
+  WA.room.area.onLeave("disqueDurPopup").subscribe(() => {
+    closePopup(currentPopup);
+  });
+
+  WA.room.area.onLeave("ventiradPopup").subscribe(() => {
+    closePopup(currentPopup);
+  });
+
+  WA.room.area.onLeave("alimentationPopup").subscribe(() => {
+    closePopup(currentPopup);
+  });
+
+
+  WA.room.area.onEnter("computer_action").subscribe(() => {
+    dropItemMessage = WA.ui.displayActionMessage({
+      message: "Appuyez sur 'Espace' pour ajouter le composant à l'ordinateur",
+      callback: () => {
+        console.log('item de l\'utilisateur :')
+        console.log(WA.player.item)
+        if(WA.player.item != null){
+          addComponent(WA.player.item);
+          console.log('new ticket : ')
+          console.log(current_ticket)
+        }
+      },
+    });
+  });
+  WA.room.area.onLeave("computer_action").subscribe(() => {
+    dropItemMessage.remove();
+  });
 }
 
 // Waiting for the API to be ready
@@ -39,22 +188,7 @@ WA.onInit()
     console.log("Player ID: ", WA.player.id);
     console.log("Player language: ", WA.player.language);
 
-    setPlayerNameforGame(WA.player.name);
-
-    const items = [
-      "above/alim",
-      "above/cg",
-      "above/cm",
-      "above/hdd",
-      "above/cpu",
-      "above/ram",
-      "above/ssd",
-      "above/ven",
-    ];
-
-    items.forEach((item) => {
-      getItem(item);
-    });
+    const playerName = WA.player.name;
 
     game_tickets = getTickets(game_data, level);
 
@@ -89,111 +223,14 @@ WA.onInit()
         message: "Appuyez sur 'Espace' pour démarrer la partie",
         callback: () => {
           current_ticket = game_tickets[0];
+          timerGame(60);
+          activateAreas();
           startGame();
-          setTimerforGame(60);
-          setScoreforGame(0);
-          gameStarted(game_tickets.length);
         },
       });
     });
     WA.room.area.onLeave("startGame").subscribe(() => {
       startGameMessage.remove();
-    });
-
-    WA.room.area.onEnter("processeurPopup").subscribe(() => {
-      showPopup(
-        "Processeur",
-        "Element central de votre ordinateur, responsable de l'execution des programmes et de la gestion des ressources de votre ordinateur.",
-        "cpu"
-      );
-    });
-
-    WA.room.area.onEnter("carteMerePopup").subscribe(() => {
-      showPopup(
-        "Carte mère",
-        "Elément central de votre ordinateur, responsable de la communication entre les différents composants de votre ordinateur.",
-        "motherboard"
-      );
-    });
-
-    WA.room.area.onEnter("ramPopup").subscribe(() => {
-      showPopup(
-        "Mémoire vive",
-        "Permet de stocker temporairement les données de vos programmes en cours d'execution.",
-        "ram"
-      );
-    });
-
-    WA.room.area.onEnter("carteGraphiquePopup").subscribe(() => {
-      showPopup(
-        "Carte graphique",
-        "Permet de traiter les informations graphiques de votre ordinateur.",
-        "graphics card"
-      );
-    });
-
-    WA.room.area.onEnter("ssdPopup").subscribe(() => {
-      showPopup(
-        "SSD",
-        "Permet de stocker de manière permanente vos données et programmes.",
-        "ssd"
-      );
-    });
-
-    WA.room.area.onEnter("disqueDurPopup").subscribe(() => {
-      showPopup(
-        "Disque dur",
-        "Permet de stocker de manière permanente vos données et programmes.",
-        "hard drive"
-      );
-    });
-
-    WA.room.area.onEnter("ventiradPopup").subscribe(() => {
-      showPopup(
-        "Ventirad",
-        "Permet de refroidir votre processeur pour éviter la surchauffe.",
-        "ventirad"
-      );
-    });
-
-    WA.room.area.onEnter("alimentationPopup").subscribe(() => {
-      showPopup(
-        "Alimentation",
-        "Permet d'alimenter votre ordinateur en électricité.",
-        "power supply"
-      );
-    });
-
-    WA.room.area.onLeave("processeurPopup").subscribe(() => {
-      closePopup(currentPopup);
-    });
-
-    WA.room.area.onLeave("carteMerePopup").subscribe(() => {
-      closePopup(currentPopup);
-    });
-
-    WA.room.area.onLeave("ramPopup").subscribe(() => {
-      closePopup(currentPopup);
-    });
-
-    WA.room.area.onLeave("carteGraphiquePopup").subscribe(() => {
-      closePopup(currentPopup);
-    });
-
-    WA.room.area.onLeave("ssdPopup").subscribe(() => {
-      closePopup(currentPopup);
-    });
-
-    WA.room.area.onLeave("disqueDurPopup").subscribe(() => {
-      closePopup(currentPopup);
-    });
-
-    WA.room.area.onLeave("ventiradPopup").subscribe(() => {
-      closePopup(currentPopup);
-    });
-
-    WA.room.area.onLeave("alimentationPopup").subscribe(() => {
-      closePopup(currentPopup);
     });
 
     let podiumWebsite: any;
@@ -230,25 +267,57 @@ WA.onInit()
       })
       .catch((e) => console.error(e));
 
-    async function showPopup(
-      title: string,
-      description: string,
-      image: string
-    ) {
-      currentPopup = await WA.ui.website.open({
-        url: `./src/componantsPopup.html?title=${title}&description=${description}&image=${image}`,
-        position: {
-          vertical: "bottom",
-          horizontal: "left",
-        },
-        size: {
-          height: "260px",
-          width: "20%",
-        },
-        allowApi: true,
-      });
-    }
+    async function timerGame(timer: number) {
+      let count = setInterval(() => {
+        timer--;
+        if (timerPopup) {
+          timerPopup.then((popup) => {
+            popup.close();
+          });
+        }
+        timerPopup = WA.ui.website.open({
+          url: `./src/timerPopup.html?timer=${timer}`,
+          position: {
+            vertical: "top",
+            horizontal: "middle",
+          },
+          size: {
+            height: "100px",
+            width: "100px",
+          },
+          allowApi: true,
+        });
+        if (timer <= 0) {
+          clearInterval(count);
+          timerPopup.then((popup) => {
+            popup.close();
+          });
+          resultWebsite = WA.ui.website.open({
+            url: `./src/result.html?playerName=${playerName}`,
+            position: {
+              vertical: "top",
+              horizontal: "middle",
+            },
+            size: {
+              height: "100vh",
+              width: "70vw",
+            },
+            margin: {
+              top: "5vh",
+            },
+            allowApi: true,
+          });
 
+          if (resultWebsite) {
+            setTimeout(() => {
+              resultWebsite.then((popup) => {
+                popup.close();
+              });
+            }, 3000);
+          }
+        }
+      }, 1000);
+    }
   })
   .catch((e) => console.error(e));
 
