@@ -32,21 +32,36 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             const urlParams = new URLSearchParams(window.location.search);
             const playerName = urlParams.get('playerName');
+            const totalPc = urlParams.get('totalTickets');
+            const score = urlParams.get('score');
+            const messages = [':(', 'Bien joué !', 'Parfait !',];
 
             document.getElementById('playerName').textContent = playerName;
+            document.getElementById('totalPc').textContent = `PC ${score}/${totalPc}`;
+            switch (true) {
+                case score < totalPc / 2:
+                    document.getElementById('resultMessage').textContent = messages[0];
+                    break;
+                case score < totalPc:
+                    document.getElementById('resultMessage').textContent = messages[1];
+                    break;
+                default:
+                    document.getElementById('resultMessage').textContent = messages[2];
+                    break;
+            }
         });
     </script>
 
 </head>
 <body>
     <div class="result-container">
-        <h1>Temps écoulé !</h1>
+        <h1>Temps écoulé !</h1> 
         <hr>
         <p id="playerName"></p>
         <!-- TODO: Trouver comment afficher les pc -->
-        <p>PC 10/10</p>
+        <p id="totalPc"></p>
         <!-- TODO: Afficher des messages customs en fonction du résultat -->
-        <p>Bravo !</p>
+        <p id="resultMessage"></p>
     </div>
 </body>
 </html>

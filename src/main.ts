@@ -6,13 +6,16 @@ import {
   getTickets,
   startGame,
   updatePopup,
+  setTimerforGame,
+  setScoreforGame,
+  setPlayerNameforGame,
+  gameStarted,
 } from "./functions";
 import { getItem } from "./inventory";
 
 console.log("Script started successfully");
 
 let currentPopup: any = undefined;
-let timerPopup: any = undefined;
 let changeDifficultyLevelMessage: any = undefined;
 let startGameMessage: any = undefined;
 let game_tickets: any[] = [];
@@ -28,7 +31,7 @@ WA.onInit()
     console.log("Player ID: ", WA.player.id);
     console.log("Player language: ", WA.player.language);
 
-    const playerName = WA.player.name;
+    setPlayerNameforGame(WA.player.name);
 
     const items = [
       "above/processeur",
@@ -77,8 +80,10 @@ WA.onInit()
       startGameMessage = WA.ui.displayActionMessage({
         message: "Appuyez sur 'Espace' pour démarrer la partie",
         callback: () => {
-          timerGame(60);
           startGame(game_tickets);
+          setTimerforGame(60);
+          setScoreforGame(0);
+          gameStarted(game_tickets.length);
         },
       });
     });
@@ -187,7 +192,6 @@ WA.onInit()
     });
 
     let podiumWebsite: any;
-    let resultWebsite: any;
     let enterCounter = 0;
 
     WA.room.onEnterLayer("podium").subscribe(async () => {
@@ -239,57 +243,6 @@ WA.onInit()
       });
     }
 
-    async function timerGame(timer: number) {
-      let count = setInterval(() => {
-        timer--;
-        if (timerPopup) {
-          timerPopup.then((popup) => {
-            popup.close();
-          });
-        }
-        timerPopup = WA.ui.website.open({
-          url: `./src/timerPopup.html?timer=${timer}`,
-          position: {
-            vertical: "top",
-            horizontal: "middle",
-          },
-          size: {
-            height: "100px",
-            width: "100px",
-          },
-          allowApi: true,
-        });
-        if (timer <= 0) {
-          clearInterval(count);
-          timerPopup.then((popup) => {
-            popup.close();
-          });
-          resultWebsite = WA.ui.website.open({
-            url: `./src/result.html?playerName=${playerName}`,
-            position: {
-              vertical: "top",
-              horizontal: "middle",
-            },
-            size: {
-              height: "100vh",
-              width: "70vw",
-            },
-            margin: {
-              top: "5vh",
-            },
-            allowApi: true,
-          });
-
-          if (resultWebsite) {
-            setTimeout(() => {
-              resultWebsite.then((popup) => {
-                popup.close();
-              });
-            }, 3000);
-          }
-        }
-      }, 1000);
-    }
   })
   .catch((e) => console.error(e));
 
