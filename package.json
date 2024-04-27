@@ -7,17 +7,19 @@
     "dev": "vite",
     "start": "vite",
     "build": "tsc && vite build",
-    "prod": "vite preview"
+    "prod": "vite preview",
+    "upload": "upload-wa-map"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
     "@workadventure/iframe-api-typings": "^1.18.11",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.4.5",
     "typescript": "^4.9.5",
     "vite": "^4.5.2",
     "wa-map-optimizer-vite": "^1.1.28"
   },
   "dependencies": {
-    "@workadventure/scripting-api-extra": "^1.8.1"
+    "@workadventure/scripting-api-extra": "^1.8.1",
+    "@workadventure/upload-maps": "^1.5.12"
   }
 }

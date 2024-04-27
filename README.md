@@ -4,20 +4,21 @@
 
 This is a starter kit to help you build your own map for [WorkAdventure](https://workadventu.re).
 
-To understand how to use this starter kit, follow the tutorial at [https://workadventu.re/map-building](https://workadventu.re/map-building).
+To understand how to use this starter kit, follow the tutorial at [https://docs.workadventu.re/map-building/tiled-editor/](https://docs.workadventu.re/map-building/tiled-editor/).
 
 ## Structure
-* *public*: Static files like PDFs or audio files
-* *src*: Scripts files
-* *tilesets*: All tilesets
-* *map.tmj*: Map file
-* *map.png*: The map thumbnail displayed on the in-game map information
+
+- _public_: Static files like PDFs or audio files
+- _src_: Scripts files
+- _tilesets_: All tilesets
+- _map.tmj_: Map file
+- _map.png_: The map thumbnail displayed on the in-game map information
 
 If you want to use more than one map file, just add the new map file on root or in a folder.
 
 we recommend using 500x500 images for the map thumbnails.
 
-If you are going to create custom websites to embed in the map, please reference the HTML files in the `input` option in *vite.config.js*.
+If you are going to create custom websites to embed in the map, please reference the HTML files in the `input` option in _vite.config.js_.
 
 ## Requirements
 
@@ -35,6 +36,7 @@ npm run dev
 ## Test production map
 
 You can test the optimized map as it will be in production:
+
 ```sh
 npm run build
 npm run prod
@@ -44,12 +46,15 @@ npm run prod
 
 This project contains multiple licenses as follows:
 
-* [Code license](./LICENSE.code) *(all files except those for other licenses)*
-* [Map license](./LICENSE.map) *(`map.tmj` and the map visual as well)*
-* [Assets license](./LICENSE.assets) *(the files inside the `src/assets/` folder)*
+- [Code license](./LICENSE.code) _(all files except those for other licenses)_
+- [Map license](./LICENSE.map) _(`map.tmj` and the map visual as well)_
+- [Assets license](./LICENSE.assets) _(the files inside the `src/assets/` folder)_
 
 ### About third party assets
 
 If you add third party assets in your map, do not forget to:
+
 1. Credit the author and license with the "tilesetCopyright" property present in the properties of each tilesets in the `map.tmj` file
 2. Add the license text in LICENSE.assets
+
+To know how you can upload your map, you can go to the officiel doc of workadventure : [Upload map documentation](https://docs.workadventu.re/map-building/tiled-editor/)
