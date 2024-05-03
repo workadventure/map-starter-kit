@@ -161,6 +161,124 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.SUPPORT_RH).subscribe(async () => {
     await currentPrompt.close();
 })
 
+//BETONYOUAERA 
+// const today = new Date();
+// const time = today.getHours() + ":" + today.getMinutes();
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnYouArea.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU).subscribe(async () => {
+    await currentPrompt.close();
+})
+
+
+//Les autres ajout link betOnYouLink1
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK1).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnYouLink1.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU_LINK1).subscribe(async () => {
+    await currentPrompt.close();
+})
+
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_1).subscribe(async () => {
+    await currentPrompt.close();
+})
+
+//Les autres ajout link betOnYouLink2
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK2).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnYouLink2.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU_LINK2).subscribe(async () => {
+    await currentPrompt.close();
+})
+
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_2).subscribe(async () => {
+    await currentPrompt.close();
+})
+
+
+//Les autres ajout link betOnYouLink3
+WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK3).subscribe(async () => {
+
+    currentPrompt = await WA.ui.website.open({
+        url: "src/betOnYouLink3.html",
+        position: {
+            vertical: "bottom",
+            horizontal: "middle",
+        },
+        size: {
+            height: "20vh",
+            width: "75vw",
+        },
+        margin: {
+            bottom: "15vh",
+        },
+        allowApi: true
+    })
+
+})
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU_LINK3).subscribe(async () => {
+    await currentPrompt.close();
+})
+
+
+WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_3).subscribe(async () => {
+    await currentPrompt.close();
+})
+
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_BETTER).subscribe(async () => {
     currentPrompt = await WA.ui.website.open({
         url: "src/betOnBetter.html",
@@ -178,6 +296,9 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_BETTER).subscribe(async () => {
         allowApi: true
     })
 })
+
+
+
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_BETTER).subscribe(() => {
     currentPrompt.close();

@@ -1,8 +1,6 @@
 
 const text = [
-    "Hello ! Bienvenue dans la salle \"Bet On Better\". Ici tu trouveras une présentation générale de Neosoft.",
-    "Tout d'abord, un petit mot de Soïg, le président de NeoSoft.",
-    "Tu peux aussi regarder la vidéo de présentation de l'entreprise en t'approchant du PC à côté de moi."
+    "Salut ! Te voilà dans la salle “Bet on You”. Ici tu trouveras nos ressources et publications, telles que des articles et des livres blancs. Qu’aimerais-tu faire ?"
 ];
 let index = 0;
 let textIndex = 0
@@ -42,8 +40,6 @@ button?.addEventListener("click", () => {
     textIndex++;
     if (textIndex == text.length) {
         document.getElementById("box").style.display = "none"
-        
-        window.parent.postMessage({ type: 'closeUIWebsite' }, "*");
     }
     showText();
 });

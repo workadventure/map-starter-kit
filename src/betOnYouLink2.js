@@ -1,11 +1,10 @@
 
 const text = [
-    "Hello ! Bienvenue dans la salle \"Bet On Talent\". Ici tu découvriras les informations sur les opportunités de carrière chez Neosoft. ",
-    "Tout d'abord, mot de Barbara, la directrice du développement RH : ",
-    "\"Engager nos talents dans une culture d'apprentissage"
+    "« Consulter nos articles "
 ];
 let index = 0;
 let textIndex = 0
+
 
 function showText() {
     let textElement = document.getElementById("text")
@@ -14,16 +13,10 @@ function showText() {
     }
     index++;
 
-    console.log(textIndex)
-    if (textIndex === 3) {
+    if (textIndex === text.length) {
         document.getElementById("buttonsContainer").style.display = "flex"
     }
-    if (textIndex !== 3) {
-        document.getElementById("videoContainer").style.display = "none"
-    }
-    if(textIndex === 2){
-        document.getElementById("img").style.display = "block"
-    }
+   
     if (index <= text[textIndex].length) {
         setTimeout(showText, 20);
     } else {
@@ -45,19 +38,17 @@ button?.addEventListener("click", () => {
     }
     index = 0;
     textIndex++;
-    if (textIndex == text.length) {
-        document.getElementById("box").style.display = "none"
+
+    if (textIndex >= text.length) {
+        document.getElementById("box").style.display = "none";
+        window.parent.postMessage({ type: 'closeUIWebsite' }, "*");
+        return;
     }
     showText();
 });
 
-const pacte = document.getElementById("pacte")
 const career = document.getElementById("career")
 
-pacte?.addEventListener("click", () => {
-    window.open("https://www.neosoft.fr/pourquoi-rejoindre-neosoft/", "_blank")
-})
-
 career?.addEventListener("click", () => {
-    window.open("https://www.neosoft.fr/votre-carriere-chez-neosoft", "_blank")
+    window.open("https://www.neosoft.fr/nos-publications/blog-tech ", "_blank")
 })
