@@ -1,4 +1,3 @@
-
 const text = [
     "Hello ! Bienvenue dans la salle \"Bet On Talent\". Ici tu découvriras les informations sur les opportunités de carrière chez Neosoft. ",
     "Tout d'abord, mot de Barbara, la directrice du développement RH : ",
