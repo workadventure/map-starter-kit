@@ -2,7 +2,7 @@
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 import "./gates/gate";
-import * as Data from "./data/data";
+// import * as Data from "./data/data";
 import { AREA } from "./constantes";
 import { UIWebsite } from "@workadventure/iframe-api-typings";
 
@@ -338,7 +338,7 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.VIDEO_AGENCY).subscribe(() => {
         allowApi: false,
     }, () => {
         WA.state.saveVariable("leaveOnClick", true);
-        Data.closeModalCallback(modalOpenTime, "videoAgencyData", 695, 1255, 10);
+        // Data.closeModalCallback(modalOpenTime, "videoAgencyData", 695, 1255, 10);
     })
 })
 
@@ -347,7 +347,7 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.VIDEO_AGENCY).subscribe(() => {
     // leaveOnclick is by default set to 'false'
     // Check leaveOnClick state to make sure that the closeModalCallback doesnt get called twice :
     // Once on button close and a second time on leaving the area
-    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "videoAgencyData");
+    // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "videoAgencyData");
     // At the end, reset leaveOnClick back to false
     WA.state.saveVariable("leaveOnClick", false);
     console.log("leftonclick reset", leftOnClick)
@@ -396,14 +396,14 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
         allow: null,
         allowApi: false
     }, () => {
-        Data.closeModalCallback(modalOpenTime, "agencyAreaData", 2094, 385.5, 10);
+        // Data.closeModalCallback(modalOpenTime, "agencyAreaData", 2094, 385.5, 10);
         //onClose modal move player to specified position on map
     })
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
     let leftOnClick = WA.state.loadVariable("leaveOnClick")
-    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "agencyAreaData");
+    // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "agencyAreaData");
     WA.state.saveVariable("leaveOnClick", false);
 })
 
@@ -453,13 +453,13 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
         allow: null,
         allowApi: false
     }, () => {
-        Data.closeModalCallback(modalOpenTime, "cloudVideoData");
+        // Data.closeModalCallback(modalOpenTime, "cloudVideoData");
     })
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
     let leftOnClick = WA.state.loadVariable("leaveOnClick")
-    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cloudVideoData");
+    // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cloudVideoData");
     WA.state.saveVariable("leaveOnClick", false);
 })
 
@@ -474,13 +474,13 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO2).subscribe(() => {
         allow: null,
         allowApi: false
     }, () => {
-        Data.closeModalCallback(modalOpenTime, "devopsVideoData");
+        // Data.closeModalCallback(modalOpenTime, "devopsVideoData");
     })
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO2).subscribe(() => {
     let leftOnClick = WA.state.loadVariable("leaveOnClick")
-    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "devopsVideoData");
+    // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "devopsVideoData");
     WA.state.saveVariable("leaveOnClick", false);
 })
 
@@ -495,13 +495,13 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO3).subscribe(() => {
         allow: null,
         allowApi: false
     }, () => {
-        Data.closeModalCallback(modalOpenTime, "cyberVideoData");
+        // Data.closeModalCallback(modalOpenTime, "cyberVideoData");
     })
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO3).subscribe(() => {
     let leftOnClick = WA.state.loadVariable("leaveOnClick")
-    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cyberVideoData");
+    // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cyberVideoData");
     WA.state.saveVariable("leaveOnClick", false);
 })
 
@@ -516,13 +516,13 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO4).subscribe(() => {
         allow: null,
         allowApi: false
     }, () => {
-        Data.closeModalCallback(modalOpenTime, "agiliteVideoData");
+        // Data.closeModalCallback(modalOpenTime, "agiliteVideoData");
     })
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO4).subscribe(() => {
     let leftOnClick = WA.state.loadVariable("leaveOnClick")
-    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "agiliteVideoData");
+    // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "agiliteVideoData");
     WA.state.saveVariable("leaveOnClick", false);
 })
 
@@ -537,13 +537,13 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
         allow: null,
         allowApi: false
     }, () => {
-        Data.closeModalCallback(modalOpenTime, "dataVideoData");
+        // Data.closeModalCallback(modalOpenTime, "dataVideoData");
     })
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
     let leftOnClick = WA.state.loadVariable("leaveOnClick")
-    leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "dataVideoData");
+    // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "dataVideoData");
     WA.state.saveVariable("leaveOnClick", false);
 })
 
