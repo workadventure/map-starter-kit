@@ -327,7 +327,7 @@ WA.room.area.onLeave(AREA.EASTER_EGG.RICK_ROLL).subscribe(() => {
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.VIDEO_AGENCY).subscribe(() => {
 
-    modalOpenTime = Date.now();
+    // modalOpenTime = Date.now();
     WA.room.showLayer(AREA.FLOOR_LAYER.BOT_3_NOTIFICATION)
 
     WA.ui.modal.openModal({
@@ -387,7 +387,7 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.CAREER_AREA).subscribe(() => {
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
 
-    modalOpenTime = Date.now();
+    // modalOpenTime = Date.now();
 
     WA.ui.modal.openModal({
         title: 'agencyPage',// mandatory, title of the iframe modal.
@@ -402,7 +402,7 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
-    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    // let leftOnClick = WA.state.loadVariable("leaveOnClick")
     // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "agencyAreaData");
     WA.state.saveVariable("leaveOnClick", false);
 })
@@ -444,7 +444,7 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
 
-    modalOpenTime = Date.now();
+    // modalOpenTime = Date.now();
 
     WA.ui.modal.openModal({
         title: 'videoPracticeCloud',
@@ -458,14 +458,14 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
-    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    // let leftOnClick = WA.state.loadVariable("leaveOnClick")
     // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cloudVideoData");
     WA.state.saveVariable("leaveOnClick", false);
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO2).subscribe(() => {
 
-    modalOpenTime = Date.now();
+    // modalOpenTime = Date.now();
 
     WA.ui.modal.openModal({
         title: 'videoPracticeDevops',// mandatory, title of the iframe modal.
@@ -479,14 +479,14 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO2).subscribe(() => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO2).subscribe(() => {
-    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    // let leftOnClick = WA.state.loadVariable("leaveOnClick")
     // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "devopsVideoData");
     WA.state.saveVariable("leaveOnClick", false);
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO3).subscribe(() => {
 
-    modalOpenTime = Date.now();
+    // modalOpenTime = Date.now();
 
     WA.ui.modal.openModal({
         title: 'videoPracticeCyber',// mandatory, title of the iframe modal.
@@ -500,14 +500,14 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO3).subscribe(() => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO3).subscribe(() => {
-    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    // let leftOnClick = WA.state.loadVariable("leaveOnClick")
     // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "cyberVideoData");
     WA.state.saveVariable("leaveOnClick", false);
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO4).subscribe(() => {
 
-    modalOpenTime = Date.now();
+    // modalOpenTime = Date.now();
 
     WA.ui.modal.openModal({
         title: 'videoPracticeAgilite',// mandatory, title of the iframe modal.
@@ -521,14 +521,14 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO4).subscribe(() => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO4).subscribe(() => {
-    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    // let leftOnClick = WA.state.loadVariable("leaveOnClick")
     // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "agiliteVideoData");
     WA.state.saveVariable("leaveOnClick", false);
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
 
-    modalOpenTime = Date.now();
+    // modalOpenTime = Date.now();
 
     WA.ui.modal.openModal({
         title: 'videoPracticeData',// mandatory, title of the iframe modal.
@@ -542,7 +542,7 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO5).subscribe(() => {
-    let leftOnClick = WA.state.loadVariable("leaveOnClick")
+    // let leftOnClick = WA.state.loadVariable("leaveOnClick")
     // leftOnClick ? WA.ui.modal.closeModal() : Data.closeModalCallback(modalOpenTime, "dataVideoData");
     WA.state.saveVariable("leaveOnClick", false);
 })
