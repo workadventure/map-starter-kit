@@ -7,63 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleImgVideo.css">
+
     <style>
-        body {
-            background-color: transparent;
-            font-family: "Press Start 2P", system-ui;
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        #container {
-            height: 100vh;
-            display: flex;
-            align-items: flex-end;
-            position: absolute;
-        }
-
-        #box {
-            min-height: 6em;
-            background-color: aliceblue;
-            border-radius: 10px;
-            padding: 1em;
-            min-width: 70em;
-        }
-
         #videoContainer {
-            /* Importznt de laisser a none, devient "flex" dans betOnBetter.js au moment de l'afficher */
-            display: none;
+            display: flex;
             justify-content: center;
             margin: 2em 0;
-        }
-
-        #next {
-            position: absolute;
-            bottom: 1em;
-            right: 1em;
-            background-color: skyblue;
-            padding: 1em 2em;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        #next:hover {
-            background-color: white;
-        }
-
-        #buttonsContainer {
-            display: none;
-            width: 100%;
-            flex-direction: row;
-            justify-content: space-around;
-            margin: 1em 0 0 0;
         }
 
         .talent {

@@ -1,0 +1,31 @@
+
+body {
+    background-color: transparent;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#box {
+    position: relative;
+    height: 6em;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+#next {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    background-color: skyblue;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#next:hover {
+    background-color: white;
+}

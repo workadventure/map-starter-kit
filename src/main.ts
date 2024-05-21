@@ -113,7 +113,8 @@ WA.onInit().then(async () => {
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.START_AREA).subscribe(async () => {
     console.log('test')
-    await currentPrompt.close();
+    //closeAllPrompts();
+    currentPrompt.close();
 })
 
 // Message qui s'affiche sur le chat à droite avec le lien du tuto (solution 2)
@@ -121,6 +122,7 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.START_AREA).subscribe(async () => {
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(async () => {
 
+    //closeAllPrompts();
     await currentPrompt.close();
 
     currentPopup = await WA.ui.modal.openModal({
@@ -139,26 +141,13 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(async () => {
 // const today = new Date();
 // const time = today.getHours() + ":" + today.getMinutes();
 WA.room.area.onEnter(AREA.FLOOR_LAYER.SUPPORT_RH).subscribe(async () => {
-
-    currentPrompt = await WA.ui.website.open({
-        url: "src/supportRH.html",
-        position: {
-            vertical: "bottom",
-            horizontal: "middle",
-        },
-        size: {
-            height: "20vh",
-            width: "75vw",
-        },
-        margin: {
-            bottom: "15vh",
-        },
-        allowApi: true
-    })
+    boiteDeDialogue("src/supportRH.html");
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.SUPPORT_RH).subscribe(async () => {
-    await currentPrompt.close();
+    //closeAllPrompts();
+    currentPrompt.close();
+    //await currentPrompt.close();
 })
 
 //BETONYOUAERA 
@@ -184,67 +173,73 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU).subscribe(async () => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU).subscribe(async () => {
+    //closeAllPrompts();
     await currentPrompt.close();
 })
 
 
 //Les autres ajout link betOnYouLink1
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK1).subscribe(async () => {
-
-    currentPrompt = await WA.ui.website.open({
-        url: "src/betOnYouLink1.html",
-        position: {
-            vertical: "bottom",
-            horizontal: "middle",
-        },
-        size: {
-            height: "20vh",
-            width: "75vw",
-        },
-        margin: {
-            bottom: "15vh",
-        },
-        allowApi: true
-    })
+    boiteDeDialogue("src/betOnYouLink1.html","90vh", "76vw")
+    // currentPrompt = await WA.ui.website.open({
+    //     url: "src/betOnYouLink1.html",
+    //     position: {
+    //         vertical: "bottom",
+    //         horizontal: "middle",
+    //     },
+    //     size: {
+    //         height: "20vh",
+    //         width: "75vw",
+    //     },
+    //     margin: {
+    //         bottom: "15vh",
+    //     },
+    //     allowApi: true
+    // })
 
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU_LINK1).subscribe(async () => {
+    //closeAllPrompts();
     await currentPrompt.close();
 })
 
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_1).subscribe(async () => {
+    //closeAllPrompts();
     await currentPrompt.close();
 })
 
 //Les autres ajout link betOnYouLink2
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK2).subscribe(async () => {
 
-    currentPrompt = await WA.ui.website.open({
-        url: "src/betOnYouLink2.html",
-        position: {
-            vertical: "bottom",
-            horizontal: "middle",
-        },
-        size: {
-            height: "20vh",
-            width: "75vw",
-        },
-        margin: {
-            bottom: "15vh",
-        },
-        allowApi: true
-    })
+    boiteDeDialogue("src/betOnYouLink2.html","90vh", "76vw")
+    // currentPrompt = await WA.ui.website.open({
+    //     url: "src/betOnYouLink2.html",
+    //     position: {
+    //         vertical: "bottom",
+    //         horizontal: "middle",
+    //     },
+    //     size: {
+    //         height: "20vh",
+    //         width: "75vw",
+    //     },
+    //     margin: {
+    //         bottom: "15vh",
+    //     },
+    //     allowApi: true
+    // })
 
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU_LINK2).subscribe(async () => {
+    //closeAllPrompts();
     await currentPrompt.close();
 })
 
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_2).subscribe(async () => {
+    //closeAllPrompts();
     await currentPrompt.close();
 })
 
@@ -252,56 +247,47 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_2).subscribe(async () =>
 //Les autres ajout link betOnYouLink3
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK3).subscribe(async () => {
 
-    currentPrompt = await WA.ui.website.open({
-        url: "src/betOnYouLink3.html",
-        position: {
-            vertical: "bottom",
-            horizontal: "middle",
-        },
-        size: {
-            height: "20vh",
-            width: "75vw",
-        },
-        margin: {
-            bottom: "15vh",
-        },
-        allowApi: true
-    })
+    boiteDeDialogue("src/betOnYouLink3.html","90vh", "76vw")
+    // currentPrompt = await WA.ui.website.open({
+    //     url: "src/betOnYouLink3.html",
+    //     position: {
+    //         vertical: "bottom",
+    //         horizontal: "middle",
+    //     },
+    //     size: {
+    //         height: "20vh",
+    //         width: "75vw",
+    //     },
+    //     margin: {
+    //         bottom: "15vh",
+    //     },
+    //     allowApi: true
+    // })
 
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU_LINK3).subscribe(async () => {
+    //closeAllPrompts();
     await currentPrompt.close();
 })
 
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_3).subscribe(async () => {
+    //closeAllPrompts();
     await currentPrompt.close();
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_BETTER).subscribe(async () => {
-    currentPrompt = await WA.ui.website.open({
-        url: "src/betOnBetter.html",
-        position: {
-            vertical: "bottom",
-            horizontal: "middle",
-        },
-        size: {
-            height: "80vh",
-            width: "75vw",
-        },
-        margin: {
-            bottom: "15vh",
-        },
-        allowApi: true
-    })
+
+    boiteDeDialogue("src/betOnBetter.html", "90vh", "76vw");
 })
 
 
 
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_BETTER).subscribe(() => {
-    currentPrompt.close();
+    closeAllPrompts();
+    //await currentPrompt.close();
 })
 
 // setInterval(async () => { console.log("position :", await WA.player.getPosition()) }, 1000)
@@ -355,25 +341,27 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.VIDEO_AGENCY).subscribe(() => {
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
 
-    currentPrompt = await WA.ui.website.open({
-        url: "src/betOnTalent.html",
-        position: {
-            vertical: "bottom",
-            horizontal: "middle",
-        },
-        size: {
-            height: "20vh",
-            width: "75vw",
-        },
-        margin: {
-            bottom: "15vh",
-        },
-        allowApi: true
-    })
+    boiteDeDialogue("src/betOnTalent.html", "75vh", "76vw");
+    // currentPrompt = await WA.ui.website.open({
+    //     url: "src/betOnTalent.html",
+    //     position: {
+    //         vertical: "bottom",
+    //         horizontal: "middle",
+    //     },
+    //     size: {
+    //         height: "20vh",
+    //         width: "75vw",
+    //     },
+    //     margin: {
+    //         bottom: "15vh",
+    //     },
+    //     allowApi: true
+    // })
 
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
+    //closeAllPrompts();
     await currentPrompt.close();
 })
 
@@ -408,37 +396,24 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
+    boiteDeDialogue("src/betOnAgency.html");
 
-    currentPrompt = await WA.ui.website.open({
-        url: "src/betOnAgency.html",
-        position: {
-            vertical: "bottom",
-            horizontal: "middle",
-        },
-        size: {
-            height: "20vh",
-            width: "75vw",
-        },
-        margin: {
-            bottom: "15vh",
-        },
-        allowApi: true
-    })
-    
-    window.addEventListener('message', function (e)  {
+    window.addEventListener('message', function (e) {
         // console.log("emessage", e.data)
         // console.log("prompt",currentPrompt)
         if (e.data.type === 'closeUIWebsite') {
             if (currentPrompt) {
+                //closeAllPrompts();
                 currentPrompt.close();
                 console.log('prompteur fermé')
             }
         }
     });
-   
+
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
+    //closeAllPrompts();
     await currentPrompt.close();
 })
 
@@ -733,6 +708,7 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_1).subscribe(async () =>
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_1).subscribe(async () => {
+    //closeAllPrompts();
     currentPrompt.close();
 })
 
@@ -778,5 +754,38 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_4).subscribe(async () =>
     await currentPopup.close()
 })
 
+/**
+ * 
+ * @param page le chemin relatif de la page à charger
+ * @param h    la hauteur de la page en css (par defaut la taille pour une boite de dialogue classique)
+ * @param w    la largeur de la page en css (par defaut la taille pour une boite de dialogue classique)
+ */
+async function boiteDeDialogue(page: string, h: string = "20vh", w: string = "75vw"): Promise<void> {
+    //let document = await templateAvecScript("src/supportRH.js");
+    currentPrompt = await WA.ui.website.open({
+        url             : page,
+        position: {
+            vertical    : "bottom",
+            horizontal  : "middle",
+        },
+        size: {
+            height      : h,
+            width       : w,
+        },
+        margin: {
+            bottom      : "15vh",
+        },
+        allowApi: true
+    })
+}
+/**
+ * suppression des cadres html de prompts (retire la "hitbox")
+ */
+async function closeAllPrompts(): Promise<void> {
+    let wss: UIWebsite[] = await WA.ui.website.getAll();
+    wss.forEach(ws => {
+        ws.close();
+    })
+}
 
 export { currentPopup };
