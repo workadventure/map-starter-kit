@@ -10,7 +10,7 @@ console.log('Script started successfully');
 
 let currentPopup: any = undefined;
 let currentPrompt: UIWebsite;
-let modalOpenTime: number;
+// let modalOpenTime: number;
 
 WA.player.state.saveVariable("tutoData", []);
 WA.player.state.saveVariable("videoAgencyData", []);
@@ -122,8 +122,8 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.START_AREA).subscribe(async () => {
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.TUTO_AREA).subscribe(async () => {
 
-    //closeAllPrompts();
-    await currentPrompt.close();
+    closeAllPrompts();
+    //await currentPrompt.close();
 
     currentPopup = await WA.ui.modal.openModal({
         title: 'tuto',// mandatory, title of the iframe modal.
@@ -145,8 +145,8 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.SUPPORT_RH).subscribe(async () => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.SUPPORT_RH).subscribe(async () => {
-    //closeAllPrompts();
-    currentPrompt.close();
+    closeAllPrompts();
+    //currentPrompt.close();
     //await currentPrompt.close();
 })
 
@@ -173,14 +173,14 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU).subscribe(async () => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU).subscribe(async () => {
-    //closeAllPrompts();
-    await currentPrompt.close();
+    closeAllPrompts();
+    //await currentPrompt.close();
 })
 
 
 //Les autres ajout link betOnYouLink1
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK1).subscribe(async () => {
-    boiteDeDialogue("src/betOnYouLink1.html","90vh", "76vw")
+    boiteDeDialogue("src/betOnYouLink1.html","20vh", "76vw")
     // currentPrompt = await WA.ui.website.open({
     //     url: "src/betOnYouLink1.html",
     //     position: {
@@ -200,20 +200,20 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK1).subscribe(async () => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU_LINK1).subscribe(async () => {
-    //closeAllPrompts();
-    await currentPrompt.close();
+    closeAllPrompts();
+    //await currentPrompt.close();
 })
 
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_1).subscribe(async () => {
-    //closeAllPrompts();
-    await currentPrompt.close();
+    closeAllPrompts();
+    //await currentPrompt.close();
 })
 
 //Les autres ajout link betOnYouLink2
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK2).subscribe(async () => {
 
-    boiteDeDialogue("src/betOnYouLink2.html","90vh", "76vw")
+    boiteDeDialogue("src/betOnYouLink2.html","20vh", "76vw")
     // currentPrompt = await WA.ui.website.open({
     //     url: "src/betOnYouLink2.html",
     //     position: {
@@ -233,21 +233,21 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK2).subscribe(async () => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU_LINK2).subscribe(async () => {
-    //closeAllPrompts();
-    await currentPrompt.close();
+    closeAllPrompts();
+    //await currentPrompt.close();
 })
 
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_2).subscribe(async () => {
-    //closeAllPrompts();
-    await currentPrompt.close();
+    closeAllPrompts();
+    //await currentPrompt.close();
 })
 
 
 //Les autres ajout link betOnYouLink3
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK3).subscribe(async () => {
 
-    boiteDeDialogue("src/betOnYouLink3.html","90vh", "76vw")
+    boiteDeDialogue("src/betOnYouLink3.html","20vh", "76vw")
     // currentPrompt = await WA.ui.website.open({
     //     url: "src/betOnYouLink3.html",
     //     position: {
@@ -267,14 +267,14 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_YOU_LINK3).subscribe(async () => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_YOU_LINK3).subscribe(async () => {
-    //closeAllPrompts();
-    await currentPrompt.close();
+    closeAllPrompts();
+    //await currentPrompt.close();
 })
 
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_3).subscribe(async () => {
-    //closeAllPrompts();
-    await currentPrompt.close();
+    closeAllPrompts();
+    //await currentPrompt.close();
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_BETTER).subscribe(async () => {
@@ -361,8 +361,8 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_TALENT).subscribe(async () => {
-    //closeAllPrompts();
-    await currentPrompt.close();
+    closeAllPrompts();
+    //await currentPrompt.close();
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.CAREER_AREA).subscribe(() => {
@@ -413,8 +413,8 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
-    //closeAllPrompts();
-    await currentPrompt.close();
+    closeAllPrompts();
+    //await currentPrompt.close();
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_EXPERTISE_VIDEO1).subscribe(() => {
@@ -708,8 +708,8 @@ WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_1).subscribe(async () =>
 })
 
 WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_1).subscribe(async () => {
-    //closeAllPrompts();
-    currentPrompt.close();
+    closeAllPrompts();
+    //currentPrompt.close();
 })
 
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_2).subscribe(async () => {
