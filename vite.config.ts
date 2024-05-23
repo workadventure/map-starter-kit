@@ -28,6 +28,7 @@ export default defineConfig({
             input: {
                 index: "./index.html",
                 betOnAgency : "src/betOnAgency.html",
+                welcome : "src/welcome.html",
                 ...getMapsScripts(maps),
             },
         },
