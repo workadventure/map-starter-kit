@@ -27,6 +27,7 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 index: "./index.html",
+                betOnAgency : "src/betOnAgency.html",
                 ...getMapsScripts(maps),
             },
         },
