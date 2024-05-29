@@ -45,7 +45,6 @@ export default defineConfig({
                 betOnYouLink3         : "./src/betOnYouLink3.html",
                 supportRh             : "./src/supportRH.html",
                 welcome               : "./src/welcome.html",
-                indexJs               : "./index.js",
                 betOnAgencyJs         : "./src/betOnAgency.js",
                 betOnBetterJs         : "./src/betOnBetter.js",
                 betOnExpertiseJs      : "./src/betOnExpertise.js",
