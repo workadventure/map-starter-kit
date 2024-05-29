@@ -30,7 +30,7 @@ export default defineConfig({
                 betOnAgency           : "./src/betOnAgency.html",
                 betOnBetter           : "./src/betOnBetter.html",
                 betOnExpertise        : "./src/betOnExpertise.html",
-                betOnExpertiselink1   : "./src/betOnExpertiselink1.html",
+                // betOnExpertiselink1   : "./src/betOnExpertiselink1.html",
                 betOnExpertiselink2   : "./src/betOnExpertiselink2.html",
                 betOnExpertiselink3   : "./src/betOnExpertiselink3.html",
                 betOnExpertiselink4   : "./src/betOnExpertiselink4.html",
