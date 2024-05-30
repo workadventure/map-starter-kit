@@ -3531,7 +3531,7 @@
         {
          "name":"script",
          "type":"string",
-         "value":"src\/main.js.ts"
+         "value":"src\/main.ts"
         }, 
         {
          "name":"tutorial",
