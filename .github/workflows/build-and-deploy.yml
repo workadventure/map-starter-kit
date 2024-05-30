@@ -28,8 +28,8 @@ jobs:
 
       - name: Use API key from secrets
         env:
-          API_KEY: ${{ secrets.API_KEY }}
-        run: echo "API_KEY=${API_KEY}" >> $GITHUB_ENV
+          MAP_STORAGE_API_KEY: ${{ secrets.MAP_STORAGE_API_KEY }}
+        run: echo "MAP_STORAGE_API_KEY=${MAP_STORAGE_API_KEY}" >> $GITHUB_ENV
 
       - name: Use URL Map STORAGE from secrets
         env:
@@ -37,14 +37,14 @@ jobs:
         run: echo "URL_MAP_STORAGE=${URL_MAP_STORAGE}" >> $GITHUB_ENV
 
       - name: Generate .env.secret
-        run: echo "API_KEY=${{ secrets.API_KEY }}" > .env.secret
+        run: echo "MAP_STORAGE_API_KEY=${{ secrets.MAP_STORAGE_API_KEY }}" > .env.secret
 
       - name: Extract UPLOAD_MODE from .env
         run: echo "UPLOAD_MODE=$(grep UPLOAD_MODE .env | cut -d '=' -f2)" >> $GITHUB_ENV
 
       - name: Deploy in MAP STORAGE
         if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
-        run: npx @workadventure/upload-maps upload.js
+        run: npm run upload-only
 
       - name: Deploy on GITHUB PAGES
         if: ${{ env.UPLOAD_MODE == 'GH_PAGES' }}
