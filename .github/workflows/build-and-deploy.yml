@@ -33,8 +33,8 @@ jobs:
 
       - name: Use URL Map STORAGE from secrets
         env:
-          URL_MAP_STORAGE: ${{ secrets.URL_MAP_STORAGE }}
-        run: echo "URL_MAP_STORAGE=${URL_MAP_STORAGE}" >> $GITHUB_ENV
+          MAP_STORAGE_URL: ${{ secrets.MAP_STORAGE_URL }}
+        run: echo "MAP_STORAGE_URL=${MAP_STORAGE_URL}" >> $GITHUB_ENV
 
       - name: Generate .env.secret
         run: echo "MAP_STORAGE_API_KEY=${{ secrets.MAP_STORAGE_API_KEY }}" > .env.secret
