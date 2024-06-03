@@ -44,7 +44,7 @@ jobs:
 
       - name: Deploy in MAP STORAGE
         if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
-        run: npx @workadventure/upload-maps upload.js
+        run: npm run upload-only
 
       - name: Deploy on GITHUB PAGES
         if: ${{ env.UPLOAD_MODE == 'GH_PAGES' }}

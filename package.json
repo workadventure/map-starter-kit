@@ -8,7 +8,8 @@
     "start": "vite",
     "build": "tsc && vite build",
     "prod": "vite preview",
-    "upload": "npm run build && upload-wa-map"
+    "upload": "npm run build && upload-wa-map",
+    "upload-only": "upload-wa-map"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
