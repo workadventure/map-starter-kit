@@ -18,6 +18,7 @@ const quests: Quest[] = [
 ]
 
 export const startQuest = (questId: number) => {
+    console.log(quests[questId]);
     // const quest: Quest | undefined = quests.find(q => q.id === questId);
     // const playerQuest: Quest | undefined = (WA.player.state.quests as Quest[]).find(q => q.id === questId);
 
