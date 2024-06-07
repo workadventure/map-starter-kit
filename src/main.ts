@@ -383,17 +383,17 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.AGENCY_AREA).subscribe(() => {
 WA.room.area.onEnter(AREA.FLOOR_LAYER.BET_ON_AGENCY).subscribe(async () => {
     boiteDeDialogue("src/betOnAgency.html");
 
-    window.addEventListener('message', function (e) {
-        // console.log("emessage", e.data)
-        // console.log("prompt",currentPrompt)
-        if (e.data.type === 'closeUIWebsite') {
-            if (currentPrompt) {
-                //closeAllPrompts();
-                currentPrompt.close();
-                console.log('prompteur fermé')
-            }
-        }
-    });
+    // window.addEventListener('message', function (e) {
+    //     // console.log("emessage", e.data)
+    //     // console.log("prompt",currentPrompt)
+    //     if (e.data.type === 'closeUIWebsite') {
+    //         if (currentPrompt) {
+    //             //closeAllPrompts();
+    //             currentPrompt.close();
+    //             console.log('prompteur fermé')
+    //         }
+    //     }
+    // });
 
 })
 
