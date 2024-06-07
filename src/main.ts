@@ -114,7 +114,7 @@ WA.onInit().then(async () => {
 WA.room.area.onLeave(AREA.FLOOR_LAYER.START_AREA).subscribe(async () => {
     console.log('test')
     //closeAllPrompts();
-    closeAllPrompts();;
+    //closeAllPrompts();;
 })
 
 // Message qui s'affiche sur le chat à droite avec le lien du tuto (solution 2)
