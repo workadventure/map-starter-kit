@@ -9,7 +9,7 @@ import { UIWebsite } from "@workadventure/iframe-api-typings";
 console.log('Script started successfully');
 
 let currentPopup : any = undefined;
-let currentPrompt: UIWebsite;
+// let currentPrompt: UIWebsite;
 // let modalOpenTime: number;
 
 WA.player.state.saveVariable("tutoData", []);
@@ -626,7 +626,7 @@ WA.room.area.onLeave(AREA.FLOOR_LAYER.BET_ON_FUTUR_LINK_4).subscribe(async () =>
  */
 async function boiteDeDialogue(page:string, h:string = "20vh", w:string = "75vw"):Promise<void> {
     //let document = await templateAvecScript("src/supportRH.js");
-    currentPrompt = await WA.ui.website.open({
+    await WA.ui.website.open({
         url             : page,
         position: {
             vertical    : "bottom",
