@@ -8,88 +8,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styleText.css">
-    <!-- <style>
-        body {
-            background-color: transparent;
-            font-family: "Press Start 2P", system-ui;
-            font-weight: 400;
-            font-style: normal;
-        }
+    <style>
+        
+body {
+    background-color: transparent;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-        }
+#box {
+    position: relative;
+    height: 6em;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 1em;
+}
 
-        #container {
-            height: 100vh;
-            display: flex;
-            align-items: flex-end;
-            position: absolute;
-        }
+#next {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    background-color: skyblue;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        #box {
-            min-height: 6em;
-            background-color: aliceblue;
-            border-radius: 10px;
-            padding: 1em;
-            min-width: 70em;
-        }
-
-        #videoContainer {
-            /* Important de laisser a none, devient "flex" dans betOnBetter.js au moment de l'afficher */
-            display: none;
-            justify-content: center;
-            margin: 2em 0;
-        }
-
-        #next {
-            position: absolute;
-            bottom: 1em;
-            right: 1em;
-            background-color: skyblue;
-            padding: 1em 2em;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        #next:hover {
-            background-color: white;
-        }
-
-        #buttonsContainer {
-            display: none;
-            width: 100%;
-            flex-direction: row;
-            justify-content: space-around;
-            margin: 1em 0 0 0;
-        }
-
-        .talent {
-            background-color: skyblue;
-            padding: 1em 2em;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .talent:hover {
-            background-color: white;
-        }
+#next:hover {
+    background-color: white;
+}
     </style>
-</head> -->
+</head>
+
 <body>
-    <div id="container">
-        <div id="box">
-            <div id="videoContainer">
-                <iframe id="video" width="800" height="450" src="https://www.youtube.com/embed/1OnivPs6c7I?si=EeBJ4RUHMv4QfOaT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div id="text"></div>
-            <button hidden="true" id="next">Suivant</button>
-        </div>
+    <div id="box">
+        <div id="text"></div>
+        <button hidden="true" id="next">Suivant</button>
     </div>
 </body>
 <script>
@@ -101,7 +58,6 @@ const text = [
 let index = 0;
 let textIndex = 0
 
-
 function showText() {
     let textElement = document.getElementById("text")
     if (textElement) {
@@ -109,12 +65,6 @@ function showText() {
     }
     index++;
 
-    if (textIndex === text.length) {
-        document.getElementById("buttonsContainer").style.display = "flex"
-    }
-    if (textIndex !== text.length) {
-        document.getElementById("videoContainer").style.display = "none"
-    }
     if (index <= text[textIndex].length) {
         setTimeout(showText, 20);
     } else {
@@ -127,7 +77,7 @@ function showText() {
 
 showText();
 
-const button = document.getElementById("next");
+const button = document.querySelector("button");
 
 button?.addEventListener("click", () => {
     let nextButton = document.getElementById("next")
@@ -136,11 +86,8 @@ button?.addEventListener("click", () => {
     }
     index = 0;
     textIndex++;
-
-    if (textIndex >= text.length) {
-        document.getElementById("box").style.display = "none";
-        window.parent.postMessage({ type: 'closeUIWebsite' }, "*");
-        return;
+    if (textIndex == text.length) {
+        document.getElementById("box").style.display = "none"
     }
     showText();
 });
