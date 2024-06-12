@@ -1,0 +1,97 @@
+---
+name: "DevSecOps"
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: write
+  pages: write
+  actions: write
+
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set TERM environment variable
+        run: echo "TERM=xterm" >> $GITHUB_ENV
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      
+      - name: Install Task
+        uses: arduino/setup-task@v2
+      
+      - name: Check install
+        run: task -a
+      
+      - name: Run Megalinter
+        run: task code
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
+        if: success() || failure()
+        with:
+          name: MegaLinter reports
+          path: |
+            megalinter-reports
+            mega-linter.log
+
+  build:
+    runs-on: ubuntu-latest
+    needs: code
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          registry-url: "https://registry.npmjs.org"
+      
+      - name: Install Task
+        uses: arduino/setup-task@v2
+
+      - name: "Install dependencies"
+        run: task build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Task
+        uses: arduino/setup-task@v2
+      
+      - name: Setup deploy
+        run: task deploy
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        if: github.ref == 'refs/heads/master'
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: dist/ # The folder the action should deploy.
+          BASE_BRANCH: master
