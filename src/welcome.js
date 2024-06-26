@@ -4,6 +4,7 @@ const text = [
     "Aujourd'hui, nous te donnons la possibilité d'en apprendre plus sur nos valeurs, nos engagements et notre philosophie au travers de cette carte.",
     "Oh, j'allais oublier !",
     "Avant de partir pour ce voyage, je vais t'indiquer comment accéder au tutoriel qui t'expliquera tout ce que tu peux faire ici avant de découvrir notre agence.",
+    "Pour sortir d'un dialogue, réponds avec un emoji !",
     "Appuie sur la flèche de gauche sur ton clavier pour t'approcher du personnage."
 ];
 let index = 0;
