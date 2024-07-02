@@ -461,6 +461,17 @@
                  "width":32,
                  "x":64,
                  "y":544
+                }, 
+                {
+                 "height":39.697,
+                 "id":20,
+                 "name":"clock",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":50.2727,
+                 "x":265.162841963311,
+                 "y":422.099523585936
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -543,7 +554,7 @@
          "y":0
         }],
  "nextlayerid":63,
- "nextobjectid":20,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -554,7 +565,7 @@
         {
          "name":"mapDescription",
          "type":"string",
-         "value":"Test for video"
+         "value":" test video bis 48"
         }, 
         {
          "name":"mapImage",
@@ -564,7 +575,7 @@
         {
          "name":"mapName",
          "type":"string",
-         "value":"New Map Test"
+         "value":"New Map Test - 2"
         }, 
         {
          "name":"script",
