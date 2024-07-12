@@ -50,7 +50,7 @@ jobs:
       - name: Create or update .env file
         run: |
           REPO_INFO="${{ github.actor }}/${{ github.event.repository.name }}"
-          echo "GITHUB_REPO_INFO=${REPO_INFO}" > .env.tmp
+          echo "DIRECTORY=${REPO_INFO}" > .env.tmp
 
       - name: Display .env content
         run: cat .env
