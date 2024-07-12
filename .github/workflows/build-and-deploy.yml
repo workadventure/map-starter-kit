@@ -42,8 +42,6 @@ jobs:
       - name: Extract UPLOAD_MODE from .env
         run: echo "UPLOAD_MODE=$(grep '^[^#]*UPLOAD_MODE' .env | cut -d '=' -f2)" >> $GITHUB_ENV
 
-      # Mettre cela en dans la variable directory dans le .env
-
       - name: Extract and format repository info
         run: echo "DIRECTORY=${{ github.actor }}/${{ github.event.repository.name }}" >> $GITHUB_ENV
 
