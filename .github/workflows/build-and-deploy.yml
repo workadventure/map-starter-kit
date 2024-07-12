@@ -45,7 +45,7 @@ jobs:
       # Mettre cela en dans la variable directory dans le .env
 
       - name: Extract and format repository info
-        run: echo "GITHUB_REPO_INFO=${{ github.actor }}/${{ github.event.repository.name }}" >> $GITHUB_ENV
+        run: echo "DIRECTORY=${{ github.actor }}/${{ github.event.repository.name }}" >> $GITHUB_ENV
 
       - name: Create or update .env file
         run: |
