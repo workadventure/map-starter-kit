@@ -44,16 +44,16 @@ jobs:
 
       # Mettre cela en dans la variable directory dans le .env
 
-      - name: Extract Name of the repo
-        run: echo "GITHUB_REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+      # - name: Extract Name of the repo
+      #   run: echo "GITHUB_REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
 
-      - name: Extract user name from github
-        run: echo "GITHUB_USER_NAME=${{ github.actor }}" >> $GITHUB_ENV
+      # - name: Extract user name from github
+      #   run: echo "GITHUB_USER_NAME=${{ github.actor }}" >> $GITHUB_ENV
 
-      - name: Write in .env file
-        run: |
-          echo "GITHUB_REPO_NAME=${{ github.event.repository.name }}" >> .env
-          echo "GITHUB_USER_NAME=${{ github.actor }}" >> .env
+      # - name: Write in .env file
+      #   run: |
+      #     echo "GITHUB_REPO_NAME=${{ github.event.repository.name }}" >> .env
+      #     echo "GITHUB_USER_NAME=${{ github.actor }}" >> .env
 
       - name: Deploy in MAP STORAGE
         if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
