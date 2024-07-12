@@ -43,7 +43,10 @@ jobs:
         run: echo "UPLOAD_MODE=$(grep '^[^#]*UPLOAD_MODE' .env | cut -d '=' -f2)" >> $GITHUB_ENV
 
       - name: Extract Name of the repo
-        run: echo ${{ github.event.repository.name }}
+        run: echo "GITHUB_REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+
+      - name: Extract user name from github
+        run: echo "GITHUB_USER_NAME=${{ github.actor }}" >> $GITHUB_ENV
 
       - name: Deploy in MAP STORAGE
         if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
