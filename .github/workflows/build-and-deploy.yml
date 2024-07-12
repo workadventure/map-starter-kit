@@ -42,6 +42,9 @@ jobs:
       - name: Extract UPLOAD_MODE from .env
         run: echo "UPLOAD_MODE=$(grep '^[^#]*UPLOAD_MODE' .env | cut -d '=' -f2)" >> $GITHUB_ENV
 
+      - name: Extract Name of the repo
+        run: echo ${{ github.event.repository.name }}
+
       - name: Deploy in MAP STORAGE
         if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
         run: npm run upload-only
