@@ -43,11 +43,11 @@ jobs:
         run: echo "UPLOAD_MODE=$(grep '^[^#]*UPLOAD_MODE' .env | cut -d '=' -f2)" >> $GITHUB_ENV
 
       - name: Extract and format repository info
-        run: echo "DIRECTORY=${{ github.actor }}/${{ github.event.repository.name }}" >> $GITHUB_ENV
+        run: echo "DIRECTORY=${{ github.actor }}-${{ github.event.repository.name }}" >> $GITHUB_ENV
 
       - name: Create or update .env file
         run: |
-          REPO_INFO="${{ github.actor }}/${{ github.event.repository.name }}"
+          REPO_INFO="${{ github.actor }}-${{ github.event.repository.name }}"
           echo "DIRECTORY=${REPO_INFO}" > .env.tmp
 
       - name: Display .env content
