@@ -17,12 +17,12 @@
                 path = path.substr(path, path.length - 'index.html'.length);
             }
             const instanceId = Math.random().toString(36).substring(2, 15);
-            const url = `https://play.workadventu.re/_/${instanceId}/${host}${path}map.tmj`;
+            const url = `https://play.workadventu.re/_/${instanceId}/${host}${path}office.tmj`;
             document.getElementById('testMapURL').href = url;
             document.getElementById('testMapBtnURL').href = url;
             document.getElementById('testMapURL').innerText = url;
 
-            const tmjURL = window.location.protocol + '//' + window.location.host + path + 'map.tmj';
+            const tmjURL = window.location.protocol + '//' + window.location.host + path + 'office.tmj';
             document.getElementById('tmjURL').innerText = tmjURL;
 
             const gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl=' + tmjURL;
@@ -150,8 +150,8 @@
             <section>
                 <h2>Test my map</h2>
                 <p><a id="testMapURL" href="#" class="url"></a></p>
-                <p class="tips">(In order to test another map, locate "map.tmj" at the end of the URL and replace it by another file name)</p>
-                <img src="/map.png" alt="Map thumbnail" class="map">
+                <p class="tips">(In order to test another map, locate "office.tmj" at the end of the URL and replace it by another file name)</p>
+                <img src="/office.png" alt="Map thumbnail" class="map">
                 <p><a id="testMapBtnURL" href="#" class="button">Test my map</a></p>
             </section>
 

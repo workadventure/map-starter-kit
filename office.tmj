@@ -559,7 +559,7 @@
         {
          "name":"mapImage",
          "type":"string",
-         "value":"map.png"
+         "value":"office.png"
         }, 
         {
          "name":"mapName",
