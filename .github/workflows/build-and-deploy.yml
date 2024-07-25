@@ -50,9 +50,6 @@ jobs:
           REPO_INFO="${{ github.actor }}-${{ github.event.repository.name }}"
           echo "DIRECTORY=${REPO_INFO}" > .env.tmp
 
-      - name: Display .env content
-        run: cat .env
-
       - name: Deploy in MAP STORAGE
         if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
         run: npm run upload-only
