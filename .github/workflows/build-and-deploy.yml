@@ -47,8 +47,8 @@ jobs:
 
       - name: Create or update .env file
         run: |
-          REPO_INFO="${{ github.actor }}-${{ github.event.repository.name }}"
-          echo "UPLOAD_DIRECTORY=${REPO_INFO}" > .env
+          UPLOAD_DIRECTORY="${{ github.actor }}-${{ github.event.repository.name }}"
+          echo "UPLOAD_DIRECTORY=${UPLOAD_DIRECTORY}" > .env
 
       - name: Deploy in MAP STORAGE
         if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
