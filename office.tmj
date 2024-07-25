@@ -33,7 +33,7 @@
          "width":31,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "data":[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
             3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
@@ -65,7 +65,7 @@
          "width":31,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "id":55,
          "layers":[
@@ -100,7 +100,7 @@
                  "width":31,
                  "x":0,
                  "y":0
-                }, 
+                },
                 {
                  "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -139,7 +139,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "id":54,
          "layers":[
@@ -174,7 +174,7 @@
                  "width":31,
                  "x":0,
                  "y":0
-                }, 
+                },
                 {
                  "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 1827, 1828, 1829, 1830, 1831, 1832, 0, 0, 90, 0, 0, 0, 0, 187, 0, 0, 0, 0, 0, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -213,7 +213,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "id":52,
          "layers":[
@@ -248,7 +248,7 @@
                  "width":31,
                  "x":0,
                  "y":0
-                }, 
+                },
                 {
                  "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1150, 1151, 0, 0, 0, 0, 1150, 1151, 0, 0, 0, 0, 0, 0, 142, 143, 144, 0, 0, 0,
@@ -280,7 +280,7 @@
                  "width":31,
                  "x":0,
                  "y":0
-                }, 
+                },
                 {
                  "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1154, 1155, 0, 0, 0, 0, 1152, 1153, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -319,7 +319,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "id":2,
@@ -335,7 +335,7 @@
                  "width":93.7162209047986,
                  "x":483.919325398621,
                  "y":14.0269116471316
-                }, 
+                },
                 {
                  "height":128,
                  "id":13,
@@ -345,17 +345,17 @@
                          "name":"focusable",
                          "type":"bool",
                          "value":true
-                        }, 
+                        },
                         {
                          "name":"jitsiRoom",
                          "type":"string",
                          "value":"ChillZone"
-                        }, 
+                        },
                         {
                          "name":"jitsiTrigger",
                          "type":"string",
                          "value":"onaction"
-                        }, 
+                        },
                         {
                          "name":"zoom_margin",
                          "type":"float",
@@ -367,7 +367,7 @@
                  "width":192,
                  "x":32,
                  "y":96
-                }, 
+                },
                 {
                  "height":128,
                  "id":14,
@@ -384,7 +384,7 @@
                  "width":224,
                  "x":640,
                  "y":544
-                }, 
+                },
                 {
                  "height":224,
                  "id":16,
@@ -394,17 +394,17 @@
                          "name":"focusable",
                          "type":"bool",
                          "value":true
-                        }, 
+                        },
                         {
                          "name":"jitsiRoom",
                          "type":"string",
                          "value":"MeetingRoom"
-                        }, 
+                        },
                         {
                          "name":"jitsiTrigger",
                          "type":"string",
                          "value":"onaction"
-                        }, 
+                        },
                         {
                          "name":"zoom_margin",
                          "type":"float",
@@ -416,7 +416,7 @@
                  "width":192,
                  "x":768,
                  "y":224
-                }, 
+                },
                 {
                  "height":39.6969696969697,
                  "id":17,
@@ -427,7 +427,7 @@
                  "width":50.2727272727272,
                  "x":438.484848484849,
                  "y":96.3333333333333
-                }, 
+                },
                 {
                  "height":64,
                  "id":18,
@@ -444,7 +444,7 @@
                  "width":32,
                  "x":0,
                  "y":512
-                }, 
+                },
                 {
                  "height":32,
                  "id":19,
@@ -467,7 +467,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "id":51,
          "layers":[
@@ -502,7 +502,7 @@
                  "width":31,
                  "x":0,
                  "y":0
-                }, 
+                },
                 {
                  "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -550,22 +550,22 @@
          "name":"mapCopyright",
          "type":"string",
          "value":"Credits: WorkAdventure (https:\/\/WorkAdventu.re) \nLicense: CC-BY-SA 3.0 (http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/)"
-        }, 
+        },
         {
          "name":"mapDescription",
          "type":"string",
          "value":"A perfect virtual office to get started with WorkAdventure!"
-        }, 
+        },
         {
          "name":"mapImage",
          "type":"string",
-         "value":"map.png"
-        }, 
+         "value":"office.png"
+        },
         {
          "name":"mapName",
          "type":"string",
          "value":"Office"
-        }, 
+        },
         {
          "name":"script",
          "type":"string",
@@ -597,7 +597,7 @@
                         }]
                 }],
          "tilewidth":32
-        }, 
+        },
         {
          "columns":12,
          "firstgid":13,
@@ -610,7 +610,7 @@
          "tilecount":96,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":10,
          "firstgid":109,
@@ -623,7 +623,7 @@
          "tilecount":110,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":12,
          "firstgid":219,
@@ -636,7 +636,7 @@
          "tilecount":156,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":25,
          "firstgid":375,
@@ -649,7 +649,7 @@
          "tilecount":1000,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":13,
          "firstgid":1375,
@@ -662,7 +662,7 @@
          "tilecount":182,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":10,
          "firstgid":1557,
@@ -675,7 +675,7 @@
          "tilecount":270,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":6,
          "firstgid":1827,
@@ -688,7 +688,7 @@
          "tilecount":6,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":25,
          "firstgid":1833,
@@ -701,7 +701,7 @@
          "tilecount":850,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":13,
          "firstgid":2683,

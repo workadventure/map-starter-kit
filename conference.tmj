@@ -26,7 +26,7 @@
          "width":24,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "data":[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 3, 3,
             3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 3, 0, 0, 0, 3, 3,
@@ -51,7 +51,7 @@
          "width":24,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "id":55,
          "layers":[
@@ -79,7 +79,7 @@
                  "width":24,
                  "x":0,
                  "y":0
-                }, 
+                },
                 {
                  "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -111,7 +111,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "id":54,
          "layers":[
@@ -139,7 +139,7 @@
                  "width":24,
                  "x":0,
                  "y":0
-                }, 
+                },
                 {
                  "data":[0, 0, 0, 142, 143, 2147483790, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 152, 153, 2147483800, 0, 0, 0, 0, 0, 62, 63, 63, 63, 63, 63, 64, 90, 0, 0, 0, 90, 0,
@@ -171,7 +171,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "id":52,
          "layers":[
@@ -199,7 +199,7 @@
                  "width":24,
                  "x":0,
                  "y":0
-                }, 
+                },
                 {
                  "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 834, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 859, 0, 0, 0, 0, 0, 831, 832, 833, 0, 0,
@@ -224,7 +224,7 @@
                  "width":24,
                  "x":0,
                  "y":0
-                }, 
+                },
                 {
                  "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -256,14 +256,13 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "id":2,
          "name":"floorLayer",
          "objects":[
                 {
-                 "class":"area",
                  "height":320,
                  "id":18,
                  "name":"jitsiConference",
@@ -272,20 +271,20 @@
                          "name":"jitsiRoom",
                          "type":"string",
                          "value":"Conference"
-                        }, 
+                        },
                         {
                          "name":"jitsiTrigger",
                          "type":"string",
                          "value":"onaction"
                         }],
                  "rotation":0,
+                 "type":"area",
                  "visible":true,
                  "width":219.090909090909,
                  "x":32,
                  "y":96
-                }, 
+                },
                 {
-                 "class":"area",
                  "height":71.612250966399,
                  "id":19,
                  "name":"website",
@@ -294,30 +293,30 @@
                          "name":"dynamic",
                          "type":"bool",
                          "value":true
-                        }, 
+                        },
                         {
                          "name":"openWebsite",
                          "type":"string",
                          "value":"{{{ websiteURL }}}"
-                        }, 
+                        },
                         {
                          "name":"openWebsiteTrigger",
                          "type":"string",
                          "value":"onaction"
-                        }, 
+                        },
                         {
                          "name":"openWebsiteTriggerMessage",
                          "type":"string",
                          "value":"Press SPACE or touch here to open a custom website"
                         }],
                  "rotation":0,
+                 "type":"area",
                  "visible":true,
                  "width":96,
                  "x":256,
                  "y":96
-                }, 
+                },
                 {
-                 "class":"area",
                  "height":96,
                  "id":22,
                  "name":"to-office",
@@ -325,16 +324,16 @@
                         {
                          "name":"exitUrl",
                          "type":"string",
-                         "value":"map.tmj#from-conference"
+                         "value":"office.tmj#from-conference"
                         }],
                  "rotation":0,
+                 "type":"area",
                  "visible":true,
                  "width":96,
                  "x":608,
                  "y":0
-                }, 
+                },
                 {
-                 "class":"area",
                  "height":32,
                  "id":23,
                  "name":"from-office",
@@ -345,6 +344,7 @@
                          "value":true
                         }],
                  "rotation":0,
+                 "type":"area",
                  "visible":true,
                  "width":32,
                  "x":640,
@@ -355,14 +355,13 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "id":61,
          "name":"configuration",
          "objects":[
                 {
-                 "class":"variable",
                  "height":0,
                  "id":20,
                  "name":"websiteURL",
@@ -372,23 +371,24 @@
                          "name":"default",
                          "type":"string",
                          "value":"https:\/\/workadventu.re\/admin-guide\/streaming-conferences"
-                        }, 
+                        },
                         {
                          "name":"description",
                          "type":"string",
                          "value":"Test the website to embed with an iframe tester like https:\/\/iframetester.com\/"
-                        }, 
+                        },
                         {
                          "name":"label",
                          "type":"string",
                          "value":"Website URL"
-                        }, 
+                        },
                         {
                          "name":"persist",
                          "type":"bool",
                          "value":false
                         }],
                  "rotation":0,
+                 "type":"variable",
                  "visible":true,
                  "width":0,
                  "x":304.52245019328,
@@ -405,7 +405,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "id":51,
          "layers":[
@@ -433,7 +433,7 @@
                  "width":24,
                  "x":0,
                  "y":0
-                }, 
+                },
                 {
                  "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -474,29 +474,29 @@
          "name":"mapCopyright",
          "type":"string",
          "value":"Credits: WorkAdventure (https:\/\/WorkAdventu.re) \nLicense: CC-BY-SA 3.0 (http:\/\/creativecommons.org\/licenses\/by-sa\/3.0\/)"
-        }, 
+        },
         {
          "name":"mapDescription",
          "type":"string",
          "value":"A perfect virtual office to get started with WorkAdventure!"
-        }, 
+        },
         {
          "name":"mapImage",
          "type":"string",
-         "value":"map.png"
-        }, 
+         "value":"conference.png"
+        },
         {
          "name":"mapName",
          "type":"string",
-         "value":"Office"
-        }, 
+         "value":"Conference"
+        },
         {
          "name":"script",
          "type":"string",
          "value":"src\/main.ts"
         }],
  "renderorder":"right-down",
- "tiledversion":"1.9.2",
+ "tiledversion":"1.10.2",
  "tileheight":32,
  "tilesets":[
         {
@@ -521,7 +521,7 @@
                         }]
                 }],
          "tilewidth":32
-        }, 
+        },
         {
          "columns":12,
          "firstgid":13,
@@ -534,7 +534,7 @@
          "tilecount":96,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":10,
          "firstgid":109,
@@ -547,7 +547,7 @@
          "tilecount":110,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":12,
          "firstgid":219,
@@ -560,7 +560,7 @@
          "tilecount":156,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":25,
          "firstgid":375,
@@ -573,7 +573,7 @@
          "tilecount":1000,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":13,
          "firstgid":1375,
@@ -586,7 +586,7 @@
          "tilecount":182,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":10,
          "firstgid":1557,
@@ -599,7 +599,7 @@
          "tilecount":270,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":6,
          "firstgid":1827,
@@ -612,7 +612,7 @@
          "tilecount":6,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":25,
          "firstgid":1833,
@@ -625,7 +625,7 @@
          "tilecount":850,
          "tileheight":32,
          "tilewidth":32
-        }, 
+        },
         {
          "columns":13,
          "firstgid":2683,
@@ -641,6 +641,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.9",
+ "version":"1.10",
  "width":24
 }
