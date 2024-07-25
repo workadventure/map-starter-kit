@@ -42,7 +42,7 @@ jobs:
       - name: Extract UPLOAD_MODE from .env
         run: echo "UPLOAD_MODE=$(grep '^[^#]*UPLOAD_MODE' .env | cut -d '=' -f2)" >> $GITHUB_ENV
 
-      - name: Extract UPLOAD DIRECTORY from .env
+      - name: Extract UPLOAD DIRECTORY from Github
         run: echo "UPLOAD_DIRECTORY=${{ github.actor }}-${{ github.event.repository.name }}" >> $GITHUB_ENV
 
       - name: Create or update .env file
