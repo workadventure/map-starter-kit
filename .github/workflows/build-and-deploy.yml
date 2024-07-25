@@ -26,12 +26,12 @@ jobs:
       - name: "Build scripts"
         run: npm run build
 
-      - name: Use API key from secrets
+      - name: Get API KEY from secrets
         env:
           MAP_STORAGE_API_KEY: ${{ secrets.MAP_STORAGE_API_KEY }}
         run: echo "MAP_STORAGE_API_KEY=${MAP_STORAGE_API_KEY}" >> $GITHUB_ENV
 
-      - name: Use URL Map STORAGE from secrets
+      - name: Get MAP STORAGE URL from secrets
         env:
           MAP_STORAGE_URL: ${{ secrets.MAP_STORAGE_URL }}
         run: echo "MAP_STORAGE_URL=${MAP_STORAGE_URL}" >> $GITHUB_ENV
@@ -42,7 +42,7 @@ jobs:
       - name: Extract UPLOAD_MODE from .env
         run: echo "UPLOAD_MODE=$(grep '^[^#]*UPLOAD_MODE' .env | cut -d '=' -f2)" >> $GITHUB_ENV
 
-      - name: Extract and format repository info
+      - name: Extract UPLOAD DIRECTORY from .env
         run: echo "UPLOAD_DIRECTORY=${{ github.actor }}-${{ github.event.repository.name }}" >> $GITHUB_ENV
 
       - name: Create or update .env file
