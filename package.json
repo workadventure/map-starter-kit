@@ -17,7 +17,7 @@
     "@workadventure/upload-maps": "^1.6.11",
     "dotenv": "^16.3.1",
     "typescript": "^4.9.5",
-    "vite": "^4.5.3",
+    "vite": "^4.5.5",
     "wa-map-optimizer-vite": "^1.1.29"
   },
   "dependencies": {
