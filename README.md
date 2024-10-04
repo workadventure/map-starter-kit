@@ -57,8 +57,16 @@ npm run prod
 You can manually upload your map to the map storage by running:
 
 ```sh
-npm run deploy
+npm run upload
 ```
+
+The 3 important variables that control the upload feature are:
+
+1. `MAP_STORAGE_API_KEY` *(local: created in .env.secret by the upload command / CI: to be added as a Github secret)*
+2. `MAP_STORAGE_URL` *(local: created in .env by the upload command / CI: to be added as a Github secret optionally)*
+3. `UPLOAD_DIRECTORY` *(local: created in .env by the upload command / CI: to be added as a Github secret optionally)*
+
+Read [the doc](https://docs.workadventu.re/map-building/tiled-editor/publish/wa-hosted) to know more about the upload feature.
 
 ## Licenses
 
