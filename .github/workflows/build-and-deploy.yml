@@ -32,6 +32,7 @@ jobs:
         run: npm run build
 
       - name: Set up Environment Variables
+        if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
         run: |
           # MAP_STORAGE_API_KEY must always come from GitHub Secrets in CI
           if [ -z "${{ secrets.MAP_STORAGE_API_KEY }}" ]; then
