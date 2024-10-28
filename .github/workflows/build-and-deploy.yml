@@ -31,6 +31,15 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Extract UPLOAD_MODE from .env
+        run: |
+          UPLOAD_MODE=$(grep '^[^#]*UPLOAD_MODE' .env | cut -d '=' -f2)
+          if [ -z "$UPLOAD_MODE" ]; then
+            echo "Error: UPLOAD_MODE is not set in .env."
+            exit 1
+          fi
+          echo "UPLOAD_MODE=$UPLOAD_MODE" >> $GITHUB_ENV
+
       - name: Set up Environment Variables
         if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
         run: |
@@ -68,14 +77,6 @@ jobs:
               echo "Warning: UPLOAD_DIRECTORY was not found; set to $UPLOAD_DIRECTORY."
             fi
           fi
-
-          # UPLOAD_MODE only come from the .env file
-          UPLOAD_MODE=$(grep '^[^#]*UPLOAD_MODE' .env | cut -d '=' -f2)
-          if [ -z "$UPLOAD_MODE" ]; then
-            echo "Error: UPLOAD_MODE is not set in .env."
-            exit 1
-          fi
-          echo "UPLOAD_MODE=$UPLOAD_MODE" >> $GITHUB_ENV
 
       - name: Deploy using WA Map Storage
         if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
