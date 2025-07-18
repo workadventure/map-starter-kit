@@ -12,7 +12,7 @@
     "upload-only": "upload-wa-map"
   },
   "devDependencies": {
-    "@types/node": "^18.15.11",
+    "@types/node": "^20.19.0",
     "@workadventure/iframe-api-typings": "^1.20.00",
     "@workadventure/upload-maps": "^1.6.11",
     "dotenv": "^16.3.1",
