@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta name="title" content="WorkAdventure Starter Kit">
+
+    <link href="public/styles.css" rel="stylesheet">
+
+    <title>WorkAdventure test map</title>
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+<div class="content">
+    <header>
+        <div class="logo">
+            <a href="https://workadventu.re/" target="_blank" title="Workadventure">
+                <img src="public/images/logo.svg" alt="Workadventure logo" height="36" />
+            </a>
+        </div>
+        <div style="flex-grow: 1;"></div>
+        <div class="socials">
+            <a href="https://discord.gg/G6Xh9ZM9aR" target="_blank" title="discord">
+                <img src="/public/images/brand-discord.svg" alt="discord">
+            </a>
+            <a href="https://github.com/thecodingmachine/workadventure" target="_blank" title="github">
+                <img src="/public/images/brand-github.svg" alt="github">
+            </a>
+            <a href="https://www.youtube.com/channel/UCXJ9igV-kb9gw1ftR33y5tA" target="_blank" title="youtube">
+                <img src="/public/images/brand-youtube.svg" alt="youtube">
+            </a>
+            <a href="https://twitter.com/Workadventure_" target="_blank" title="twitter">
+                <img src="/public/images/brand-x.svg" alt="X">
+            </a>
+            <a href="https://www.linkedin.com/company/workadventu-re" target="_blank" title="linkedin">
+                <img src="/public/images/brand-linkedin.svg" alt="linkedin">
+            </a>
+        </div>
+        <div class="btn-header-wrapper">
+            <a href="#" class="btn btn-light">Talk to the community</a>
+            <a href="#" class="btn">Documentation</a>
+        </div>
+    </header>
+    <main class="container">
+        <section id="configureSteps" class="form-center steps">
+            <input type="hidden" id="stepProgress" value="1" />
+            <div id="step1" class="step">
+                <div class="step-title">
+                    <div class="step-number">1</div>
+                    <h2>Connect to your back-office </h2>
+                </div>
+                <div>
+                    <button id="bo-connect" class="btn">Log-in to your back-office</button>
+                </div>
+            </div>
+
+            <div id="step2" class="step inactive">
+                <div class="step-title">
+                    <div class="step-number">2</div>
+                    <h2>Complete the URL of your map storage</h2>
+                </div>
+                <div class="alert">
+                    <div class="alert-text">
+                        Be careful to select the proper world just above before copying your map storage url and create your key
+                    </div>
+                    <img src="public/images/world-select.png" alt="World selection" />
+                </div>
+                <div class="step-text">
+                    You can find it in here. Log in. In the left panel, click on "Developers" tab then "API keys / Zapier". There are 3 links, be careful to take the Map-storage API endpoint, it is the url for uploading files to the map storage service of WorkAdventure.
+                </div>
+                <div style="margin-top: 8px;">
+                    <input id="mapStorageURL" type="url" placeholder="Paste here your URL..." />
+                </div>
+            </div>
+
+            <div id="step3" class="step inactive">
+                <div class="step-title">
+                    <div class="step-number">3</div>
+                    <h2>Add your map storage API Key</h2>
+                </div>
+                <div class="step-text">
+                    In the same section than the step before:
+                    <ol>
+                        <li>Create a new token on back-office</li>
+                        <li>Refresh the page</li>
+                        <li>Click on the button “Copy” of your token</li>
+                    </ol>
+                </div>
+                <div>
+                    <input id="apiKey" type="text" placeholder="Paste here your URL..." />
+                </div>
+            </div>
+
+            <div id="step4" class="step inactive">
+                <div class="step-title">
+                    <div class="step-number">4</div>
+                    <h2>Choose a name / directory for your world</h2>
+                </div>
+                <div class="step-text">
+                    You can use an existing directory or create a new one.
+                </div>
+                <div>
+                    <input type="text" placeholder="Name of your world" />
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="button-wrapper">
+        <div>
+            <a href="step1-git.html" class="btn btn-ghost">
+                Previous
+            </a>
+        </div>
+        <div style="flex-grow: 1;">
+        </div>
+        <div>
+            <a href="#" class="btn btn-secondary">
+                Configure
+            </a>
+        </div>
+    </div>
+</div>
+<div class="bg" style="background-image: url(https://www.placecats.com/millie_neo/1620/1024);"></div>
+<script>
+    let configureSteps = document.getElementById('configureSteps');
+    let stepProgress = document.getElementById('stepProgress');
+    let step1 = document.getElementById('step1');
+    let step2 = document.getElementById('step2');
+    let step3 = document.getElementById('step3');
+    let step4 = document.getElementById('step4');
+    let mapStorageURL = document.getElementById('mapStorageURL');
+    let apiKey = document.getElementById('apiKey');
+    const button = document.getElementById("bo-connect");
+    let formIsValid = false;
+
+    configureSteps.style.height = step1.offsetHeight + "px";
+
+    button.addEventListener("click", (event) => {
+        stepProgress.value = 2;
+        configureSteps.style.height = step1.offsetHeight + step2.offsetHeight + "px";
+        step2.style.opacity = 1;
+        step2.classList.remove("inactive");
+    });
+
+    mapStorageURL.addEventListener('input', function (evt) {
+        console.log(isValidMapStorageUrl(this.value));
+        if(isValidMapStorageUrl(this.value)) {
+            mapStorageURL.classList.remove("error");
+            mapStorageURL.classList.add("success");
+            setTimeout(function() {
+                configureSteps.style.height = step1.offsetHeight + step2.offsetHeight + (step3.offsetHeight + 100) + "px";
+                step3.style.opacity = 1;
+                step3.classList.remove("inactive");
+            }, 500);
+            formIsValid++;
+        } else {
+            mapStorageURL.classList.remove("success");
+            mapStorageURL.classList.add("error");
+            formIsValid = false;
+        }
+    });
+
+    apiKey.addEventListener('input', function (evt) {
+        console.log(isValidMapStorageUrl(this.value));
+        if(this.value) {
+            apiKey.classList.remove("error");
+            apiKey.classList.add("success");
+            setTimeout(function() {
+                configureSteps.style.height = step1.offsetHeight + step2.offsetHeight + (step3.offsetHeight + 100) + step4.offsetHeight + "px";
+                step4.style.opacity = 1;
+                step4.classList.remove("inactive");
+                formIsValid++;
+            }, 500);
+        } else {
+            apiKey.classList.remove("success");
+            apiKey.classList.add("error");
+            formIsValid = false;
+        }
+    });
+
+    function isValidMapStorageUrl(value) {
+        const regex = /^https:\/\/[a-zA-Z0-9.-]+\.map-storage\.workadventu\.re\/?$/;
+        return regex.test(value);
+    }
+</script>
+</body>
+
+</html>

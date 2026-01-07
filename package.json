@@ -1,26 +1,10 @@
 {
-  "name": "workadventure-map-starter-kit",
-  "version": "3.3.18",
-  "license": "MIT",
-  "type": "module",
+  "name": "map-starter-kit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "start": "vite",
-    "build": "tsc && vite build",
-    "prod": "vite preview",
-    "upload": "npm run build && upload-wa-map",
-    "upload-only": "upload-wa-map"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "@types/node": "^18.15.11",
-    "@workadventure/iframe-api-typings": "^1.26.10",
-    "@workadventure/upload-maps": "^1.7.4",
-    "dotenv": "^16.3.1",
-    "typescript": "^5.9.2",
-    "vite": "^4.5.3",
-    "wa-map-optimizer-vite": "^1.1.31"
-  },
-  "dependencies": {
-    "@workadventure/scripting-api-extra": "^1.9.10"
-  }
+  "private": true
 }
