@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { defineConfig } from "vite";
 import { getMaps, getMapsOptimizers, getMapsScripts, LogLevel, OptimizeOptions } from "wa-map-optimizer-vite";
+import {VitePluginNode} from "vite-plugin-node";
 
 const maps = getMaps();
 
@@ -32,7 +33,30 @@ export default defineConfig({
             },
         },
     },
-    plugins: [...getMapsOptimizers(maps, optimizerOptions)],
+    plugins: [
+        ...getMapsOptimizers(maps, optimizerOptions),
+        ...VitePluginNode({
+            // Nodejs native Request adapter
+            // currently this plugin support 'express', 'nest', 'koa' and 'fastify' out of box,
+            // you can also pass a function if you are using other frameworks, see Custom Adapter section
+            adapter: 'express',
+
+            // tell the plugin where is your project entry
+            appPath: './app/app.ts',
+
+            // Optional, default: 'viteNodeApp'
+            // the name of named export of you app from the appPath file
+            exportName: 'viteNodeApp',
+
+            // Optional, default: false
+            // if you want to init your app on boot, set this to true
+            initAppOnBoot: false,
+
+            // Optional, default: false
+            // if you want to reload your app on file changes, set this to true, rebounce delay is 500ms
+            reloadAppOnFileChange: false,
+        })
+    ],
     server: {
         host: "localhost",
         headers: {
