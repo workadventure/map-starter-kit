@@ -260,7 +260,7 @@ header .btn-header-wrapper {
   line-height: 24px;
   color: rgba(255, 255, 255, 0.75);
 }
-.form-center.steps .step input[type=text], .form-center.steps .step input[type=url] {
+.form-center.steps .step input[type=text], .form-center.steps .step input[type=password], .form-center.steps .step input[type=url] {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -278,11 +278,11 @@ header .btn-header-wrapper {
   align-self: stretch;
   flex-grow: 0;
 }
-.form-center.steps .step input[type=text].error, .form-center.steps .step input[type=url].error {
+.form-center.steps .step input[type=text].error, .form-center.steps .step input[type=password].error, .form-center.steps .step input[type=url].error {
   border: 1px solid #E96D51;
   color: #E96D51;
 }
-.form-center.steps .step input[type=text].success, .form-center.steps .step input[type=url].success {
+.form-center.steps .step input[type=text].success, .form-center.steps .step input[type=password].success, .form-center.steps .step input[type=url].success {
   color: #66E979;
   border: 1px solid #66E979;
 }
@@ -299,6 +299,9 @@ header .btn-header-wrapper {
 .form-center .radio-wrapper {
   display: flex;
   gap: 32px;
+}
+.form-center .radio-wrapper .radio-card {
+  cursor: pointer;
 }
 .form-center .radio-wrapper .radio-card .radio {
   opacity: 0;
@@ -397,6 +400,24 @@ header .btn-header-wrapper {
 .button-wrapper a.btn.btn-secondary,
 .button-wrapper .btn.btn.btn-secondary {
   background: #4156F6;
+}
+
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 2s ease-in-out;
+  filter: blur(2px);
+  opacity: 0;
+  z-index: -1;
+}
+.bg-image.active {
+  opacity: 0.60;
+  z-index: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */

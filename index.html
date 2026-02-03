@@ -12,46 +12,110 @@
 
     <title>WorkAdventure test map</title>
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-    <script>
-        window.onload = function () {
-            const host = window.location.host;
-            let path = window.location.pathname;
-            if (path.endsWith('index.html')) {
-                path = path.substr(path, path.length - 'index.html'.length);
-            }
-            const instanceId = Math.random().toString(36).substring(2, 15);
-            const url = `https://play.workadventu.re/_/${instanceId}/${host}${path}office.tmj`;
-            //document.getElementById('testMapURL').href = url;
-            //document.getElementById('testMapBtnURL').href = url;
-            document.getElementById('testMapURL').innerText = url;
-
-            const tmjURL = window.location.protocol + '//' + window.location.host + path + 'office.tmj';
-            document.getElementById('tmjURL').innerText = tmjURL;
-
-            const gettingStartedLink = 'https://workadventu.re/getting-started?name=Map&mapUrl=' + tmjURL;
-            document.getElementById('gettingStartedLink').href = gettingStartedLink;
-        };
+    <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
+    <script type="module">
+        document.addEventListener("DOMContentLoaded", (event) => {
+            // Load index.js to have access to getMapsList
+            import('/public/assets/index.js').then(() => {
+                loadTMJ();
+            });
+        });
 
         async function loadTMJ() {
-            const response = await fetch("office.tmj");
-            const data = await response.json();
+            try {
+                // Get the list of maps from the API
+                const maps = await window.getMapsList();
+                
+                // Retrieve map images for background fade
+                const mapImages = maps
+                    .map(map => {
+                        if (map.mapImage) {
+                            return map.mapImage.startsWith('http') ? map.mapImage : `/${map.mapImage}`;
+                        }
+                        return null;
+                    })
+                    .filter(img => img !== null);
+                
+                // Create background image fade
+                if (mapImages.length > 0) {
+                    await window.createBackgroundImageFade(mapImages);
+                }
+                
+                // Mustache template for a map card
+                const cardTemplate = `
+                    <div class="map-cover" style="background-image: url('{{mapImageUrl}}');"></div>
+                    <div class="map-date">
+                        Last edit: {{lastModifiedFormatted}}
+                    </div>
+                    <div class="map-name">
+                        {{mapName}}
+                    </div>
+                    <div class="map-detail">
+                        <div class="map-file">
+                            <strong>{{filename}}</strong>.tmj
+                        </div>
+                        <div class="map-weight">
+                            <strong>{{size}}</strong>
+                            <span style="opacity: .5">Mo</span>
+                        </div>
+                    </div>
+                    <div class="map-desc">
+                        {{mapDescription}}
+                    </div>
+                    <div class="map-testurl">
+                        <a href="#" class="btn" data-map-path="{{path}}">Test my map</a>
+                    </div>
+                `;
 
-            function findProperty(list, key) {
-                if (!Array.isArray(list)) return null;
-                const item = list.find(p => p.name === key);
-                return item ? item.value : null;
+                // Prepare data for Mustache
+                const mapsData = maps.map(map => {
+                    // Build the image URL - use the first available image or a default image
+                    const mapImageUrl = map.mapImage 
+                        ? (map.mapImage.startsWith('http') ? map.mapImage : `/${map.mapImage}`)
+                        : (mapImages.length > 0 ? mapImages[0] : 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1620" height="1024"><rect fill="%231b2a41" width="100%" height="100%"/></svg>');
+                    
+                    return {
+                        ...map,
+                        mapImageUrl: mapImageUrl,
+                        mapDescription: map.mapDescription || 'No description available'
+                    };
+                });
+
+                // Render each map with Mustache and inject them into the container
+                const mainElement = document.querySelector('main');
+                if (mainElement) {
+                    // Clear existing content
+                    mainElement.innerHTML = '';
+                    
+                    // Create a section for each map
+                    mapsData.forEach(map => {
+                        const section = document.createElement('section');
+                        section.className = 'card-map';
+                        section.innerHTML = Mustache.render(cardTemplate, map);
+                        
+                        // Add an event handler for the "Test my map" button
+                        const testBtn = section.querySelector('.map-testurl a');
+                        if (testBtn) {
+                            testBtn.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                const host = window.location.host;
+                                let path = window.location.pathname;
+                                if (path.endsWith('index.html')) {
+                                    path = path.substr(0, path.length - 'index.html'.length);
+                                }
+                                const instanceId = Math.random().toString(36).substring(2, 15);
+                                const url = `https://play.workadventu.re/_/${instanceId}/${host}${path}${map.path}`;
+                                window.open(url, '_blank');
+                            });
+                        }
+                        
+                        mainElement.appendChild(section);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading maps:', error);
             }
-
-            const mapName = findProperty(data.properties, "mapName");
-            const mapImage = findProperty(data.properties, "mapImage");
-            const mapDescription = findProperty(data.properties, "mapDescription");
-
-            console.log("mapName:", mapName);
-            console.log("mapImage:", mapImage);
-            console.log("mapDescription:", mapDescription);
         }
-
-        loadTMJ();
     </script>
 </head>
 
@@ -87,31 +151,7 @@
         </div>
     </header>
     <main>
-        <section class="card-map">
-            <div class="map-cover" style="background-image: url('https://www.placecats.com/millie_neo/1620/1024');"></div>
-            <div class="map-date">
-                Last edit: 29/01/2026 14:57
-            </div>
-            <div class="map-name">
-                Main office
-            </div>
-            <div class="map-detail">
-                <div class="map-file">
-                    <strong>office</strong>.tmj
-                </div>
-                <div class="map-weight">
-                    <strong>1.5</strong>
-                    <span style="opacity: .5">Mo</span>
-                </div>
-            </div>
-            <div class="map-desc">
-                Temporibus aperiam rerum perspiciatis accusanti. Dolores in notramea do las rereaus perspiciatis accusanti.
-            </div>
-            <div class="map-testurl">
-                <a href="#" class="btn">Test my map</a>
-            </div>
-
-        </section>
+        <!-- Map cards will be injected here dynamically by Mustache -->
     </main>
     <div class="button-wrapper">
         <div style="flex-grow: 1;">
@@ -123,7 +163,7 @@
         </div>
     </div>
 </div>
-<div class="bg" style="background-image: url(https://www.placecats.com/millie_neo/1620/1024);"></div>
+<div class="bg"></div>
 </body>
 
 </html>

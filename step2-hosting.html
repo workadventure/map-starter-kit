@@ -44,6 +44,14 @@
             <a href="#" class="btn btn-light">Talk to the community</a>
             <a href="#" class="btn">Documentation</a>
         </div>
+        <script type="module">
+            document.addEventListener("DOMContentLoaded", (event) => {
+                // Load index.js to have access to getMapsList
+                import('/public/assets/index.js').then(() => {
+                    window.createBackgroundImageFade();
+                });
+            });
+        </script>
     </header>
     <main>
         <section class="form-center">
@@ -92,20 +100,55 @@
     </main>
     <div class="button-wrapper">
         <div>
-            <a href="step1-git.html" class="btn btn-ghost">
+            <a href="step1-git" class="btn btn-ghost">
                 Previous
             </a>
         </div>
         <div style="flex-grow: 1;">
         </div>
         <div>
-            <a href="step3-steps.html" class="btn btn-secondary">
+            <a href="step3-steps" class="btn btn-secondary">
                 Configure
             </a>
         </div>
     </div>
 </div>
-<div class="bg" style="background-image: url(https://www.placecats.com/millie_neo/1620/1024);"></div>
+<div class="bg"></div>
+<script>
+    // Get radio buttons by finding the label containing "I use self-hosted"
+    const radioButtons = document.querySelectorAll('input[name="advanced"]');
+    const configureButton = document.querySelector('a[href="step3-steps"]');
+    const docUrl = "https://docs.workadventu.re/map-building/tiled-editor/publish/wa-hosted";
+
+    // Find "I use self-hosted" radio button by checking parent label text
+    let selfHostedRadio = null;
+    radioButtons.forEach(radio => {
+        const label = radio.closest('label');
+        if (label && label.textContent.includes('I use self-hosted')) {
+            selfHostedRadio = radio;
+        }
+    });
+
+    // Function to update button href based on selection
+    function updateButtonHref() {
+        // Check if "I use self-hosted" is selected
+        if (selfHostedRadio && selfHostedRadio.checked) {
+            configureButton.href = docUrl;
+            configureButton.target = "_blank";
+        } else {
+            configureButton.href = "step3-steps";
+            configureButton.removeAttribute("target");
+        }
+    }
+
+    // Add event listeners to all radio buttons
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', updateButtonHref);
+    });
+
+    // Initialize on page load
+    updateButtonHref();
+</script>
 </body>
 
 </html>

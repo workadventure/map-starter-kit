@@ -12,6 +12,14 @@
 
     <title>WorkAdventure test map</title>
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+    <script type="module">
+        document.addEventListener("DOMContentLoaded", (event) => {
+            // Load index.js to have access to getMapsList
+            import('/public/assets/index.js').then(() => {
+                window.createBackgroundImageFade();
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -99,13 +107,48 @@
         <div style="flex-grow: 1;">
         </div>
         <div>
-            <a href="step2-hosting.html" class="btn btn-secondary">
+            <a href="step2-hosting" class="btn btn-secondary">
                 Start configuration
             </a>
         </div>
     </div>
 </div>
-<div class="bg" style="background-image: url(https://www.placecats.com/millie_neo/1620/1024);"></div>
+<div class="bg"></div>
+<script>
+    // Get radio buttons by finding the label containing "Advanced publishing"
+    const radioButtons = document.querySelectorAll('input[name="advanced"]');
+    const startConfigButton = document.querySelector('a[href="step2-hosting"]');
+    const docUrl = "https://docs.workadventu.re/map-building/tiled-editor/publish/wa-hosted";
+
+    // Find Advanced publishing radio button by checking parent label text
+    let advancedPublishingRadio = null;
+    radioButtons.forEach(radio => {
+        const label = radio.closest('label');
+        if (label && label.textContent.includes('Advanced publishing')) {
+            advancedPublishingRadio = radio;
+        }
+    });
+
+    // Function to update button href based on selection
+    function updateButtonHref() {
+        // Check if Advanced publishing is selected
+        if (advancedPublishingRadio && advancedPublishingRadio.checked) {
+            startConfigButton.href = docUrl;
+            startConfigButton.target = "_blank";
+        } else {
+            startConfigButton.href = "step2-hosting";
+            startConfigButton.removeAttribute("target");
+        }
+    }
+
+    // Add event listeners to all radio buttons
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', updateButtonHref);
+    });
+
+    // Initialize on page load
+    updateButtonHref();
+</script>
 </body>
 
 </html>

@@ -12,6 +12,14 @@
 
     <title>WorkAdventure test map</title>
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+    <script type="module">
+        document.addEventListener("DOMContentLoaded", (event) => {
+            // Load index.js to have access to getMapsList
+            import('/public/assets/index.js').then(() => {
+                window.createBackgroundImageFade();
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -51,27 +59,22 @@
             <h1>
                 Your map is ready to <strong>explore</strong> and <strong>share</strong>
             </h1>
-            <a href="#" class="btn btn-secondary" style="margin-top: 16px;">
+            <a href="https://admin.workadventu.re/login" class="btn btn-secondary" style="margin-top: 16px;" target="_blank">
                 Go to map list
             </a>
         </section>
     </main>
     <div class="button-wrapper">
         <div>
-            <a href="step1-git.html" class="btn btn-ghost">
+            <a href="step3-steps" class="btn btn-ghost">
                 Previous
             </a>
         </div>
         <div style="flex-grow: 1;">
         </div>
-        <div>
-            <a href="#" class="btn btn-secondary">
-                Configure
-            </a>
-        </div>
     </div>
 </div>
-<div class="bg" style="background-image: url(https://www.placecats.com/millie_neo/1620/1024);"></div>
+<div class="bg"></div>
 </body>
 
 </html>
