@@ -6,5 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@workadventure/iframe-api-typings": "^1.26.10",
+    "@workadventure/upload-maps": "^1.7.4",
+    "dotenv": "^16.3.1",
+    "typescript": "^5.9.2",
+    "vite": "^7.0.0",
+    "wa-map-optimizer-vite": "^1.2.1"
+  },
+  "dependencies": {
+    "@workadventure/scripting-api-extra": "^1.9.10"
+  }
 }
