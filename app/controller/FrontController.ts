@@ -69,6 +69,9 @@ export class FrontController {
         this.app.get('/step3-steps', async (req, res) => {
             res.send(await this.renderTemplate('step3-steps'));
         });
+        this.app.get('/step3-steps-selfhosted', async (req, res) => {
+            res.send(await this.renderTemplate('step3-steps-selfhosted'));
+        });
     }
 
     /**

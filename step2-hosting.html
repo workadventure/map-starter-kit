@@ -118,7 +118,6 @@
     // Get radio buttons by finding the label containing "I use self-hosted"
     const radioButtons = document.querySelectorAll('input[name="advanced"]');
     const configureButton = document.querySelector('a[href="step3-steps"]');
-    const docUrl = "https://docs.workadventu.re/map-building/tiled-editor/publish/wa-hosted";
 
     // Find "I use self-hosted" radio button by checking parent label text
     let selfHostedRadio = null;
@@ -133,8 +132,8 @@
     function updateButtonHref() {
         // Check if "I use self-hosted" is selected
         if (selfHostedRadio && selfHostedRadio.checked) {
-            configureButton.href = docUrl;
-            configureButton.target = "_blank";
+            configureButton.href = "step3-steps-selfhosted";
+            configureButton.removeAttribute("target");
         } else {
             configureButton.href = "step3-steps";
             configureButton.removeAttribute("target");
