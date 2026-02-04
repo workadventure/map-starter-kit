@@ -66,5 +66,11 @@ export default defineConfig({
             "Cache-Control": "no-cache, no-store, must-revalidate",
         },
         open: "/",
+        // Ensure Vite transforms TypeScript files when served directly
+        middlewareMode: false,
+    },
+    // Ensure TypeScript files are transformed
+    esbuild: {
+        include: /\.tsx?$/,
     },
 });
