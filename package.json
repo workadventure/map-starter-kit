@@ -4,7 +4,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --config web.vite.config.ts",
     "buildmap": "tsc && vite build --config buildmap.vite.config.ts",
     "upload": "npm run buildmap && upload-wa-map",
     "upload-only": "upload-wa-map"
@@ -23,9 +23,8 @@
     "vite-plugin-node": "^7.0.0"
   },
   "dependencies": {
+    "@workadventure/map-starter-kit-core": "^1.1.4",
     "@workadventure/scripting-api-extra": "^1.9.10",
-    "cors": "^2.8.6",
-    "mustache": "^4.2.0",
     "wa-map-optimizer-vite": "^1.2.3"
   }
 }

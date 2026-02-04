@@ -51,7 +51,7 @@ Then in your `.tmj` file:
 
 ## 🚫 What NOT to Do
 
-- ❌ **Don't** place map scripts in `app/` (server-side code)
+- ❌ **Don't** place map scripts in `app/` (reserved for the server entry point)
 - ❌ **Don't** place map scripts in `public/` (static files)
 - ❌ **Don't** place map scripts in the root directory
 - ❌ **Don't** reference scripts outside `src/` in your `.tmj` files

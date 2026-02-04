@@ -24,53 +24,43 @@ Uploading a map using the [WA map storage](https://docs.workadventu.re/map-build
 
 ```
 map-starter-kit/
-├── 📁 app/                    # Server-side code (Node.js/Express)
-│   ├── app.ts                 # Main Express application
-│   └── controller/            # Express route controllers
-│       ├── FrontController.ts
-│       ├── MapController.ts
-│       └── UploaderController.ts
+├── 📁 app/                    # Server entry point (loads @workadventure/map-starter-kit-core)
+│   └── app.ts                 # Re-exports the Express app from the core package
 │
 ├── 📁 src/                    # Map scripts (Browser/WorkAdventure) ⚠️ REQUIRED
 │   └── main.ts                # Your map scripts go here
 │
-├── 📁 public/                 # Static assets (images, CSS, etc.)
-│   ├── assets/
-│   ├── images/
-│   └── styles.css
 │
 ├── 📁 tilesets/               # Map tileset images (PNG)
 │
 ├── 📄 *.tmj                   # Map files (office.tmj, conference.tmj, etc.)
-├── 📄 *.html                  # HTML pages (index.html, step1-git.html, etc.)
 ├── 📄 vite.config.ts          # Vite configuration
 └── 📄 package.json            # Dependencies and scripts
 ```
 
+The **server** (Express app, controllers, HTML publishing pages, static assets) is provided by the npm package **`@workadventure/map-starter-kit-core`**. Updating this dependency gives you new publishing UI and server features without changing your maps or config.
+
 ### Quick Reference
 
-- *`public/`*: Static files like PDFs or audio files
 - *`src/`*: **Map scripts** (MUST be here for compilation) ⚠️
 - *`tilesets/`*: All PNG tilesets
-- *`app/`*: **Server-side code** (Express.js backend)
+- *`app/`*: **Server entry point** – loads the core package; do not add server logic here
 
 > [!TIP]
 > - If you want to use more than one map file, just add the new map file in the root folder (we recommend creating a copy of *office.tmj* and editing it to avoid any mistakes).
 > - We recommend using **512x512** images for the map thumbnails.
-> - If you are going to create custom websites to embed in the map, please reference the HTML files in the `input` option in *vite.config.js*.
+> - If you are going to create custom websites to embed in the map, please reference the HTML files in the `input` option in *buildmap.vite.config.js*.
 
-### 📁 Server-side Development (`app/`)
+### 📁 Server entry point (`app/`)
 
-The `app/` directory contains the server-side Express.js application code. See [app/README.md](./app/README.md) for detailed documentation.
+The `app/` directory contains only the **entry point** that loads the server from **`@workadventure/map-starter-kit-core`**.
 
-- *`app.ts`*: Main Express application entry point
-- *`controller/`*: Express controllers for handling routes
-  - *`FrontController.ts`*: Handles frontend routes and HTML rendering
-  - *`MapController.ts`*: Handles map-related API endpoints
-  - *`UploaderController.ts`*: Handles map upload and configuration
+- *`app.ts`*: Imports and re-exports the Express app from the core package (for Vite’s server plugin).
+
+The actual server (Express, routes, HTML pages, upload, map storage) lives in the dependency. To get updates to the publishing UI and server behaviour, run `npm update @workadventure/map-starter-kit-core`.
 
 > [!IMPORTANT]
-> **Server-side code** should be placed in the `app/` directory. This code runs on the Node.js server and is not compiled by Vite for the browser.
+> Do **not** add server logic or new controllers in `app/`. The server is fully provided by the core package.
 
 ### 📁 Map Scripts Development (`src/`) ⚠️
 
@@ -109,7 +99,7 @@ The `src/` directory is where you **MUST** place **all map-related scripts** tha
 npm install
 ```
 
-This will install all required dependencies including Vite, TypeScript, WorkAdventure packages, and Express.js.
+This will install all required dependencies, including Vite, TypeScript, WorkAdventure packages, and **`@workadventure/map-starter-kit-core`** (server and publishing UI).
 
 ### 🚀 Development
 
