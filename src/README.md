@@ -31,7 +31,7 @@ Scripts in this directory are:
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 
 WA.onInit().then(() => {
-    console.log('Map script loaded!');
+    console.info('Map script loaded!');
     // Your map logic here
 });
 ```

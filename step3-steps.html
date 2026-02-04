@@ -284,7 +284,6 @@
     });
 
     mapStorageURL.addEventListener('input', function (evt) {
-        console.log(isValidMapStorageUrl(this.value));
         if(isValidMapStorageUrl(this.value)) {
             mapStorageURL.classList.remove("error");
             mapStorageURL.classList.add("success");
@@ -302,7 +301,6 @@
     });
 
     apiKey.addEventListener('input', function (evt) {
-        console.log(isValidMapStorageUrl(this.value));
         if(this.value) {
             apiKey.classList.remove("error");
             apiKey.classList.add("success");
@@ -392,7 +390,6 @@
             }
 
             const configureData = await configureResponse.json();
-            console.log('Configuration saved:', configureData);
 
             // Update loading message
             loadingText.innerHTML = 'Uploading your map...';

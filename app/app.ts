@@ -8,19 +8,6 @@ import { UploaderController } from './controller/UploaderController';
 
 const app = express();
 
-// Middleware to set correct MIME types for TypeScript files
-// For JavaScript files, we use setHeaders in express.static options
-/*app.use((req, res, next) => {
-    const url = req.url;
-    
-    // Set correct MIME type for TypeScript files
-    if (url.endsWith('.ts') || url.endsWith('.tsx')) {
-        res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
-    }
-    
-    next();
-});*/
-
 const corsOptions = {
     credentials: true, // Allow sending cookies
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -54,27 +41,19 @@ const staticOptions = {
 // Serve dist/assets FIRST with explicit MIME type configuration
 // This ensures compiled JavaScript files from getMapsScripts are served correctly
 // This route must be before express.static('.') to take precedence
-app.use('/assets', express.static(path.join(process.cwd(), 'dist', 'assets'), {
-    ...staticOptions,
-    setHeaders: (res, filePath) => {
-        // Explicitly set Content-Type for JavaScript files to avoid MIME type issues
-        if (filePath.endsWith('.js') || filePath.endsWith('.mjs')) {
-            res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
-        }
-    }
+app.use('/assets', express.static(path.join(process.cwd(), 'dist', 'assets'), staticOptions));
+// Serve the public folder with a custom path
+app.use('/public', express.static(path.join(process.cwd(), 'public'), staticOptions));
+// Serve the tilesets folder with a longer cache (rarely modified)
+app.use('/tilesets', express.static(path.join(process.cwd(), 'tilesets'), {
+    maxAge: '7d',
+    etag: true,
+    lastModified: true,
 }));
 
 // Middleware to exclude /src from express.static - let Vite handle TypeScript transformation
 // VitePluginNode will automatically add Vite middleware that transforms TypeScript files
-const staticMiddleware = express.static('.', {
-    ...staticOptions,
-    setHeaders: (res, filePath) => {
-        // Explicitly set Content-Type for JavaScript files to avoid MIME type issues
-        if (filePath.endsWith('.js') || filePath.endsWith('.mjs')) {
-            res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
-        }
-    }
-});
+const staticMiddleware = express.static('.', staticOptions);
 
 // Middleware to transform and serve TypeScript files as JavaScript
 // This bundles the file with its dependencies to resolve npm imports
@@ -128,16 +107,6 @@ app.use((req, res, next) => {
     staticMiddleware(req, res, next);
 });
 
-// Serve the public folder with a custom path
-app.use('/public', express.static(path.join(process.cwd(), 'public'), staticOptions));
-
-// Serve the tilesets folder with a longer cache (rarely modified)
-app.use('/tilesets', express.static(path.join(process.cwd(), 'tilesets'), {
-    maxAge: '7d',
-    etag: true,
-    lastModified: true,
-}));
-
 const controllers = [
     new MapController(app),
     new FrontController(app),
@@ -146,7 +115,7 @@ const controllers = [
 
 // Verify and log all controllers created
 controllers.forEach(controller => {
-    console.log(`Controller created: ${controller.constructor.name}`);
+    console.info(`Controller started: ${controller.constructor.name}`);
 });
 
 export default app;

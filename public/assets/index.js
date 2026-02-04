@@ -6,7 +6,6 @@ async function getMapsList() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const maps = await response.json();
-        console.log('Maps list:', maps);
         return maps;
     } catch (error) {
         console.error('Error fetching maps list:', error);
@@ -22,7 +21,6 @@ async function getImagesList() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const images = await response.json();
-        console.log('Images list:', images);
         return images;
     } catch (error) {
         console.error('Error fetching images list:', error);
@@ -48,7 +46,6 @@ async function createBackgroundImageFade(images = null) {
 
     // Get the "bg" element
     const bgElement = document.querySelector('.bg');
-    console.log('bgElement:', bgElement);
     if (!bgElement || images.length === 0) return;
 
     // Create divs for each image with fade animation

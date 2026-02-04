@@ -161,7 +161,8 @@ export class UploaderController {
                 console.warn('Upload stderr:', stderr);
             }
             
-            console.log('Upload stdout:', stdout);
+            console.info('Upload stdout:', stdout);
+            console.info('Upload completed successfully');
         } catch (error) {
             console.error('Error executing upload-only:', error);
             throw error;
