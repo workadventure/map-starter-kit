@@ -6,6 +6,89 @@ import { promisify } from "node:util";
 
 const execAsync = promisify(exec);
 
+/** Metadata returned by map-storage for each map (WAM file). */
+export interface MapStorageMetadata {
+    copyright?: string;
+    description?: string;
+    name?: string;
+    thumbnail?: string;
+}
+
+/** Single map entry returned by map-storage GET /maps/ (value in the map). */
+export interface MapStorageEntry {
+    mapUrl: string;
+    wamFileUrl?: string;
+    metadata?: MapStorageMetadata;
+}
+
+/** Response shape: Map<wamfile, { mapUrl, metadata }>. In JSON this is a plain object. */
+export interface MapStorageListResponse {
+    [wamFile: string]: MapStorageEntry;
+}
+
+/** Hydrated map item returned by our API to the frontend. */
+export interface MapListItem {
+    wamFileUrl: string;
+    filename: string;
+    mapName: string | null;
+    mapDescription?: string;
+    mapCopyright?: string;
+    mapImage: string | null;
+    mapUrl: string;
+}
+
+/**
+ * Converts the map-storage response (Map<wamfile, entry>) into a list of MapListItem.
+ */
+export function hydrateMapStorageList(
+    raw: MapStorageListResponse,
+    mapStorageBaseUrl: string
+): MapListItem[] {
+    const list: MapListItem[] = [];
+    const baseUrl = mapStorageBaseUrl.replace(/\/$/, '');
+
+    for (const [wamFile, entry] of Object.entries(raw)) {
+        if (!entry || typeof entry !== 'object') continue;
+
+        const rawWamFileUrl = entry.wamFileUrl ?? wamFile;
+        const wamFileUrlNormalized = rawWamFileUrl.startsWith('http')
+            ? new URL(rawWamFileUrl).pathname.replace(/^\//, '')
+            : rawWamFileUrl.replace(/^\//, '');
+
+        const filename = wamFileUrlNormalized.split('/').pop() ?? wamFileUrlNormalized;
+        const nameFromFile = filename.replace(/\.(tmj|wam)$/i, '');
+
+        const meta = entry.metadata ?? {};
+        const mapUrl = entry.mapUrl ?? (entry as unknown as { mapUrl?: string }).mapUrl ?? '';
+
+        let mapImage: string | null = null;
+        if (meta.thumbnail) {
+            if (meta.thumbnail.startsWith('http')) {
+                mapImage = meta.thumbnail;
+            } else {
+                const thumbFile = meta.thumbnail.replace(/^\//, '');
+                const wamDir = wamFileUrlNormalized.includes('/')
+                    ? wamFileUrlNormalized.replace(/\/[^/]*$/, '')
+                    : '';
+                const thumbPath = wamDir ? `${wamDir}/${thumbFile}` : thumbFile;
+                mapImage = `${baseUrl}/${thumbPath}`;
+            }
+        }
+
+        list.push({
+            wamFileUrl: wamFileUrlNormalized,
+            filename,
+            mapName: meta.name ?? nameFromFile,
+            mapDescription: meta.description,
+            mapCopyright: meta.copyright,
+            mapImage,
+            mapUrl: mapUrl.startsWith('http') ? mapUrl : `${baseUrl}/${mapUrl.replace(/^\//, '')}`,
+        });
+    }
+
+    return list;
+}
+
 export class UploaderController {
     private router: express.Router;
     private app: express.Application;
@@ -101,6 +184,74 @@ export class UploaderController {
                 console.error('Error getting uploader status:', error);
                 res.status(500).json({
                     error: 'Error getting uploader status',
+                    message: error instanceof Error ? error.message : 'Unknown error'
+                });
+            }
+        });
+
+        // Route to get list of maps from map-storage (for self-hosted step4)
+        this.router.get('/maps-storage-list', async (req, res) => {
+            try {
+                const envSecretPath = path.join(process.cwd(), '.env.secret');
+                const hasSecretFile = await fs.promises.access(envSecretPath)
+                    .then(() => true)
+                    .catch(() => false);
+
+                if (!hasSecretFile) {
+                    return res.status(400).json({
+                        error: 'Configuration not found',
+                        message: 'Please configure the upload settings first.'
+                    });
+                }
+
+                const secretContent = await fs.promises.readFile(envSecretPath, 'utf-8');
+                const mapStorageUrl = secretContent.match(/MAP_STORAGE_URL=(.+)/)?.[1]?.trim();
+                const mapStorageApiKey = secretContent.match(/MAP_STORAGE_API_KEY=(.+)/)?.[1]?.trim();
+
+                if (!mapStorageUrl || !mapStorageApiKey) {
+                    return res.status(400).json({
+                        error: 'Missing map-storage configuration',
+                        message: 'MAP_STORAGE_URL and MAP_STORAGE_API_KEY must be set in .env.secret.'
+                    });
+                }
+
+                const baseUrl = mapStorageUrl.replace(/\/$/, '');
+                const listUrl = `${baseUrl}/maps/`;
+
+                const response = await fetch(listUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${mapStorageApiKey}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    const text = await response.text();
+                    console.error('Map-storage list error:', response.status, text);
+                    return res.status(response.status).json({
+                        error: 'Map-storage request failed',
+                        message: response.status === 401
+                            ? 'Invalid API key. Check MAP_STORAGE_API_KEY in your .env.secret.'
+                            : `Map-storage returned ${response.status}: ${text.slice(0, 200)}`
+                    });
+                }
+
+                const data = await response.json();
+                // Map-storage returns Map<wamfile, { mapUrl, metadata }> (as a plain object in JSON)
+                const raw = typeof data === 'object' && data !== null ? data : {};
+                const rawMap: MapStorageListResponse = !Array.isArray(raw) && typeof raw.maps === 'object' && raw.maps !== null
+                    ? (raw.maps as MapStorageListResponse)
+                    : !Array.isArray(raw)
+                    ? (raw as MapStorageListResponse)
+                    : {};
+                const maps = hydrateMapStorageList(rawMap, baseUrl);
+                const playBaseUrl = secretContent.match(/PLAY_BASE_URL=(.+)/)?.[1]?.trim() || null;
+                res.json({ maps, mapStorageUrl: baseUrl, playBaseUrl });
+            } catch (error) {
+                console.error('Error fetching maps from map-storage:', error);
+                res.status(500).json({
+                    error: 'Error fetching maps list',
                     message: error instanceof Error ? error.message : 'Unknown error'
                 });
             }

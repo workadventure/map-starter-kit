@@ -82,6 +82,9 @@ export class FrontController {
         this.app.get('/step4-validated', async (req, res) => {
             res.send(await this.renderTemplate('step4-validated'));
         });
+        this.app.get('/step4-validated-selfhosted', async (req, res) => {
+            res.send(await this.renderTemplate('step4-validated-selfhosted'));
+        });
     }
     
 }
