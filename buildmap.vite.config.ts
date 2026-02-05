@@ -27,20 +27,11 @@ export default defineConfig({
         sourcemap: true,
         rollupOptions: {
             input: {
-                index: "./index.html",
                 ...getMapsScripts(maps),
             },
         },
     },
-    plugins: [...getMapsOptimizers(maps, optimizerOptions)],
-    server: {
-        host: "localhost",
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization",
-            "Cache-Control": "no-cache, no-store, must-revalidate",
-        },
-        open: "/",
-    },
+    plugins: [
+        ...getMapsOptimizers(maps, optimizerOptions),
+    ],
 });

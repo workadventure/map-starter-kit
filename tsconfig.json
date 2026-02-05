@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "./dist/",
     "target": "ESNext",
     "useDefineForClassFields": true,
@@ -27,9 +28,17 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@workadventure/map-starter-kit-core/dist/server.js": ["./app/map-starter-kit-core.d.ts"]
+    }
   },
   "include": [
-    "src"
+    "src",
+    "app"
+  ],
+  "exclude": [
+    "node_modules",
+    "app"
   ]
 }
