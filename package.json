@@ -23,7 +23,7 @@
     "vite-plugin-node": "^7.0.0"
   },
   "dependencies": {
-    "@workadventure/map-starter-kit-core": "^1.1.4",
+    "@workadventure/map-starter-kit-core": "^1.1.5",
     "@workadventure/scripting-api-extra": "^1.9.10",
     "wa-map-optimizer-vite": "^1.2.3"
   }
