@@ -108,7 +108,7 @@ This will install all required dependencies, including Vite, TypeScript, WorkAdv
 Start the Vite development server with hot module replacement:
 
 ```bash
-npm run dev
+npm run start
 ```
 
 This will:
@@ -168,7 +168,7 @@ This command will:
 #### Configure Upload Settings
 
 You can configure these settings through the web interface:
-1. Start the development server (`npm run dev`)
+1. Start the development server (`npm run start`)
 2. Navigate to the upload configuration page
 3. Fill in your Map Storage credentials
 4. Save and upload your map
@@ -179,7 +179,7 @@ For more details, read [the WorkAdventure upload documentation](https://docs.wor
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start Vite development server with hot reload |
+| `npm run start` | Start Vite development server with hot reload |
 | `npm run buildmap` | Build only the map files (without frontend) |
 | `npm run upload` | Build and upload map to WA Map Storage |
 | `npm run upload-only` | Upload map without rebuilding (requires existing build) |
