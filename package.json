@@ -4,6 +4,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "start": "npm run dev",
     "dev": "vite --config web.vite.config.ts",
     "buildmap": "tsc && vite build --config buildmap.vite.config.ts",
     "upload": "npm run buildmap && upload-wa-map",
