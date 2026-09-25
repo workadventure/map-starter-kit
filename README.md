@@ -188,6 +188,18 @@ For more details, read [the WorkAdventure upload documentation](https://docs.wor
 | `npm run upload` | Build and upload map to WA Map Storage |
 | `npm run upload-only` | Upload map without rebuilding (requires existing build) |
 
+## 🔄 Upgrading to a newer Starter Kit
+
+This map is built from the WorkAdventure Starter Kit. It does not receive Starter Kit updates automatically.
+To help, the kit ships an AI agent skill in [`.agents/skills/upgrade-starter-kit`](./.agents/skills/upgrade-starter-kit/SKILL.md).
+
+Ask your coding agent to *"upgrade the starter kit"* (or run `/upgrade-starter-kit` in Claude Code). It will:
+
+- compare your repository with the latest version of this kit, using the `version` field of `package.json` as the baseline,
+- update the scaffolding: dependencies, Vite and TypeScript config, `app/`, the GitHub workflow, new `.env` keys,
+- leave your map content alone (maps, tilesets, images and your own scripts),
+- run `npm install` and `npm run buildmap`, then list anything it did not apply and you still have to do yourself.
+
 ## 📜 Licenses
 
 This project contains multiple licenses as follows:
